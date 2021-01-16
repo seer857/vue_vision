@@ -2,6 +2,7 @@
 <template>
       <div class="asset-box">
          <h1>我是资产明细页xxxxxxxx</h1>
+         <div id="asset"></div>
       </div>
 </template>
 
@@ -14,18 +15,29 @@ export default {
        };
     },
    methods: {
-
+      onAssets(){
+         let myCharts = echarts.init(document.getElementById('asset'))
+        // 使用刚指定的配置项和数据显示图表。
+        myCharts.setOption(option);
+      }
+      
     },
    computed: {},
    watch: {},
    created() {},
-   mounted() {},
+   mounted() {
+      this.onAssets()
+   },
 }
 </script>
 <style lang='scss' scoped>
 .asset-box{
    h1{
       color: #fff;
+   }
+   #asset{
+      width: 500px;
+      height: 400px;
    }
 }
 </style>

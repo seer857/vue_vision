@@ -8,9 +8,10 @@
           <span>资产盘点</span>
         </router-link>
       </div>
-      <!--       <div class="module-two">
-        <span>资产盘点</span>
-      </div>-->
+      <div class="module-two">
+        <div class="cover"></div>
+        <span>数栈计算引擎</span>
+      </div>
     </div>
     <div class="four-pic">
       <div class="outerside-one"></div>
@@ -55,6 +56,7 @@ export default {
     border: solid 1px steelblue;
     z-index: 5;
     .module-one {
+      position: absolute;
       width: 70px;
       height: 90px;
       margin-left: 22%;
@@ -71,6 +73,30 @@ export default {
         background-size: 100%;
       }
       span {
+        position: absolute;
+        color: #fff;
+        margin-top: 68px;
+      }
+    }
+    .module-two{
+      position: absolute;
+      width: 70px;
+      height: 90px;
+      margin-left: 35%;
+      margin-top: 18%;
+      background: url(../../../assets/images/fourth/content/two.png) no-repeat;
+      background-size: 100%;
+      .cover {
+        position: absolute;
+        width: 70px;
+        height: 90px;
+        margin-top: 0px;
+        background: url(../../../assets/images/fourth/content/cover.png)
+          no-repeat;
+        background-size: 100%;
+      }
+       span {
+        width: 100px;
         position: absolute;
         color: #fff;
         margin-top: 68px;
