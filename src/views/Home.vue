@@ -13,7 +13,7 @@
           <div class="left" v-if="!isShow">
             <LeftModule />
           </div>
-          <div class="center" >
+          <div class="center" ref="ModuleCenter">
             <CenterModule v-on:againSend="getContentShow" />
           </div>
           <div class="right" v-if="!isShow">
@@ -44,7 +44,9 @@ export default {
   methods:{
     getContentShow(data){
       console.log(data)
-    }
+    },
+   
+
   }
 }
 </script>
@@ -111,7 +113,7 @@ $absolute: absolute;
       position: relative;
       width: 450px;
       height: 978px;
-      border: 1px springgreen solid;
+      //border: 1px springgreen solid;
       float: left;
     }
     .center {
@@ -119,20 +121,37 @@ $absolute: absolute;
       margin-left: 460px;
       width: 994px;
       height: 978px;
-      border: 1px springgreen solid;
-      animation: domCenterMove 20s infinite linear alternate;
+      //border: 1px springgreen solid;
+      //animation: domCenterMove 20s infinite linear alternate;
     }
     .right {
       position: relative;
       width: 450px;
       height: 978px;
-      border: 1px red solid;
+      //border: 1px red solid;
       float: right;
+      margin-right: 4px;
     }
   }
 }
 
 @keyframes domCenterMove {
+0% {
+    margin-left: 550px;
+    width: 824px;
+  }
+
+  50% {
+    margin-left: 370px;
+    width: 1164px;
+  }
+    
+   100% {
+    margin-left: 460px;
+    width: 994px;
+  }
+}
+@keyframes domCenterMove1 {
   0% {
     margin-left: 460px;
     width: 994px;

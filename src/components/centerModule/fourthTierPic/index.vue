@@ -2,7 +2,7 @@
 <template>
   <div class="four-module">
     <div class="box">
-      <div class="module-one" @click="onAsset">
+      <div class="module-one" @click="onAsset" @mousemove="enterIntoOne" @mouseout="leaveOutOne">
         <router-link :to="{name:'asset'}">
           <div class="cover"></div>
           <span>资产盘点</span>
@@ -14,12 +14,11 @@
       </div>
     </div>
     <div class="four-pic">
-      <div class="outerside-one"></div>
+      <div class="outerside-one" ref="outerFourOne"></div>
       <div class="outerside-two"></div>
       <div class="outerside-three"></div>
       <div class="outerside-four"></div>
       <div class="inside-one"></div>
-      <div class="inside-two"></div>
       <div class="shade"></div>
     </div>
   </div>
@@ -37,6 +36,14 @@ export default {
     onAsset() {
       this.$emit('getShow', this.tag)
     },
+    enterIntoOne() {
+      let a = this.$refs.outerFourOne.style
+      a.animationDuration = '3s'
+    },
+    leaveOutOne() {
+      let a = this.$refs.outerFourOne.style
+      a.animationDuration = '30s'
+    },
   },
   computed: {},
   watch: {},
@@ -46,14 +53,16 @@ export default {
 </script>
 <style lang='scss' scoped>
 .four-module {
+  position: absolute;
   width: 100%;
   height: 100%;
+  animation: changeSize 10s linear infinite alternate;
+  //border: 1px rgb(255, 11, 154) solid;
   .box {
     position: absolute;
     width: 100%;
     height: 400px;
-    margin-top: 300px;
-    border: solid 1px steelblue;
+    margin-top: 580px;
     z-index: 5;
     .module-one {
       position: absolute;
@@ -78,7 +87,7 @@ export default {
         margin-top: 68px;
       }
     }
-    .module-two{
+    .module-two {
       position: absolute;
       width: 70px;
       height: 90px;
@@ -95,7 +104,7 @@ export default {
           no-repeat;
         background-size: 100%;
       }
-       span {
+      span {
         width: 100px;
         position: absolute;
         color: #fff;
@@ -104,10 +113,10 @@ export default {
     }
   }
   .four-pic {
+    position: absolute;
     width: 100%;
     height: 100%;
     margin-top: 300px;
-    border: thistle 1px solid;
     transform-origin: (100deg, 100deg);
     transform: translate3d(0px, 0px, 0px) scaleX(1) scaleY(1) rotateX(70deg)
       rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);
@@ -153,22 +162,14 @@ export default {
       width: 60%;
       height: 60%;
       margin: 21%;
-      background: url(../../../assets/images/fourth/insideFirst.png) no-repeat;
+      background: url(../../../assets/images/fourth/insideFirst0.png) no-repeat;
       background-size: 100%;
       animation: myMove2 30s infinite linear;
       z-index: -1;
     }
-    .inside-two {
-      position: absolute;
-      width: 30%;
-      height: 30%;
-      margin: 36%;
-      background: url(../../../assets/images/fourth/insideSecond.png) no-repeat;
-      background-size: 100%;
-      z-index: -1;
-    }
+
     .shade {
-      position: fixed;
+      position: absolute;
       width: 100%;
       height: 100%;
       margin: 0%;
@@ -195,6 +196,20 @@ export default {
 
   100% {
     transform: rotate(-360deg);
+  }
+}
+@keyframes changeSize {
+  0% {
+    width: 100%;
+
+  }
+  50%{
+    width: 96%;
+     margin-left: 2%;
+  }
+  100%{
+    width: 108%;
+    margin-left: -4%;
   }
 }
 </style>

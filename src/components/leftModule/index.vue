@@ -24,6 +24,6 @@ export default {
 .left-view {
   width: 100%;
   height: 100%;
-  border: 1px red solid;
+ // border: 1px red solid;
 }
 </style>
