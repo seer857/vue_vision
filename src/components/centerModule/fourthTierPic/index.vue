@@ -1,60 +1,50 @@
 <!-- 第四层 动画部分  -->
 <template>
   <div class="four-tier-box">
-    <!--   <div class="box">
-      <div class="module-one" @click="onAsset" @mousemove="enterIntoOne" @mouseout="leaveOutOne">
-        <router-link :to="{name:'asset'}">
-          <div class="cover"></div>
-          <span>资产盘点</span>
-        </router-link>
-      </div>
-      <div class="module-two">
-        <div class="cover"></div>
-        <span>数栈计算引擎</span>
-      </div>
-    </div>
-    <div class="four-pic">
-      <div class="outerside-one" ref="outerFourOne"></div>
-      <div class="outerside-two"></div>
-      <div class="outerside-three"></div>
-      <div class="outerside-four"></div>
-      <div class="inside-one"></div>
-      <div class="shade"></div>
-    </div>-->
     <div class="box-content">
       <router-link :to="{name:'asset'}">
-        <div class="box-one">
+        <div class="box-one" @mouseenter="boxoneActive" @mouseleave="removeboxone" ref="boxone">
           <span>资源盘点</span>
+          <div class="cover-one"></div>
         </div>
       </router-link>
       <router-link :to="{name:'asset'}">
-        <div class="box-two">
+        <div class="box-two" @mouseenter="boxtwoActive" @mouseleave="removeboxtwo" ref="boxtwo">
           <span>数栈计算引擎</span>
+          <div class="cover-two"></div>
         </div>
       </router-link>
       <router-link :to="{name:'asset'}">
-        <div class="box-three">
+        <div
+          class="box-three"
+          @mouseenter="boxthreeActive"
+          @mouseleave="removeboxthree"
+          ref="boxthree"
+        >
           <span>应用规划</span>
+          <div class="cover-three"></div>
         </div>
       </router-link>
       <router-link :to="{name:'asset'}">
-        <div class="box-four">
+        <div class="box-four" @mouseenter="boxfourActive" @mouseleave="removeboxfour" ref="boxfour">
           <span>指标标签管理</span>
+          <div class="cover-four"></div>
         </div>
       </router-link>
       <router-link :to="{name:'asset'}">
-        <div class="box-five">
+        <div class="box-five" @mouseenter="boxfivActive" @mouseleave="removeboxfiv" ref="boxfiv">
           <span>数据应用运营</span>
+          <div class="cover-five"></div>
         </div>
       </router-link>
     </div>
     <div class="box-module">
       <div class="one-pic">
-        <div class="outerside-one"></div>
-        <div class="outerside-two"></div>
-        <div class="outerside-three"></div>
-        <div class="outerside-four"></div>
-        <div class="inside-one"></div>
+        <div class="outerside-one" ref="outersideOne"></div>
+        <div class="outerside-two" ref="outersideTwo"></div>
+        <div class="outerside-three" ref="outersideThree"></div>
+        <div class="outerside-four" ref="outersideFour"></div>
+        <div class="inside-one" ref="insideOne"></div>
         <div class="shade"></div>
       </div>
     </div>
@@ -73,14 +63,69 @@ export default {
     onAsset() {
       this.$emit('getShow', this.tag)
     },
-    enterIntoOne() {
-      let a = this.$refs.outerFourOne.style
-      a.animationDuration = '3s'
+    //--------------------------
+    circleSpeed() {
+      let outersideThree = this.$refs.outersideThree.style
+      outersideThree.animationDuration = '10s'
+      let outersideFour = this.$refs.outersideFour.style
+      outersideFour.animationDuration = '3s'
+      let insideOne = this.$refs.insideOne.style
+      insideOne.animationDuration = '3s'
     },
-    leaveOutOne() {
-      let a = this.$refs.outerFourOne.style
-      a.animationDuration = '30s'
+    circleDown() {
+      let outersideOne = this.$refs.outersideOne.style
+      outersideOne.animationDuration = '30s'
+      let outersideThree = this.$refs.outersideThree.style
+      outersideThree.animationDuration = '30s'
+      let outersideFour = this.$refs.outersideFour.style
+      outersideFour.animationDuration = '30s'
+      let insideOne = this.$refs.insideOne.style
+      insideOne.animationDuration = '20s'
     },
+    boxoneActive() {
+      this.$refs.boxone.style.setProperty('--mytime', '1s')
+      this.circleSpeed()
+    },
+    removeboxone() {
+      this.$refs.boxone.style.setProperty('--mytime', '')
+      this.circleDown()
+    },
+    boxtwoActive() {
+      this.$refs.boxtwo.style.setProperty('--mytime', '1s')
+      this.circleSpeed()
+    },
+    removeboxtwo() {
+      this.$refs.boxtwo.style.setProperty('--mytime', '')
+      this.circleDown()
+    },
+
+    boxthreeActive() {
+      this.$refs.boxthree.style.setProperty('--mytime', '1s')
+      this.circleSpeed()
+    },
+    removeboxthree() {
+      this.$refs.boxthree.style.setProperty('--mytime', '')
+      this.circleDown()
+    },
+
+    boxfourActive() {
+      this.$refs.boxfour.style.setProperty('--mytime', '1s')
+      this.circleSpeed()
+    },
+    removeboxfour() {
+      this.$refs.boxfour.style.setProperty('--mytime', '')
+      this.circleDown()
+    },
+
+    boxfivActive() {
+      this.$refs.boxfiv.style.setProperty('--mytime', '1s')
+      this.circleSpeed()
+    },
+    removeboxfiv() {
+      this.$refs.boxfiv.style.setProperty('--mytime', '')
+      this.circleDown()
+    },
+    //-------------------------
   },
   computed: {},
   watch: {},
@@ -89,20 +134,24 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
+$time: var(--mytime);
 .four-tier-box {
   position: absolute;
   width: 994px;
   height: 978px;
+
   .box-content {
     position: absolute;
     width: 100%;
     height: 200px;
+    margin-top: -3%;
     .box-one {
       position: absolute;
       width: 70px;
       height: 75px;
-      margin-left: 28%;
+      margin-left: 30%;
       margin-top: 3%;
+      animation: myfirst $time infinite linear alternate;
       background: url(../../../assets/images/fourth/content/one.png) no-repeat;
       background-size: 90%;
       span {
@@ -111,13 +160,24 @@ export default {
         color: #fff;
         font-size: 17px;
       }
+      .cover-one {
+        position: absolute;
+        width: 110px;
+        height: 110px;
+        margin-top: -19px;
+        margin-left: -10px;
+        background: url(../../../assets/images/fourth/content/cover.png)
+          no-repeat;
+        background-size: 100%;
+      }
     }
     .box-two {
       position: absolute;
       width: 70px;
       height: 75px;
       margin-left: 40%;
-      margin-top: 8%;
+      margin-top: 9%;
+      animation: myfirst $time infinite linear alternate;
       background: url(../../../assets/images/fourth/content/two.png) no-repeat;
       background-size: 90%;
       span {
@@ -127,13 +187,24 @@ export default {
         color: #fff;
         font-size: 17px;
       }
+      .cover-two {
+        position: absolute;
+        width: 110px;
+        height: 110px;
+        margin-top: -19px;
+        margin-left: -10px;
+        background: url(../../../assets/images/fourth/content/cover.png)
+          no-repeat;
+        background-size: 100%;
+      }
     }
     .box-three {
       position: absolute;
       width: 70px;
       height: 75px;
       margin-left: 48%;
-      margin-top: -1%;
+      margin-top:0%;
+      animation: myfirst $time infinite linear alternate;
       background: url(../../../assets/images/fourth/content/three.png) no-repeat;
       background-size: 90%;
       span {
@@ -142,13 +213,24 @@ export default {
         color: #fff;
         font-size: 17px;
       }
+      .cover-three {
+        position: absolute;
+        width: 110px;
+        height: 110px;
+        margin-top: -19px;
+        margin-left: -10px;
+        background: url(../../../assets/images/fourth/content/cover.png)
+          no-repeat;
+        background-size: 100%;
+      }
     }
     .box-four {
       position: absolute;
       width: 70px;
       height: 75px;
-      margin-left: 60%;
-      margin-top: 7%;
+      margin-left: 58%;
+      margin-top: 9%;
+      animation: myfirst $time infinite linear alternate;
       background: url(../../../assets/images/fourth/content/four.png) no-repeat;
       background-size: 90%;
       span {
@@ -158,13 +240,24 @@ export default {
         color: #fff;
         font-size: 17px;
       }
+      .cover-four {
+        position: absolute;
+        width: 110px;
+        height: 110px;
+        margin-top: -19px;
+        margin-left: -10px;
+        background: url(../../../assets/images/fourth/content/cover.png)
+          no-repeat;
+        background-size: 100%;
+      }
     }
-     .box-five {
+    .box-five {
       position: absolute;
       width: 70px;
       height: 75px;
-      margin-left: 70%;
+      margin-left: 68%;
       margin-top: 3%;
+      animation: myfirst $time infinite linear alternate;
       background: url(../../../assets/images/fourth/content/five.png) no-repeat;
       background-size: 80%;
       span {
@@ -174,14 +267,24 @@ export default {
         color: #fff;
         font-size: 17px;
       }
+      .cover-five {
+        position: absolute;
+        width: 110px;
+        height: 110px;
+        margin-top: -19px;
+        margin-left: -10px;
+        background: url(../../../assets/images/fourth/content/cover.png)
+          no-repeat;
+        background-size: 100%;
+      }
     }
   }
   .box-module {
     position: absolute;
     width: 994px;
-    height: 978px;
+    height: 200px;
     margin-left: 2%;
-    margin-top: 30%;
+    margin-top: 50%;
     transform: translate3d(0px, 0px, 0px) scaleX(1) scaleY(1) rotateX(65deg)
       rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);
     z-index: -1;
@@ -254,132 +357,7 @@ export default {
     }
   }
 }
-// .four-module {
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   //animation: changeSize 10s linear infinite alternate;
-//   //border: 1px rgb(255, 11, 154) solid;
-//   .box {
-//     position: absolute;
-//     width: 100%;
-//     height: 400px;
-//     margin-top: 580px;
-//     z-index: 5;
-//     .module-one {
-//       position: absolute;
-//       width: 70px;
-//       height: 90px;
-//       margin-left: 22%;
-//       margin-top: 12%;
-//       background: url(../../../assets/images/fourth/content/one.png) no-repeat;
-//       background-size: 100%;
-//       .cover {
-//         position: absolute;
-//         width: 70px;
-//         height: 90px;
-//         margin-top: 0px;
-//         background: url(../../../assets/images/fourth/content/cover.png)
-//           no-repeat;
-//         background-size: 100%;
-//       }
-//       span {
-//         position: absolute;
-//         color: #fff;
-//         margin-top: 68px;
-//       }
-//     }
-//     .module-two {
-//       position: absolute;
-//       width: 70px;
-//       height: 90px;
-//       margin-left: 35%;
-//       margin-top: 18%;
-//       background: url(../../../assets/images/fourth/content/two.png) no-repeat;
-//       background-size: 100%;
-//       .cover {
-//         position: absolute;
-//         width: 70px;
-//         height: 90px;
-//         margin-top: 0px;
-//         background: url(../../../assets/images/fourth/content/cover.png)
-//           no-repeat;
-//         background-size: 100%;
-//       }
-//       span {
-//         width: 100px;
-//         position: absolute;
-//         color: #fff;
-//         margin-top: 68px;
-//       }
-//     }
-//   }
-//   .four-pic {
-//     position: absolute;
-//     width: 100%;
-//     height: 100%;
-//     margin-top: 300px;
-//     transform-origin: (100deg, 100deg);
-//     transform: translate3d(0px, 0px, 0px) scaleX(1) scaleY(1) rotateX(70deg)
-//       rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);
-//     .outerside-one {
-//       position: absolute;
-//       width: 100%;
-//       height: 100%;
-//       background: url(../../../assets/images/fourth/outerFirst.png) no-repeat;
-//       background-size: 100%;
-//      // animation: myMove 30s infinite linear;
-//     }
-//     .outerside-two {
-//       position: absolute;
-//       width: 100%;
-//       height: 100%;
-//       background: url(../../../assets/images/fourth/outerSecond.png) no-repeat;
-//       background-size: 100%;
-//      // animation: myMove2 20s infinite linear;
-//       z-index: -1;
-//     }
-//     .outerside-three {
-//       position: absolute;
-//       width: 80%;
-//       height: 80%;
-//       margin: 10%;
-//       background: url(../../../assets/images/fourth/outerThird.png) no-repeat;
-//       background-size: 100%;
-//      // animation: myMove2 20s infinite linear;
-//       z-index: -1;
-//     }
-//     .outerside-four {
-//       position: absolute;
-//       width: 90%;
-//       height: 90%;
-//       margin: 5%;
-//       background: url(../../../assets/images/fourth/outerFour.png) no-repeat;
-//       background-size: 100%;
-//      // animation: myMove2 30s infinite linear;
-//       z-index: -1;
-//     }
-//     .inside-one {
-//       position: absolute;
-//       width: 60%;
-//       height: 60%;
-//       margin: 21%;
-//       background: url(../../../assets/images/fourth/insideFirst0.png) no-repeat;
-//       background-size: 100%;
-//      // animation: myMove2 30s infinite linear;
-//       z-index: -1;
-//     }
 
-//     .shade {
-//       position: absolute;
-//       width: 100%;
-//       height: 100%;
-//       margin: 0%;
-//       background: url(../../../assets/images/fourth/shade.png) no-repeat;
-//       background-size: 100%;
-//       z-index: -2;
-//     }
-//   }
 @keyframes myMove {
   0% {
     transform: rotate(0deg);
@@ -410,6 +388,12 @@ export default {
   100% {
     width: 108%;
     margin-left: -4%;
+  }
+}
+
+@keyframes myfirst {
+  100% {
+    transform: translate(0px, -10px);
   }
 }
 </style>

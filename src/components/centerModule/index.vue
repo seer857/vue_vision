@@ -13,17 +13,19 @@
       <video src="@/assets/videos/particle.webm" loop muted autoplay></video>
     </div>
     <div class="buttonCut" @click="unname"></div>
-    <div class="first-tier" ref="oneTier">
-      <FirstPic />
-    </div>
-    <div class="secend-tier" ref="twoTier">
-      <SecondPic />
-    </div>
-    <div class="third-tier" ref="threeTier">
-      <ThirdPic />
-    </div>
-    <div class="fourth-tier" @click="againSend" ref="fourTier">
-      <FourthPic v-on:getShow="show" />
+    <div class="parcel-all" ref="allTier">
+      <div class="first-tier">
+        <FirstPic class="one" />
+      </div>
+      <div class="secend-tier">
+        <SecondPic class="two" />
+      </div>
+      <div class="third-tier">
+        <ThirdPic class="three" />
+      </div>
+      <div class="fourth-tier" @click="againSend">
+        <FourthPic v-on:getShow="show" class="four" />
+      </div>
     </div>
   </div>
 </template>
@@ -42,7 +44,7 @@ export default {
   },
   data() {
     return {
-      toCenterModule: false,
+      toCenterModule: true,
       isFlying: false,
       isShowParticle: true,
     }
@@ -55,17 +57,14 @@ export default {
       this.$emit('againSend', this.toCenterModule)
     },
     unname() {
-      let fourthModule = this.$refs.fourTier.style
-      let ThirdModule = this.$refs.threeTier.style
-      let SecondModule = this.$refs.twoTier.style
-      let FirstModule = this.$refs.oneTier.style
-      fourthModule.animationPlayState = 'running'
-      ThirdModule.animationPlayState = 'running'
-      SecondModule.animationPlayState = 'running'
-      FirstModule.animationPlayState = 'running'
-      console.log(fourthModule.animationPlayState)
-      this.isShowParticle = !this.isShowParticle
-      this.isFlying = !this.isFlying
+      if (this.isFlying == false) {
+        let allTier = this.$refs.allTier.style
+        allTier.animationPlayState = 'running'
+        this.isShowParticle = !this.isShowParticle
+        this.isFlying = !this.isFlying
+      }else{
+        location.reload()
+      }
     },
   },
   computed: {},
@@ -80,6 +79,14 @@ export default {
   height: 100%;
   position: absolute;
   //border: royalblue 1px solid;
+  .parcel-all {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: moveCenter 5s linear;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+  }
   .buttonCut {
     position: absolute;
     width: 100px;
@@ -135,36 +142,41 @@ export default {
     }
   }
   .first-tier {
+    position: relative;
     margin-top: 160px;
     width: 100%;
     height: 200px;
-    animation: allFreeOne 100s;
-    animation-play-state: paused;
-    animation-fill-mode: forwards;
+    .one {
+      height: 200px;
+    }
   }
   .secend-tier {
+    position: relative;
     width: 100%;
     height: 200px;
-    animation: allFreeTwo 100s linear;
 
-    animation-play-state: paused;
-    animation-fill-mode: forwards;
+    .two {
+      height: 200px;
+    }
   }
   .third-tier {
+    position: relative;
     width: 100%;
     height: 200px;
-    animation: allFreeThree 100s linear;
-
-    animation-play-state: paused;
-    animation-fill-mode: forwards;
+    z-index: 1;
+    .three {
+      height: 200px;
+      z-index: -1;
+    }
   }
   .fourth-tier {
+    position: relative;
+    margin-top: -1%;
     width: 100%;
     height: 200px;
-    animation: allFreeFour 100s linear;
-
-    animation-play-state: paused;
-    //animation-fill-mode: forwards;
+    .four {
+      height: 200px;
+    }
   }
   // .fourth-tier {
   //   position: absolute;
@@ -209,38 +221,50 @@ export default {
   //   animation-fill-mode:forwards;
   // }
 }
-@keyframes allFreeFour {
+@keyframes moveCenter {
   0% {
-    transform: scale(1, 1);
+  }
+  50% {
+    
   }
   100% {
-    transform: scale(0.1, 0.3);
-     margin-top: -80%;
+    transform: scale(0.001, 0.001);
+    margin-top: -45%;
+    display: none;
   }
 }
-@keyframes allFreeThree {
-  0% {
-  }
+// @keyframes allFreeFour {
+//   0% {
+//     transform: scale(1, 1);
+//   }
+//   100% {
+//     transform: scale(0.01, 0.03);
+//     margin-top: -40%;
+//   }
+// }
+// @keyframes allFreeThree {
+//   0% {
+//   }
 
-  100% {
-    transform: scale(0.01, 0.03);
-     margin-top: -60%;
-  }
-}
-@keyframes allFreeTwo {
-  0% {
-  }
-  100% {
-    transform: scale(0.01, 0.03);
-    margin-top: -40%;
-  }
-}
-@keyframes allFreeOne {
-  0% {
-  }
-  100% {
-    transform: scale(0.01, 0.01);
-     margin-top: -40%;
-  }
-}
+//   100% {
+//     transform: scale(0.01, 0.03);
+//     margin-top: -30%;
+//   }
+// }
+// @keyframes allFreeTwo {
+//   0% {
+//   }
+//   100% {
+//     transform: scale(0.01, 0.03);
+//     margin-top: -20%;
+//   }
+// }
+// @keyframes allFreeOne {
+//   0% {
+//   }
+//   100% {
+//     transform: scale(0.01, 0.01);
+//     margin-top: -10%;
+//   }
+// }
 </style>

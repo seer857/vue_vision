@@ -1,35 +1,43 @@
 <template>
-  <div class="home-container">
+  <dv-full-screen-container class="home-container" v-cloak>
     <video src="../assets/videos/backdrop.mp4" autoplay="autoplay" loop="loop" muted="muted"></video>
-    <!--  <transition name="dynamicOff">
+   <!--   <transition name="dynamicOff">
       <Loading class="load" v-if="!find" />
     </transition> -->
     <transition name="dynamicOn">
-      <div class="warp" v-if="find">
+      <div class="warp" v-if="find" @click="routerBack">
         <div class="top">
           <dv-decoration-10 class="top-line" :color="['#b634da','#00c2ff']" />
           <h1>
-            <span>爱玛科技集团公司数据中台展示</span>
+            <span>爱玛集团公司数据中台架构大屏</span>
           </h1>
         </div>
+        <transition name="dynamicOnCenter">
         <div class="content-box">
           <section class="main">
-            <div class="left" v-if="!isShow">
+            <div class="left" v-if="isShow">
               <LeftModule />
             </div>
+            <div class="left" v-if="!isShow">
+              <DefaultLeft />
+            </div>
             <div class="center" ref="ModuleCenter">
-              <transition name="dynamicOnCenter">
+              
                 <CenterModule v-on:againSend="getContentShow" v-if="findCenter" />
-              </transition>
+             
+            </div>
+            <div class="right" v-if="isShow">
+              <RightModule />
             </div>
             <div class="right" v-if="!isShow">
-              <RightModule />
+              <DefaultRight />
             </div>
           </section>
         </div>
+         </transition>
       </div>
     </transition>
-  </div>
+  </dv-full-screen-container>
 </template>
 
 <script>
@@ -37,6 +45,8 @@ import CenterModule from '../components/centerModule/index.vue'
 import LeftModule from '../components/leftModule/index.vue'
 import RightModule from '../components/rightModule/index.vue'
 import Loading from '../components/centerModule/loading.vue'
+import DefaultLeft from '../components/leftModule/default.vue'
+import DefaultRight from '../components/rightModule/default.vue'
 export default {
   name: 'Home',
   components: {
@@ -44,6 +54,8 @@ export default {
     LeftModule,
     RightModule,
     Loading,
+    DefaultLeft,
+    DefaultRight
   },
   data() {
     return {
@@ -65,8 +77,11 @@ export default {
       }, 5000)
     },
     getContentShow(data) {
-      console.log(data)
+      this.isShow = data
     },
+    routerBack(){
+     
+    }
   },
 }
 </script>
@@ -76,9 +91,11 @@ $absolute: absolute;
   position: $absolute;
   left: 0%;
   top: 0%;
-  width: 1920px;
-  height: 1080px;
+  width: 100%;
+  height: 100%;
   overflow-y: hidden;
+ // background: url(../assets/images/bj.jpg) no-repeat;
+ // background-size: 100%;
   video {
     width: 100%;
     height: 100%;
