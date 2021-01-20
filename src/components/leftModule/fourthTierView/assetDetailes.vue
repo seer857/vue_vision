@@ -29,7 +29,7 @@ export default {
    watch: {},
    created() {},
    mounted() {
-      this.onAssets()
+      //this.onAssets()
    },
 }
 </script>

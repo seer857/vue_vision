@@ -1,27 +1,34 @@
 <template>
   <div class="home-container">
     <video src="../assets/videos/backdrop.mp4" autoplay="autoplay" loop="loop" muted="muted"></video>
-    <div class="warp">
-      <div class="top">
-        <dv-decoration-10 class="top-line" :color="['#b634da','#00c2ff']" />
-        <h1>
-          <span>爱玛科技集团公司数据中台展示</span>
-        </h1>
+    <!--  <transition name="dynamicOff">
+      <Loading class="load" v-if="!find" />
+    </transition> -->
+    <transition name="dynamicOn">
+      <div class="warp" v-if="find">
+        <div class="top">
+          <dv-decoration-10 class="top-line" :color="['#b634da','#00c2ff']" />
+          <h1>
+            <span>爱玛科技集团公司数据中台展示</span>
+          </h1>
+        </div>
+        <div class="content-box">
+          <section class="main">
+            <div class="left" v-if="!isShow">
+              <LeftModule />
+            </div>
+            <div class="center" ref="ModuleCenter">
+              <transition name="dynamicOnCenter">
+                <CenterModule v-on:againSend="getContentShow" v-if="findCenter" />
+              </transition>
+            </div>
+            <div class="right" v-if="!isShow">
+              <RightModule />
+            </div>
+          </section>
+        </div>
       </div>
-      <div class="content-box">
-        <section class="main">
-          <div class="left" v-if="!isShow">
-            <LeftModule />
-          </div>
-          <div class="center" ref="ModuleCenter">
-            <CenterModule v-on:againSend="getContentShow" />
-          </div>
-          <div class="right" v-if="!isShow">
-            <RightModule />
-          </div>
-        </section>
-      </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -29,25 +36,38 @@
 import CenterModule from '../components/centerModule/index.vue'
 import LeftModule from '../components/leftModule/index.vue'
 import RightModule from '../components/rightModule/index.vue'
+import Loading from '../components/centerModule/loading.vue'
 export default {
   name: 'Home',
   components: {
     CenterModule,
     LeftModule,
-    RightModule
+    RightModule,
+    Loading,
   },
-  data(){
-    return{
-      isShow:false
+  data() {
+    return {
+      isShow: false,
+      find: true,
+      findCenter: true,
     }
   },
-  methods:{
-    getContentShow(data){
+  mounted() {
+    //this.loading()
+  },
+  methods: {
+    loading() {
+      setTimeout(() => {
+        this.find = !this.find
+        setTimeout(() => {
+          this.findCenter = !this.findCenter
+        }, 1000)
+      }, 5000)
+    },
+    getContentShow(data) {
       console.log(data)
     },
-   
-
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -56,15 +76,28 @@ $absolute: absolute;
   position: $absolute;
   left: 0%;
   top: 0%;
-  width: 100%;
-  height: 100%;
+  width: 1920px;
+  height: 1080px;
   overflow-y: hidden;
   video {
+    width: 100%;
+    height: 100%;
+    margin: 0;
     position: $absolute;
     z-index: -1;
   }
+  .dynamicOn-enter-active {
+    transition: opacity 2s;
+  }
+  .dynamicOn-enter {
+    opacity: 0;
+  }
   .warp {
     transform-origin: 0px 0px 0px;
+    .load {
+      width: 100%;
+      height: 100%;
+    }
   }
   .top {
     position: $absolute;
@@ -123,6 +156,18 @@ $absolute: absolute;
       height: 978px;
       //border: 1px springgreen solid;
       //animation: domCenterMove 20s infinite linear alternate;
+      .dynamicOnCenter-enter-active {
+        transition: opacity 1s;
+      }
+      .dynamicOnCenter-enter {
+        opacity: 0;
+      }
+      .dynamicOff-leave-active {
+        transition: opacity 1s;
+      }
+      .dynamicOff-leave {
+        opacity: 0;
+      }
     }
     .right {
       position: relative;
@@ -136,7 +181,7 @@ $absolute: absolute;
 }
 
 @keyframes domCenterMove {
-0% {
+  0% {
     margin-left: 550px;
     width: 824px;
   }
@@ -145,8 +190,8 @@ $absolute: absolute;
     margin-left: 370px;
     width: 1164px;
   }
-    
-   100% {
+
+  100% {
     margin-left: 460px;
     width: 994px;
   }
