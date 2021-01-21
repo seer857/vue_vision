@@ -22,7 +22,7 @@ export default {
 </script>
 <style lang='scss' scoped>
 .left-view {
-  width: 100%;
+  width: 120%;
   height: 100%;
  // border: 1px red solid;
 }

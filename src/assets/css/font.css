@@ -1,0 +1,9 @@
+
+@font-face{
+  font-family: myFirstFont;
+  src: url('../tff/ZiTiGuanCuoJueKongJianTi-2.ttf') format('truetype');
+}
+@font-face{
+  font-family: myFont;
+  src: url('../tff/ShangShouJianHeiXianXiTi-2.ttf') format('truetype');
+}

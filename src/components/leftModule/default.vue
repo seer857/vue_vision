@@ -1,15 +1,15 @@
 <template>
   <div class="default-left">
-    <dv-border-box-13 class="content-one">
+    <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content-one">
       <div class="header">
-        <img class="icon" src="../../assets/images/leftContent/dian.png"  @click="moveAll"/>
-        <img class="title" src="../../assets/images/leftContent/title.png" />
+        <img class="icon" src="../../assets/images/leftContent/dian1.png" @click="moveAll" />
+        <img class="title" src="../../assets/images/rightContent/violet_tag.png" />
         <h2>集团业务总看板</h2>
         <img class="guangdian" src="../../assets/images/guangdian.png" alt />
       </div>
       <div class="main-box">
         <div class="lianxian">
-          <img src="../../assets/images/leftContent/lianxian.png" alt="">
+          <img src="../../assets/images/leftContent/lianxian.png" alt />
         </div>
         <div class="group-img">
           <img src="../../assets/images/leftContent/jituan.png" alt />
@@ -27,8 +27,9 @@
           <img src="../../assets/images/leftContent/fangzhu.png" alt />
         </div>
       </div>
-    </dv-border-box-13>
-    <div class="content-two"></div>
+    </dv-border-box-10>
+    <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content-two"></dv-border-box-10>
+    <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content-three"></dv-border-box-10>
   </div>
 </template>
 
@@ -38,9 +39,9 @@ export default {
     return {}
   },
   methods: {
-    moveAll(){
-      this.$router.push({name:'asset'})
-    }
+    moveAll() {
+      this.$router.push({ name: 'asset' })
+    },
   },
 }
 </script>
@@ -50,7 +51,7 @@ $color: #fff;
 .default-left {
   width: 100%;
   height: 100%;
-  
+
   .content-one {
     width: 120%;
     height: 300px;
@@ -67,24 +68,26 @@ $color: #fff;
         height: 30px;
         margin: 5%;
         z-index: 4;
+        animation: myMove2 2s infinite linear;
       }
       .title {
         position: absolute;
         margin-top: 4.5%;
         margin-left: 13%;
+        width: 500px;
       }
       h2 {
         position: absolute;
         margin-top: 5.1%;
-        margin-left: 18%;
+        margin-left: 20%;
         font-size: 18px;
         color: #536598;
         background-image: -webkit-gradient(
           linear,
           0 0,
           0 bottom,
-          from(#bbbfff),
-          to(hsl(184, 100%, 35%))
+          from(#d1d2e6),
+          to(hsl(281, 39%, 60%))
         );
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -100,7 +103,7 @@ $color: #fff;
       width: 100%;
       height: 205px;
       margin-top: 20px;
-      .lianxian{
+      .lianxian {
         position: absolute;
         z-index: -1;
         margin-left: 100px;
@@ -160,7 +163,7 @@ $color: #fff;
         height: 110px;
         margin-left: 390px;
         margin-top: 90px;
-        animation: guangdianMove 1s infinite linear alternate-reverse ;
+        animation: guangdianMove 1s infinite linear alternate-reverse;
         img {
           width: 70%;
           height: 70%;
@@ -170,7 +173,13 @@ $color: #fff;
   }
   .content-two {
     width: 120%;
-    height: 70%;
+    height: 300px;
+    margin-top: 20px;
+  }
+  .content-three {
+    width: 120%;
+    height: 300px;
+    margin-top: 20px;
   }
 }
 @keyframes gdMove {
@@ -183,13 +192,23 @@ $color: #fff;
   }
 }
 @keyframes guangdianMove {
-  to{
+  to {
     transform: translate(0px, -5px);
   }
 }
 @keyframes guangdianMove2 {
   to {
     transform: translate(0px, 5px);
+  }
+}
+
+@keyframes myMove2 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
 </style>

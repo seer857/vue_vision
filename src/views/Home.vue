@@ -1,40 +1,45 @@
 <template>
   <dv-full-screen-container class="home-container" v-cloak>
     <video src="../assets/videos/backdrop.mp4" autoplay="autoplay" loop="loop" muted="muted"></video>
-   <!--   <transition name="dynamicOff">
+    <!--   <transition name="dynamicOff">
       <Loading class="load" v-if="!find" />
-    </transition> -->
+    </transition>-->
     <transition name="dynamicOn">
       <div class="warp" v-if="find" @click="routerBack">
         <div class="top">
+          <img src="../assets/images/top_nav.png" alt="">
           <dv-decoration-10 class="top-line" :color="['#b634da','#00c2ff']" />
           <h1>
             <span>爱玛集团公司数据中台架构大屏</span>
           </h1>
+          <div class="clock">
+            <Clock />
+          </div>
         </div>
         <transition name="dynamicOnCenter">
-        <div class="content-box">
-          <section class="main">
-            <div class="left" v-if="isShow">
-              <LeftModule />
-            </div>
-            <div class="left" v-if="!isShow">
-              <DefaultLeft />
-            </div>
-            <div class="center" ref="ModuleCenter">
-              
+          <div class="content-box">
+            <section class="main">
+              <div class="left" v-if="isShow">
+                <LeftModule />
+              </div>
+              <div class="left" v-if="!isShow">
+                <DefaultLeft />
+              </div>
+              <div class="center-default">
+                <DefaultCenter />
+              </div>
+              <div class="center" ref="ModuleCenter">
                 <CenterModule v-on:againSend="getContentShow" v-if="findCenter" />
-             
-            </div>
-            <div class="right" v-if="isShow">
-              <RightModule />
-            </div>
-            <div class="right" v-if="!isShow">
-              <DefaultRight />
-            </div>
-          </section>
-        </div>
-         </transition>
+              </div>
+              <div class="right" v-if="isShow">
+                <RightModule />
+              </div>
+              <div class="right" v-if="!isShow">
+                <DefaultRight />
+              </div>
+            </section>
+          </div>
+        </transition>
       </div>
     </transition>
   </dv-full-screen-container>
@@ -47,6 +52,8 @@ import RightModule from '../components/rightModule/index.vue'
 import Loading from '../components/centerModule/loading.vue'
 import DefaultLeft from '../components/leftModule/default.vue'
 import DefaultRight from '../components/rightModule/default.vue'
+import DefaultCenter from '../components/centerModule/default.vue'
+import Clock from '../components/OtherModule/clock.vue'
 export default {
   name: 'Home',
   components: {
@@ -55,7 +62,9 @@ export default {
     RightModule,
     Loading,
     DefaultLeft,
-    DefaultRight
+    DefaultRight,
+    DefaultCenter,
+    Clock
   },
   data() {
     return {
@@ -79,9 +88,7 @@ export default {
     getContentShow(data) {
       this.isShow = data
     },
-    routerBack(){
-     
-    }
+    routerBack() {},
   },
 }
 </script>
@@ -94,8 +101,8 @@ $absolute: absolute;
   width: 100%;
   height: 100%;
   overflow-y: hidden;
- // background: url(../assets/images/bj.jpg) no-repeat;
- // background-size: 100%;
+  // background: url(../assets/images/bj.jpg) no-repeat;
+  // background-size: 100%;
   video {
     width: 100%;
     height: 100%;
@@ -122,22 +129,38 @@ $absolute: absolute;
     top: 0%;
     width: 1920px;
     height: 100px;
-    background: url(../assets/images/top_nav.png) no-repeat;
-    background-size: 100%;
+    //background: url(../assets/images/top_nav.png) no-repeat;
     border: none;
     overflow: hidden;
+    img{
+      position: absolute;
+    }
+    .clock{
+      position: absolute;
+      width: 320px;
+      height: 80px;
+      margin-top: 10px;
+      margin-right: 20px;
+     // border: solid 1px springgreen;
+      right: 0%;
+      z-index: 99;
+
+    }
     .top-line {
       width: 100%;
       height: 5px;
     }
     h1 {
+      font-family: myFirstFont;
       height: 80px;
-      position: relative;
+      position: absolute;
       line-height: 30px;
-      font-size: 30px;
+      font-size: 35px;
+      margin-left: 37%;
+      margin-top: 1.3%;
       text-align: center;
       color: #b634da;
-      z-index: 999;
+      z-index: 10;
       background-image: -webkit-gradient(
         linear,
         0 0,
@@ -148,6 +171,7 @@ $absolute: absolute;
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+   
   }
   .content-box {
     position: $absolute;
@@ -166,13 +190,20 @@ $absolute: absolute;
       //border: 1px springgreen solid;
       float: left;
     }
+    .center-default {
+      position: absolute;
+      width: 820px;
+      height: 240px;
+      margin-left: 550px;
+      margin-top: 10px;
+    }
     .center {
       position: absolute;
       margin-left: 460px;
       width: 994px;
       height: 978px;
-      //border: 1px springgreen solid;
-      //animation: domCenterMove 20s infinite linear alternate;
+      
+     // animation: domCenterMove 20s infinite linear alternate;
       .dynamicOnCenter-enter-active {
         transition: opacity 1s;
       }
@@ -199,18 +230,7 @@ $absolute: absolute;
 
 @keyframes domCenterMove {
   0% {
-    margin-left: 550px;
-    width: 824px;
-  }
-
-  50% {
-    margin-left: 370px;
-    width: 1164px;
-  }
-
-  100% {
-    margin-left: 460px;
-    width: 994px;
+    transform: scaleX(1, 1);
   }
 }
 @keyframes domCenterMove1 {

@@ -93,8 +93,9 @@ export default {
     height: 100px;
     background: url(../../assets/images/tag/button.png) no-repeat;
     background-size: 100%;
-    margin-left: 89%;
-    z-index: 6;
+    margin-left: 92%;
+
+    z-index: 99;
   }
   .science {
     width: 100%;

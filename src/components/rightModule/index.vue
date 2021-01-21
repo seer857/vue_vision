@@ -20,7 +20,8 @@ export default {
 </script>
 <style lang='scss' scoped>
 .right-view{
-  width: 100%;
+  margin-left: -18%;
+  width: 118%;
   height: 100%;
 }
 </style>

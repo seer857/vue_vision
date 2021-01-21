@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import dataV from '@jiaminghi/data-view'
-
+import '@/assets/css/font.css';
 Vue.use(dataV)
 Vue.config.productionTip = false
 
