@@ -1,28 +1,29 @@
 <!-- 资产明细 第一页  -->
-<template>
-     <!--  <div class="asset-box">
-         <h1>我是资产明细页xxxxxxxx</h1>
-         <div id="asset"></div>
-      </div> -->
-      <dv-border-box-7 class="asset-box" >
-         <h1>我是资产明细页xxxxxxxx</h1>
-         </dv-border-box-7>
+<template>      
+         <div>
+		  <AssetOne/>
+        <!-- <AssetTwo/> -->
+        <!-- <AssetThree/>   -->
+         </div>
+		
 </template>
 
 <script>
+import AssetOne from '../../leftModule/fourthTierView/assetOne.vue';
+import AssetTwo from '../../leftModule/fourthTierView/assetTwo.vue';
+import AssetThree from '../../leftModule/fourthTierView/assetThree.vue';
 export default {
-   components:{},
+
+   components:{
+	   AssetOne,AssetTwo,AssetThree
+   },
    data() {
       return {
 
        };
     },
    methods: {
-      onAssets(){
-         let myCharts = echarts.init(document.getElementById('asset'))
-        // 使用刚指定的配置项和数据显示图表。
-       // myCharts.setOption(option);
-      }
+      
       
     },
    computed: {},
@@ -34,9 +35,5 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
-.asset-box{
-   h1{
-      color: #fff;
-   }
-}
+
 </style>

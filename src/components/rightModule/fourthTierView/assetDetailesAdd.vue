@@ -1,13 +1,19 @@
-<!-- 资产明细 第一页  -->
+<!-- 右 -->
 <template>
-  <dv-border-box-7 class="asset-box">
-    <h1>我是资产明细第二页</h1>
-  </dv-border-box-7>
+  <div>
+
+       <AssetOne />
+  </div>
 </template>
 
 <script>
+import AssetOne from './assetOne.vue';
+import AssetTwo from './assetTwo.vue';
 export default {
-  components: {},
+  components: {
+        AssetOne,
+    AssetTwo,
+  },
   data() {
     return {}
   },
