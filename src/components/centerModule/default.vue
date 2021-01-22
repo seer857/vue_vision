@@ -16,7 +16,8 @@ import './index.js'
 export default {
   data() {
     return {
-      data:10000
+      data:10000,
+      name:"营业额（万元）："
     }
   },
   mounted() {
@@ -24,7 +25,7 @@ export default {
   },
   methods: {
     fontShow() {
-      var txt = `营业额 (万元)：`+ this.data
+      var txt = this.name+ this.data
       var txtH = 100
       var font = 'sans-serif'
       var rayColor1 = '#90effb'
