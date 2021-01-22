@@ -30,7 +30,7 @@
     </dv-border-box-10>
     <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content-two">
       <div class="header">
-        
+       <img class="icon" src="../../assets/images/leftContent/dian1.png" @click="moveAll" />
       </div>
     </dv-border-box-10>
     <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content-three">
@@ -181,6 +181,11 @@ $color: #fff;
     width: 120%;
     height: 300px;
     margin-top: 20px;
+    .header{
+      width: 100%;
+      height: 75px;
+      
+    }
   }
   .content-three {
     width: 120%;
