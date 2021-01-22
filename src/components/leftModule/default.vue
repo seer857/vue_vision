@@ -28,8 +28,14 @@
         </div>
       </div>
     </dv-border-box-10>
-    <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content-two"></dv-border-box-10>
-    <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content-three"></dv-border-box-10>
+    <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content-two">
+      <div class="header">
+        
+      </div>
+    </dv-border-box-10>
+    <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content-three">
+
+    </dv-border-box-10>
   </div>
 </template>
 

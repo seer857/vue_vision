@@ -199,7 +199,7 @@ $absolute: absolute;
     }
     .center {
       position: absolute;
-      margin-left: 460px;
+      margin-left: 450px;
       width: 994px;
       height: 978px;
       

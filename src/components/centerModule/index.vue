@@ -62,7 +62,7 @@ export default {
         allTier.animationPlayState = 'running'
         this.isShowParticle = !this.isShowParticle
         this.isFlying = !this.isFlying
-      }else{
+      } else {
         location.reload()
       }
     },
@@ -94,7 +94,7 @@ export default {
     background: url(../../assets/images/tag/button.png) no-repeat;
     background-size: 100%;
     margin-left: 92%;
-
+    margin-top: -8%;
     z-index: 99;
   }
   .science {
@@ -226,7 +226,6 @@ export default {
   0% {
   }
   50% {
-    
   }
   100% {
     transform: scale(0.001, 0.001);

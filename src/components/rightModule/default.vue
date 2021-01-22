@@ -1,26 +1,20 @@
 <template>
-  <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="resources-audit">
-    <div class="border">
-      <div id="assets"></div>
-    </div>
-      <div class="macarom">
-      <!-- <img src="@/assets/images/four/tables/macarom.png" alt=""> -->
-    </div>
-
- 
-  </dv-border-box-10>
+  <div class="default-right">
+    <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content one"></dv-border-box-10>
+     <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content two"></dv-border-box-10>
+    <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content three"></dv-border-box-10>
+  </div>
 </template>
 
 <script>
-
 export default {
   data() {
     return {}
   },
   mounted() {
-    this.onAssets()
-   // this.onTopic()
-   //this.getTopic()
+    //this.onAssets()
+    // this.onTopic()
+    //this.getTopic()
   },
   methods: {
     onAssets() {
@@ -113,8 +107,7 @@ export default {
             return str
           },
         },
-        
-          
+
         series: [
           {
             type: 'pie',
@@ -217,44 +210,22 @@ export default {
       myChart.setOption(option)
     },
   },
-  
 }
 </script>
 
 <style lang="scss" scoped>
-.resources-audit {
-  width: 118%;
-  height: 96%;
-  margin-left: -18%;
-  .border{
-    margin-top: 20px;
+.default-right {
+  width: 119%;
+  height: 100%;
+  margin-left: -20%;
+  margin-top: 3%;
+  .content {
     width: 100%;
-    height: 380px;
-  }
-  #assets {
-    position: absolute;
-    width: 90%;
     height: 300px;
-    margin-top: 60px;
-    margin-left: 20px;
   }
-  .macarom{
-    position: absolute;
-    width: 80px;
-    z-index: 20;
-    top: 185px;
-    margin-left: 210px;
-    img{
-      width: 100%;
-    }
-
-  }
-  #topic{
-    margin-top: 90px;
-    margin-left: 20px;
-    margin-right: 20px;
-    width: 460px;
-    height: 400px;
+  .two, 
+  .three{
+    margin-top:20px;
   }
 }
 </style>

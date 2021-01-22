@@ -73,7 +73,7 @@ export default {
       ////generate data
       var rays = []
       var txtData = txtCtx.getImageData(0, 0, txtW, txtH)
-      for (var i = 0; i < txtData.data.length; i += 4) {
+      for (var i = 0; i < txtData.data.length; i +=4) {
         var ii = i / 4
         var row = Math.floor(ii / txtW)
         var col = ii % txtW
