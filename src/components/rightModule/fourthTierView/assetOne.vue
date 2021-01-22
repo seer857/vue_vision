@@ -454,6 +454,7 @@ methods: {
     .dv_one{
         width: 100%;
         height:300px;
+        margin-top: 10px;
         #right-echarts-one{
         width: 100%;
         height:100%;
