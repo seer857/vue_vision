@@ -1,5 +1,4 @@
 <template>
-
   <dv-border-box-1 :color="['#1c1b55', '#a255d7']" backgroundColor="#000">
     <div class="sales">
       <canvas id="canvas"></canvas>
@@ -13,28 +12,29 @@
 </template>
 
 <script>
-import './index.js'
-
 export default {
-props:['getHomeData'],
-  components: {  },
+  props: ['getHomeData'],
+  components: {},
   data() {
     return {
-      arrData:{
-        name:'',
-        data:''
-      }
+      data: 10000,
+      name: '营业额（万元）：',
+
+      arrData: {
+        name: '',
+        data: '',
+      },
     }
   },
-  updated(){
+  updated() {
     this.fontShow()
   },
   mounted() {
     this.fontShow()
     this.onClick()
-    
   },
   methods: {
+<<<<<<< HEAD
  //---------------------------------------------
       onClick(){
          this.arrData.name = this.getHomeData.homeName
@@ -42,21 +42,31 @@ props:['getHomeData'],
         //  console.log(this.arrData)
       },
 //---------------------------------------------
+=======
+    //---------------------------------------------
+    onClick() {
+      this.arrData.name = this.getHomeData.homeName
+      this.arrData.data = this.getHomeData.homeData
+      console.log(this.arrData)
+    },
+    //---------------------------------------------
+>>>>>>> master
     fontShow() {
+      var txt = this.name + this.data
+
       this.onClick()
-      var txt =  this.arrData.name + this.arrData.data
-      
-      
+      var txt = this.arrData.name + this.arrData.data
+
       var txtH = 100
       var font = 'sans-serif'
       var rayColor1 = '#90effb'
       var rayColor2 = '#6b42a6'
       var canvas = document.getElementById('canvas')
       var ctx = canvas.getContext('2d')
-      ctx.imageSmoothingQuality="high"
+      ctx.imageSmoothingQuality = 'high'
       var cw = (canvas.width = window.innerWidth)
       var ch = (canvas.height = window.innerHeight)
-      
+
       var w2 = cw / 2
       var h2 = ch / 2
       var pi = Math.PI
@@ -95,7 +105,7 @@ props:['getHomeData'],
       ////generate data
       var rays = []
       var txtData = txtCtx.getImageData(0, 0, txtW, txtH)
-      for (var i = 0; i < txtData.data.length; i +=4) {
+      for (var i = 0; i < txtData.data.length; i += 4) {
         var ii = i / 4
         var row = Math.floor(ii / txtW)
         var col = ii % txtW
@@ -228,7 +238,7 @@ props:['getHomeData'],
   .filp {
     display: inline-block;
   }
-  
+
   #canvas {
     position: absolute;
     margin-left: -100px;
@@ -244,6 +254,5 @@ props:['getHomeData'],
     margin-top: 120px;
     border: yellow 1px solid;
   }
-  
 }
 </style>

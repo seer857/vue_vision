@@ -1,4 +1,4 @@
-<!-- 资产明细 第一页  -->
+<!-- 资产详细页 -->
 <template>      
          <div>
 		  <AssetOne/>
@@ -9,11 +9,10 @@
 </template>
 
 <script>
-import AssetOne from '../../leftModule/fourthTierView/assets/assetOne.vue';
-import AssetTwo from '../../leftModule/fourthTierView/assets/assetTwo.vue';
-import AssetThree from '../../leftModule/fourthTierView/assets/assetThree.vue';
+import AssetOne from '../../leftModule/fourthTierView/assetCharts/assetOne.vue';
+import AssetTwo from '../../leftModule/fourthTierView/assetCharts/assetTwo.vue';
+import AssetThree from '../../leftModule/fourthTierView/assetCharts/assetThree.vue';
 export default {
-
    components:{
 	   AssetOne,AssetTwo,AssetThree
    },
