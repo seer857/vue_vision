@@ -1,53 +1,177 @@
 <template>
   <div class="default-left">
-    <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content-one">
-      <div class="header">
-        <img class="icon" src="../../assets/images/leftContent/dian1.png" @click="moveAll" />
-        <img class="title" src="../../assets/images/rightContent/violet_tag.png" />
-        <h2>集团业务总看板</h2>
-        <img class="guangdian" src="../../assets/images/guangdian.png" alt />
-      </div>
-      <div class="main-box">
-        <div class="lianxian">
-          <img src="../../assets/images/leftContent/lianxian.png" alt />
-        </div>
-        <div class="group-img">
-          <img src="../../assets/images/leftContent/jituan.png" alt />
-        </div>
-        <div class="group-one">
-          <img src="../../assets/images/leftContent/fangzhu.png" alt />
-        </div>
-        <div class="group-two">
-          <img src="../../assets/images/leftContent/yuanzhu.png" alt />
-        </div>
-        <div class="group-three">
-          <img src="../../assets/images/leftContent/lengzhu.png" alt />
-        </div>
-        <div class="group-four">
-          <img src="../../assets/images/leftContent/fangzhu.png" alt />
-        </div>
-      </div>
+    <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content one">
+<div id="leftDefaOne"></div>
     </dv-border-box-10>
-    <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content-two">
-      <div class="header">
-       <img class="icon" src="../../assets/images/leftContent/dian1.png" @click="moveAll" />
-      </div>
+    <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content two">
+ <div id="leftDefaTwo"></div>
     </dv-border-box-10>
-    <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content-three">
-
+    <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content three">
+ <div id="leftDefaThree"></div>
     </dv-border-box-10>
   </div>
 </template>
-
 <script>
 export default {
   data() {
     return {}
   },
+    mounted() {
+      this.defaultEcharts();
+      
+
+  },
   methods: {
     moveAll() {
       this.$router.push({ name: 'asset' })
     },
+   defaultEcharts(){
+         let myChart1 = echarts.init(document.getElementById('leftDefaOne'));
+         let myChart2 = echarts.init(document.getElementById('leftDefaTwo'));
+         let myChart3 = echarts.init(document.getElementById('leftDefaThree'));
+         //>>>>>>>>>>>>>>>
+          let option1 = {
+               legend: {
+                  top:'90%',
+                           //文字颜色
+                         textStyle: {
+                               color: "rgba(255, 255, 255, 1)"
+                         },
+               },
+                      tooltip: {},
+                      dataset: {
+                        //研发费用 人力成本 其他
+                          dimensions: ['product', '研发费用', '人力成本', '其他'],
+                          source: [
+                              {product: '2018', '研发费用': 43.3, '人力成本': 85.8, '其他': 93.7},
+                              {product: '2019', '研发费用': 83.1, '人力成本': 73.4, '其他': 55.1},
+                              {product: '2020 ', '研发费用': 86.4, '人力成本': 65.2, '其他': 82.5},
+                              {product: '2021', '研发费用': 72.4, '人力成本': 53.9, '其他': 39.1}
+                          ]
+                      },
+                      xAxis: {
+                        type: 'category',
+                        axisLine: {
+                              lineStyle: {
+                                color: "rgba(255, 255, 255, 1)"
+                              }
+                            }
+                      },
+                      yAxis: {
+                        axisLine: {
+                              lineStyle: {
+                                color: "rgba(255, 255, 255, 1)"
+                              }
+                            }
+                      },
+                      // Declare several bar series, each will be mapped
+                      // to a column of dataset.source by default.
+                      //设置图每个颜色块的颜色
+                     color : [ '#A94CAF', '#ffb6b9', '#E7475E', ],
+                      series: [
+                          {type: 'bar'},
+                          {type: 'bar'},
+                          {type: 'bar'}
+                      ]
+          }
+          let option2 = {
+               legend: {
+                  top:'90%',
+                           //文字颜色
+                         textStyle: {
+                               color: "rgba(255, 255, 255, 1)"
+                         },
+               },
+                      tooltip: {},
+                      dataset: {
+                        //销售费用 人力成本 其他 广宣费
+                          dimensions: ['product', '销售费用', '人力成本', '其他','广宣费'],//与下面数据要对其
+                          source: [
+                              {product: '2018', '销售费用': 43.3, '人力成本': 85.8, '其他': 93.7,'广宣费': 93.7},
+                              {product: '2019', '销售费用': 83.1, '人力成本': 73.4, '其他': 55.1,'广宣费': 93.7},
+                              {product: '2020 ', '销售费用': 86.4, '人力成本': 65.2, '其他': 82.5,'广宣费': 93.7},
+                              {product: '2021', '销售费用': 72.4, '人力成本': 53.9, '其他': 39.1,'广宣费': 93.7}
+                          ]
+                      },
+                      xAxis: {
+                        type: 'category',
+                        axisLine: {
+                              lineStyle: {
+                                color: "rgba(255, 255, 255, 1)"
+                              }
+                            }
+                      },
+                      yAxis: {
+                        axisLine: {
+                              lineStyle: {
+                                color: "rgba(255, 255, 255, 1)"
+                              }
+                            }
+                      },
+                      // Declare several bar series, each will be mapped
+                      // to a column of dataset.source by default.
+                      //设置图每个颜色块的颜色
+                     color : [ '#5BE7C4', '#50C1E9', '#7A57D1','#A94CAF' ],
+                      series: [
+                          {type: 'bar'},
+                          {type: 'bar'},
+                          {type: 'bar'},
+                          {type: 'bar'}
+                      ]
+          }
+          let option3 = {
+               legend: {
+                  top:'90%',
+                           //文字颜色
+                         textStyle: {
+                               color: "rgba(255, 255, 255, 1)"
+                         },
+               },
+                      tooltip: {},
+                      dataset: {
+                        //
+                          dimensions: ['product', '管理费用', '人力成本', '其他'],
+                          source: [
+                             {product: '2018', '管理费用': 43.3, '人力成本': 85.8, '其他': 93.7},
+                              {product: '2019', '管理费用': 83.1, '人力成本': 73.4, '其他': 55.1},
+                              {product: '2020 ', '管理费用': 86.4, '人力成本': 65.2, '其他': 82.5},
+                              {product: '2021', '管理费用': 72.4, '人力成本': 53.9, '其他': 39.1}
+                          ]
+                      },
+                      xAxis: {
+                        type: 'category',
+                        axisLine: {
+                              lineStyle: {
+                                color: "rgba(255, 255, 255, 1)"
+                              }
+                            }
+                      },
+                      yAxis: {
+                        axisLine: {
+                              lineStyle: {
+                                color: "rgba(255, 255, 255, 1)"
+                              }
+                            }
+                      },
+                      // Declare several bar series, each will be mapped
+                      // to a column of dataset.source by default.
+                      //设置图每个颜色块的颜色
+                     color : [ '#B9EDF8', '#39BAE8', '#1F6ED4', ],
+                      series: [
+                          {type: 'bar'},
+                          {type: 'bar'},
+                          {type: 'bar'}
+                      ]
+          }
+          //>>>>>>>>>>>>>>>>>
+         myChart1.setOption(option1);
+         myChart2.setOption(option2);   
+        myChart3.setOption(option3);
+         //>>>>>>>>>>>>>>>>>
+        //  echarts.connect([myChart, myChart2,myChart3]);
+
+   },
+
   },
 }
 </script>
@@ -58,139 +182,30 @@ $color: #fff;
   width: 100%;
   height: 100%;
 
-  .content-one {
-    width: 120%;
+.content {
+    width: 119%;
     height: 300px;
-    background: url(../../assets/images/leftContent/top_one_bg.png) no-repeat;
-    background-size: cover;
-    margin-top: 10px;
-    .header {
+  }
+  .one{
+    margin-top: 15px;
+    #leftDefaOne{
       width: 100%;
-      height: 75px;
-
-      .icon {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        margin: 5%;
-        z-index: 4;
-        animation: myMove2 2s infinite linear;
+      height: 100%; 
       }
-      .title {
-        position: absolute;
-        margin-top: 4.5%;
-        margin-left: 13%;
-        width: 500px;
-      }
-      h2 {
-        position: absolute;
-        margin-top: 5.1%;
-        margin-left: 20%;
-        font-size: 18px;
-        color: #536598;
-        background-image: -webkit-gradient(
-          linear,
-          0 0,
-          0 bottom,
-          from(#d1d2e6),
-          to(hsl(281, 39%, 60%))
-        );
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .guangdian {
-        position: absolute;
-        margin-top: 8.7%;
-        margin-left: 8%;
-        animation: gdMove 10s infinite linear alternate;
-      }
-    }
-    .main-box {
+  }
+  .two{
+    margin-top:20px;
+    #leftDefaTwo{
       width: 100%;
-      height: 205px;
-      margin-top: 20px;
-      .lianxian {
-        position: absolute;
-        z-index: -1;
-        margin-left: 100px;
-        margin-top: 43px;
-      }
-      .group-img {
-        position: absolute;
-        width: 100px;
-        height: 110px;
-        margin-left: 220px;
-        margin-top: 20px;
-        animation: guangdianMove 1s infinite linear alternate;
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-      .group-one {
-        position: absolute;
-        width: 100px;
-        height: 110px;
-        margin-left: 100px;
-        margin-top: 10px;
-        animation: guangdianMove 1s infinite linear alternate;
-        img {
-          width: 70%;
-          height: 70%;
-        }
-      }
-      .group-two {
-        position: absolute;
-        width: 100px;
-        height: 110px;
-        margin-left: 150px;
-        margin-top: 80px;
-        animation: guangdianMove 1s infinite linear alternate;
-        img {
-          width: 70%;
-          height: 70%;
-        }
-      }
-      .group-three {
-        position: absolute;
-        width: 100px;
-        height: 110px;
-        margin-left: 340px;
-        margin-top: 20px;
-        animation: guangdianMove 1s infinite linear alternate;
-        img {
-          width: 70%;
-          height: 70%;
-        }
-      }
-      .group-four {
-        position: absolute;
-        width: 100px;
-        height: 110px;
-        margin-left: 390px;
-        margin-top: 90px;
-        animation: guangdianMove 1s infinite linear alternate-reverse;
-        img {
-          width: 70%;
-          height: 70%;
-        }
-      }
+      height: 100%;
     }
   }
-  .content-two {
-    width: 120%;
-    height: 300px;
-    margin-top: 20px;
-    .header{
+  .three{
+    margin-top:20px;
+    #leftDefaThree{
       width: 100%;
-      height: 75px;
-      
+      height: 100%;
     }
-  }
-  .content-three {
-    width: 120%;
-    height: 300px;
-    margin-top: 20px;
   }
 }
 @keyframes gdMove {

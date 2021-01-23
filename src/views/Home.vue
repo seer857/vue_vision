@@ -74,6 +74,7 @@ import DefaultCenter from '../components/centerModule/default.vue'
 import Clock from '../components/OtherModule/clock.vue'
 import Index from './Index.vue'
 export default {
+  
   name: 'Home',
   components: {
     CenterModule,//

@@ -34,23 +34,13 @@ export default {
     this.onClick()
   },
   methods: {
-<<<<<<< HEAD
- //---------------------------------------------
-      onClick(){
-         this.arrData.name = this.getHomeData.homeName
-         this.arrData.data = this.getHomeData.homeData
-        //  console.log(this.arrData)
-      },
-//---------------------------------------------
-=======
     //---------------------------------------------
     onClick() {
       this.arrData.name = this.getHomeData.homeName
       this.arrData.data = this.getHomeData.homeData
-      console.log(this.arrData)
+      // console.log(this.arrData)
     },
     //---------------------------------------------
->>>>>>> master
     fontShow() {
       var txt = this.name + this.data
 
