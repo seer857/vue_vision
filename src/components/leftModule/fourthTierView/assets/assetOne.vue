@@ -41,14 +41,13 @@ methods: {
 
       let option = {
                       //标题
-                     title: {
-                          // text: '动态数据',
-                          // subtext: '纯属虚构',
+                       title: {
+                          text: '爱码点用户访问来源',
+                          // left: 'center',
                           textStyle: {
-                                      fontSize: 30,
-                                      color: "rgba(255, 255, 255, 1)"
-                                    },
-                      },
+                             fontSize: 15,
+                              color: "rgba(249, 249, 249, 1)"
+                            }, },
                       //鼠标放到图像上显示的文本框
                       tooltip: {
                           trigger: 'axis',
@@ -219,6 +218,14 @@ methods: {
                  }  
 
       let option2 = {
+                          //标题
+                       title: {
+                          text: '[检查站]',
+                          left: 'center',
+                          textStyle: {
+                             fontSize: 15,
+                              color: "rgba(249, 249, 249, 1)"
+                            }, },
                 tooltip: {
                         trigger: "axis",
                         axisPointer: {
@@ -342,15 +349,13 @@ methods: {
                       ],
               }
       let option3 ={
-                        title: {
-                          text: '爱码点用户访问来源',
-                          
+                    title: {
+                          text: '【爱码点用户访问来源】',
                           left: 'center',
                           textStyle: {
                              fontSize: 15,
                               color: "rgba(249, 249, 249, 1)"
-                            },
-                      },
+                            }, },
                       tooltip: {
                           trigger: 'item',
                           formatter: '{a} <br/>{b} : {c} ({d}%)'

@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import AssetOne from './assetOne.vue';
-import AssetTwo from './assetTwo.vue';
+import AssetOne from './assets/assetOne.vue';
+import AssetTwo from './assets/assetTwo.vue';
 export default {
   components: {
         AssetOne,

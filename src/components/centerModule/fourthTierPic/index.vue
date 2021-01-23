@@ -4,8 +4,9 @@
     <div class="box-content">
 <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->    
 
-      <router-link :to="{name:'asset'}"  @click="fourGetOne">
+      <router-link :to="{name:'asset'}" >
         <div class="box-one"
+         @click="fourGetOne"
          @mouseenter="boxoneActive" @mouseleave="removeboxone"
           ref="boxone">
           <span>资源盘点</span>
@@ -13,9 +14,9 @@
         </div>
       </router-link>
 <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-      <router-link :to="{name:'asset'}"  @click="fourGetTwo">
-        <div 
-        class="box-two" 
+      <router-link :to="{name:'asset'}" >
+        <div  class="box-two" 
+         @click="fourGetTwo"
         @mouseenter="boxtwoActive" @mouseleave="removeboxtwo"
          ref="boxtwo">
           <span>数栈计算引擎</span>

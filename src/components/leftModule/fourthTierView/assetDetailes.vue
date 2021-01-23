@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import AssetOne from '../../leftModule/fourthTierView/assetOne.vue';
-import AssetTwo from '../../leftModule/fourthTierView/assetTwo.vue';
-import AssetThree from '../../leftModule/fourthTierView/assetThree.vue';
+import AssetOne from '../../leftModule/fourthTierView/assets/assetOne.vue';
+import AssetTwo from '../../leftModule/fourthTierView/assets/assetTwo.vue';
+import AssetThree from '../../leftModule/fourthTierView/assets/assetThree.vue';
 export default {
 
    components:{
