@@ -39,7 +39,7 @@ props:['getHomeData'],
       onClick(){
          this.arrData.name = this.getHomeData.homeName
          this.arrData.data = this.getHomeData.homeData
-         console.log(this.arrData)
+        //  console.log(this.arrData)
       },
 //---------------------------------------------
     fontShow() {

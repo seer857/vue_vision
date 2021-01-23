@@ -40,31 +40,33 @@ methods: {
 	//  let myChart4= echarts.init(document.getElementById('my-echarts04'));
 
       let option = {
-                      //标题
-                       title: {
-                          text: '爱码点用户访问来源',
-                          // left: 'center',
+                      
+                       title: {//标题
+                          text: '[折线图与柱图]',
+                          left: 'center',
                           textStyle: {
-                             fontSize: 15,
+                             fontSize: 20,
                               color: "rgba(249, 249, 249, 1)"
                             }, },
-                      //鼠标放到图像上显示的文本框
-                      tooltip: {
+          
+                      
+                      tooltip: {//提示框组件。
                           trigger: 'axis',
                           axisPointer: {
                               type: 'cross',
-                              label: {
+                              label: {//横纵坐标提示宽颜色
                                   backgroundColor: '#283b56'
                                    
                               }
                           }
                       },
-                      legend: {
+                      legend: {//图例组件。
                           data:['最新成交价', '预购队列'],
-                     textStyle: {
-                                        color: "rgba(241, 234, 234, 1)"
-                                      }
-                      },
+                         left: "30%",//右左移
+                         top: "88%",//上下移动
+                          textStyle: {
+                                   color: "rgba(241, 234, 234, 1)"
+                                } },
                       toolbox: {
                           // orient: "vertical", //工具栏 icon 的布局朝向。
                           show: false, //是否显示工具栏组件。
@@ -223,7 +225,7 @@ methods: {
                           text: '[检查站]',
                           left: 'center',
                           textStyle: {
-                             fontSize: 15,
+                             fontSize: 20,
                               color: "rgba(249, 249, 249, 1)"
                             }, },
                 tooltip: {
@@ -349,11 +351,12 @@ methods: {
                       ],
               }
       let option3 ={
+        
                     title: {
                           text: '【爱码点用户访问来源】',
                           left: 'center',
                           textStyle: {
-                             fontSize: 15,
+                             fontSize: 20,
                               color: "rgba(249, 249, 249, 1)"
                             }, },
                       tooltip: {
@@ -369,7 +372,11 @@ methods: {
                          },
                           data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
                       },
+                      //设置饼状图每个颜色块的颜色
+                     color : [ '#50C1E9', '#ffc952', '#ff7473',
+                      '#6a60a9', '#39A0ED' ],
                       series: [
+                        
                           {
                               name: '访问来源',
                               type: 'pie',
@@ -389,7 +396,8 @@ methods: {
                                       shadowColor: 'rgba(0, 0, 0, 0.5)'
                                   }
                               }
-                          }
+                          },
+                          
                       ]
        }
 	   let option4 ={

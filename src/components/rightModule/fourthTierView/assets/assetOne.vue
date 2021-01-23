@@ -36,113 +36,70 @@ methods: {
     let myChart3= echarts.init(document.getElementById('right-echarts-three'));
 
       let option1 = {
-                     tooltip: {
-                      trigger: 'item',
-                      formatter: '{a} <br/>{b}: {c} ({d}%)'
-                  },
-                  legend: {
-                    orient: "horizontal", //横向
-                      // orient: 'vertical',//纵向
-                      left: 10,
-                      bottom: 0,
-                      //文字颜色
-                    textStyle: {
-                        color: "rgba(255, 255, 255, 1"
-                          },
-                      data: ['直达', '营销广告', '搜索引擎', '邮件营销', '联盟广告', '视频广告', '百度', '谷歌', '必应', '其他']
-                  },
-                  series: [
-                      {
-                          name: '访问来源',
-                          type: 'pie',
-                          
-                          selectedMode: 'single',
-                          radius: [0, '30%'],
-
-                          label: {
-                              position: 'inner'
-                          },
-                          labelLine: {
-                              show: false
-                          },
-                          data: [
-                              {value: 335, name: '直达', selected: true},
-                              {value: 679, name: '营销广告'},
-                              {value: 1548, name: '搜索引擎'}
-                          ],
-                          legendHoverLink: true,//是否启用图例 hover 时的联动高亮。
-                          hoverAnimation: true,// 是否开启 hover 在扇区上的放大动画效果。
-                          hoverOffset: 35 ,//高亮扇区的偏移距离。
-                          clockwise: true,//饼图的扇区是否是顺时针排布。
-                        
+         title: {
+                          text: '【信息中心】',
+                          left: 'center',
+                          textStyle: {
+                             fontSize: 20,
+                              color: "rgba(249, 249, 249, 1)"
+                            }, },
+              tooltip: {
+               trigger: 'item'
+            },
+            legend: {
+              top: '90%',
+               textStyle: {
+                               color: "rgba(255, 255, 255, 1"
+                         },
+              left: 'center'
+                },
+    //设置饼状图每个颜色块的颜色
+      color : [ '#50C1E9', '#ffc952', '#ff7473',
+                      '#6a60a9', '#39A0ED' ],
+          series: [
+                  {
+                      name: '显示数据',
+                      type: 'pie',
+                      radius: ['40%', '70%'],
+                      avoidLabelOverlap: false,
+                      itemStyle: {
+                          borderRadius: 10,
+                          borderColor: '#fff',
+                          borderWidth: 2
                       },
-                      {
-                          name: '访问来源',
-                          type: 'pie',
-                          radius: ['39%', '55%'],
+                      label: {
+                          show: false,
+                          position: 'center',
+                          top: 'bottom',
+                      },
+                      emphasis: {
                           label: {
-                              formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
-                              backgroundColor: '#eee',
-                              borderColor: '#aaa',
-                              borderWidth: 1,
-                              borderRadius: 2,
-                              // shadowBlur:3,
-                              // shadowOffsetX: 2,
-                              // shadowOffsetY: 2,
-                              // shadowColor: '#999',
-                              // padding: [0, 7],
-                              rich: {
-                                  a: {
-                                      color: '#999',
-                                      lineHeight: 12,
-                                      align: 'center'
-                                  },
-                                  // abg: {
-                                  //     backgroundColor: '#333',
-                                  //     width: '100%',
-                                  //     align: 'right',
-                                  //     height: 22,
-                                  //     borderRadius: [4, 4, 0, 0]
-                                  // },
-                                  hr: {
-                                      borderColor: '#aaa',
-                                      width: '100%',
-                                      borderWidth: 0.5,
-                                      height: 0
-                                  },
-                                  b: {
-                                      fontSize: 16,
-                                      lineHeight: 33
-                                  },
-                                  per: {
-                                      color: '#eee',
-                                      backgroundColor: '#334455',
-                                      padding: [0, -5],
-                                      borderRadius: 1
-                                  }
-                              }
-                          },
-                          data: [
-                              {value: 335, name: '直达'},
-                              {value: 310, name: '邮件营销'},
-                              {value: 234, name: '联盟广告'},
-                              {value: 135, name: '视频广告'},
-                              {value: 1048, name: '百度'},
-                              {value: 251, name: '谷歌'},
-                              {value: 147, name: '必应'},
-                              {value: 102, name: '其他'}
-                          ],
-                      
-                      }
-                  ]
-        }
+                              show: true,
+                              fontSize: '40',
+                              fontWeight: 'bold'
+                          }
+                      },
+                      labelLine: {
+                          show: false
+                      },
+                      data: [
+                          {value: 1048, name: '信息中心'},
+                          {value: 735, name: '服务大厅'},
+                          {value: 580, name: '数据研发'},
+                          {value: 484, name: 'CEO'},
+                          {value: 300, name: '部门'}
+                      ]
+                  }
+    ]};
 
       let option2 = {
                title: {
-                                        // text: '南丁格尔玫瑰图',
-                                        // subtext: '纯属虚构',
-                                        // left: 'vertical'
-                                    },
+                          text: '【信息中心】',
+                          left: 'center',
+                          textStyle: {
+                             fontSize: 20,
+                              color: "rgba(249, 249, 249, 1)"
+                            }, },
                                     tooltip: {
                                         trigger: 'item',
                                         formatter: '{a} <br/>{b} : {c} ({d}%)'
@@ -156,7 +113,7 @@ methods: {
                                         textStyle: {
                                             color: "rgba(255, 255, 255, 1"
                                               },
-                                        data: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5', 'rose6', 'rose7', 'rose8']
+                                        data: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5', 'rose6', 'rose7']
                                     },
                                     toolbox: {
                                         show: true,
@@ -171,6 +128,9 @@ methods: {
                                             saveAsImage: {show: true}
                                         }
                                     },
+                                    //设置饼状图每个颜色块的颜色
+                     color : [ '#50C1E9', '#ffc952', '#ff7473',
+                      '#6a60a9', '#39A0ED' ],
                                     series: [
                                        
                                         {
@@ -187,12 +147,19 @@ methods: {
                                                 {value: 20, name: 'rose5'},
                                                 {value: 35, name: 'rose6'},
                                                 {value: 30, name: 'rose7'},
-                                                {value: 40, name: 'rose8'}
+                                               
                                             ]
                                         }
                                     ]
               }
       let option3 ={
+          title: {
+                          text: '【信息中心】',
+                          left: 'center',
+                          textStyle: {
+                             fontSize: 20,
+                              color: "rgba(249, 249, 249, 1)"
+                            }, },
                         tooltip: {
           trigger: "axis",
           axisPointer: {
@@ -425,7 +392,7 @@ methods: {
 	    }
 	   
 //---------------[让图表动态显示]---------------------------------
-    
+
  //-------------------------------------------------
       myChart.setOption(option1);
      myChart2.setOption(option2);   

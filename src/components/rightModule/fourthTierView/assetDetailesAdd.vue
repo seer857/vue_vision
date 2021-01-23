@@ -1,8 +1,8 @@
 <!-- 右 -->
 <template>
   <div>
-
        <AssetOne />
+       <!-- <AssetTwo/> -->
   </div>
 </template>
 
