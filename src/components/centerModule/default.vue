@@ -1,4 +1,5 @@
 <template>
+
   <dv-border-box-1 :color="['#1c1b55', '#a255d7']" backgroundColor="#000">
     <div class="sales">
       <canvas id="canvas"></canvas>
@@ -13,18 +14,39 @@
 
 <script>
 import './index.js'
+
 export default {
+props:['getHomeData'],
+  components: {  },
   data() {
     return {
-      data:10000
+      arrData:{
+        name:'',
+        data:''
+      }
     }
+  },
+  updated(){
+    this.fontShow()
   },
   mounted() {
     this.fontShow()
+    this.onClick()
+    
   },
   methods: {
+ //---------------------------------------------
+      onClick(){
+         this.arrData.name = this.getHomeData.homeName
+         this.arrData.data = this.getHomeData.homeData
+         console.log(this.arrData)
+      },
+//---------------------------------------------
     fontShow() {
-      var txt = `营业额 (万元)：`+ this.data
+      this.onClick()
+      var txt =  this.arrData.name + this.arrData.data
+      
+      
       var txtH = 100
       var font = 'sans-serif'
       var rayColor1 = '#90effb'
@@ -206,6 +228,7 @@ export default {
   .filp {
     display: inline-block;
   }
+  
   #canvas {
     position: absolute;
     margin-left: -100px;
@@ -221,5 +244,6 @@ export default {
     margin-top: 120px;
     border: yellow 1px solid;
   }
+  
 }
 </style>

@@ -26,10 +26,21 @@
                 <DefaultLeft />
               </div>
               <div class="center-default">
-                <DefaultCenter />
+<!-- ------------------------------------------ -->
+                <DefaultCenter 
+                 :getHomeData= "arrHomeData"
+                 />
+<!-- ------------------------------------------ -->
               </div>
               <div class="center" ref="ModuleCenter">
-                <CenterModule v-on:againSend="getContentShow" v-if="findCenter" />
+ <!-- ------------------------------------------ -->
+                <CenterModule
+                    v-on:againSend="getContentShow"
+                    v-if="findCenter" 
+                    @getOneDatass="getOneHome"
+                    @getTwoDatass="getTwoHome"
+               />
+ <!-- ------------------------------------------ -->
               </div>
               <div class="right" v-if="isShow">
                 <RightModule />
@@ -71,12 +82,28 @@ export default {
       isShow: false,
       find: true,
       findCenter: true,
+      arrHomeData:{
+        homeName:'营业额（万元）：',
+        homeData:100088,
+      }
     }
   },
   mounted() {
     //this.loading()
   },
   methods: {
+//--------------------------------------------
+    getOneHome(oneName,oneData){ //获取子组件数据
+      // console.log(oneName,oneData)
+       this.arrHomeData.homeName=(oneName)//获取子组件数据,赋值给自己
+       this.arrHomeData.homeData=(oneData)
+      //  console.log(this.getData.homeOneName,this.getData.homeOneData)
+    },
+    getTwoHome(oneName,oneData){
+         this.arrHomeData.homeName=(oneName)//获取子组件数据,赋值给自己
+         this.arrHomeData.homeData=(oneData)
+    },
+//--------------------------------------------
     loading() {
       setTimeout(() => {
         this.find = !this.find
