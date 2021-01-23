@@ -1,7 +1,13 @@
 <template>
   <dv-full-screen-container class="home-container" v-cloak>
-    <video v-if="allShow" src="../assets/videos/backdrop.mp4" autoplay="autoplay" loop="loop" muted="muted"></video>
-   
+    <video
+      v-if="allShow"
+      src="../assets/videos/backdrop.mp4"
+      autoplay="autoplay"
+      loop="loop"
+      muted="muted"
+    ></video>
+
     <div class="bg" v-if="!allShow">
       <Index />
     </div>
@@ -11,8 +17,8 @@
     <transition name="dynamicOn">
       <div class="warp" v-if="find" @click="routerBack">
         <div class="top">
-          <img v-if="allShow" src="../assets/images/top_nav.png" alt="">
-          <img class="second" v-if="!allShow" src="../assets/images/top_nav2.png" alt="">
+          <img v-if="allShow" src="../assets/images/top_nav.png" alt />
+          <img class="second" v-if="!allShow" src="../assets/images/top_nav2.png" alt />
           <dv-decoration-10 class="top-line" :color="['#b634da','#00c2ff']" />
           <h1>
             <span>爱玛集团公司数据中台架构大屏</span>
@@ -31,23 +37,20 @@
                 <DefaultLeft />
               </div>
               <div class="center-default">
-<!-- ------------------------------------------ -->
-                <DefaultCenter 
-                v-if="allShow"
-                 :getHomeData= "arrHomeData"
-                 />
-<!-- ------------------------------------------ -->
+                <!-- ------------------------------------------ -->
+                <DefaultCenter v-if="allShow" :getHomeData="arrHomeData" />
+                <!-- ------------------------------------------ -->
               </div>
               <div class="center" ref="ModuleCenter">
- <!-- ------------------------------------------ -->
+                <!-- ------------------------------------------ -->
                 <CenterModule
-                    v-on:againSend="getContentShow"
-                    v-on:againSendTag="getContentShowTag"
-                    v-if="findCenter" 
-                    @getOneDatass="getOneHome"
-                    @getTwoDatass="getTwoHome"
-               />
- <!-- ------------------------------------------ -->
+                  v-on:againSend="getContentShow"
+                  v-on:againSendTag="getContentShowTag"
+                  v-if="findCenter"
+                  @getOneDatass="getOneHome"
+                  @getTwoDatass="getTwoHome"
+                />
+                <!-- ------------------------------------------ -->
               </div>
               <div class="right" v-if="isShow && allShow">
                 <RightModule />
@@ -76,7 +79,7 @@ import Index from './Index.vue'
 export default {
   name: 'Home',
   components: {
-    CenterModule,//
+    CenterModule, //
     LeftModule,
     RightModule,
     Loading,
@@ -84,7 +87,7 @@ export default {
     DefaultRight,
     DefaultCenter,
     Clock,
-    Index
+    Index,
   },
   data() {
     return {
@@ -92,28 +95,29 @@ export default {
       allShow: true,
       find: true,
       findCenter: true,
-      arrHomeData:{
-        homeName:'营业额（万元）：',
-        homeData:100088,
-      }
+      arrHomeData: {
+        homeName: '营业额（万元）：',
+        homeData: 100088,
+      },
     }
   },
   mounted() {
     //this.loading()
   },
   methods: {
-//--------------------------------------------
-    getOneHome(oneName,oneData){ //获取子组件数据
+    //--------------------------------------------
+    getOneHome(oneName, oneData) {
+      //获取子组件数据
       // console.log(oneName,oneData)
-       this.arrHomeData.homeName=(oneName)//获取子组件数据,赋值给自己
-       this.arrHomeData.homeData=(oneData)
+      this.arrHomeData.homeName = oneName //获取子组件数据,赋值给自己
+      this.arrHomeData.homeData = oneData
       //  console.log(this.getData.homeOneName,this.getData.homeOneData)
     },
-    getTwoHome(oneName,oneData){
-         this.arrHomeData.homeName=(oneName)//获取子组件数据,赋值给自己
-         this.arrHomeData.homeData=(oneData)
+    getTwoHome(oneName, oneData) {
+      this.arrHomeData.homeName = oneName //获取子组件数据,赋值给自己
+      this.arrHomeData.homeData = oneData
     },
-//--------------------------------------------
+    //--------------------------------------------
     loading() {
       setTimeout(() => {
         this.find = !this.find
@@ -125,7 +129,7 @@ export default {
     getContentShow(data) {
       this.isShow = data
     },
-    getContentShowTag(data){
+    getContentShowTag(data) {
       this.allShow = data
     },
     routerBack() {},
@@ -143,10 +147,10 @@ $absolute: absolute;
   overflow-y: hidden;
   // background: url(../assets/images/bj.jpg) no-repeat;
   // background-size: 100%;
-  .bg{
+  .bg {
     width: 100%;
     height: 100%;
-    position:absolute;
+    position: absolute;
     z-index: -1;
   }
   video {
@@ -178,20 +182,19 @@ $absolute: absolute;
     //background: url(../assets/images/top_nav.png) no-repeat;
     border: none;
     overflow: hidden;
-    img{
+    img {
       width: 100%;
       position: absolute;
     }
-    .clock{
+    .clock {
       position: absolute;
       width: 320px;
       height: 80px;
       margin-top: 10px;
       margin-right: 20px;
-     // border: solid 1px springgreen;
+      // border: solid 1px springgreen;
       right: 0%;
       z-index: 99;
-
     }
     .top-line {
       width: 100%;
@@ -218,7 +221,6 @@ $absolute: absolute;
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-   
   }
   .content-box {
     position: $absolute;
@@ -246,10 +248,9 @@ $absolute: absolute;
     }
     .center {
       position: absolute;
-      margin-left: 450px;
-      width: 994px;
+      margin-left: 460px;
+      width: 920px;
       height: 978px;
-      
      // animation: domCenterMove 20s infinite linear alternate;
       .dynamicOnCenter-enter-active {
         transition: opacity 1s;
@@ -275,18 +276,19 @@ $absolute: absolute;
   }
 }
 
-@keyframes domCenterMove {
+@keyframes domCenterMove1 {
   0% {
     transform: scaleX(1, 1);
   }
 }
-@keyframes domCenterMove1 {
+@keyframes domCenterMove {
   0% {
     margin-left: 460px;
-    width: 994px;
+    width: 920px;
+    height: 978px;
   }
   50% {
-    margin-left: 550px;
+    margin-left: 500px;
     width: 824px;
   }
   100% {
