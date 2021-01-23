@@ -12,6 +12,12 @@
     <div class="particle" v-if="isShowParticle">
       <video src="@/assets/videos/particle.webm" loop muted autoplay></video>
     </div> -->
+    <div class="module left">
+      <LeftContent/>
+    </div>
+    <div class="module right">
+      <RightContent/>
+    </div>
     <div class="buttonCut" @click="unname"></div>
     <div class="parcel-all" ref="allTier">
       <div class="first-tier">
@@ -43,12 +49,16 @@ import FourthPic from './fourthTierPic/index.vue'
 import ThirdPic from './thirdTierPic/index.vue'
 import SecondPic from './secondTierPic/index.vue'
 import FirstPic from './firstTierPic/index.vue'
+import LeftContent from './leftContent/index.vue'
+import RightContent from './rightContent/index.vue'
 export default {
   components: {
     FourthPic,
     ThirdPic,
     SecondPic,
     FirstPic,
+    LeftContent,
+    RightContent
   },
   data() {
     return {
@@ -108,6 +118,18 @@ export default {
   height: 100%;
   position: absolute;
   //border: royalblue 1px solid;
+  .module{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    margin-top: 32%;
+  }
+  .right{
+     margin-left: 80%;
+  }
+  .left{
+     margin-left: 14%;
+  }
   .parcel-all {
     position: absolute;
     width: 100%;

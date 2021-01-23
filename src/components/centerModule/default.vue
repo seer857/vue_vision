@@ -1,5 +1,5 @@
 <template>
-  <dv-border-box-1 :color="['#1c1b55', '#a255d7']" backgroundColor="#000">
+  <dv-border-box-1 :color="['#1c1b55', '#a255d7']">
     <div class="sales">
       <canvas id="canvas"></canvas>
       <div class="filp dowm">
@@ -34,6 +34,7 @@ export default {
     this.onClick()
   },
   methods: {
+<<<<<<< HEAD
     //---------------------------------------------
     onClick() {
       this.arrData.name = this.getHomeData.homeName
@@ -41,6 +42,15 @@ export default {
       // console.log(this.arrData)
     },
     //---------------------------------------------
+=======
+ //---------------------------------------------
+      onClick(){
+         this.arrData.name = this.getHomeData.homeName
+         this.arrData.data = this.getHomeData.homeData
+        //  console.log(this.arrData)
+      },
+//---------------------------------------------
+>>>>>>> master
     fontShow() {
       var txt = this.name + this.data
 

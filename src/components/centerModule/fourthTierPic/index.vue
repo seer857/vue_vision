@@ -160,7 +160,7 @@ $time: var(--mytime);
   position: absolute;
   width: 994px;
   height: 978px;
-
+  //animation: changeSize 2s infinite linear alternate;
   .box-content {
     position: absolute;
     width: 100%;
@@ -308,6 +308,7 @@ $time: var(--mytime);
     margin-top: 50%;
     transform: translate3d(0px, 0px, 0px) scaleX(1) scaleY(1) rotateX(65deg)
       rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);
+    //animation: changeSize 2s infinite linear alternate;
     z-index: -1;
     .one-pic {
       position: absolute;
@@ -315,6 +316,7 @@ $time: var(--mytime);
       height: 400px;
       margin-top: -140%;
       margin-left: 30%;
+      animation: changeSize 2s infinite linear alternate;
       .outerside-one {
         position: absolute;
         width: 190%;
@@ -400,15 +402,14 @@ $time: var(--mytime);
 }
 @keyframes changeSize {
   0% {
-    width: 100%;
-  }
-  50% {
-    width: 96%;
-    margin-left: 2%;
+    width: 40%;
+     margin-left: 30%;
   }
   100% {
-    width: 108%;
-    margin-left: -4%;
+    width: 42%;
+     margin-left: 29%;
+
+
   }
 }
 
