@@ -2,18 +2,27 @@
 <template>
   <div class="four-tier-box">
     <div class="box-content">
-      <router-link :to="{name:'asset'}">
-        <div class="box-one" @mouseenter="boxoneActive" @mouseleave="removeboxone" ref="boxone">
+<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->    
+
+      <router-link :to="{name:'asset'}"  @click="fourGetOne">
+        <div class="box-one"
+         @mouseenter="boxoneActive" @mouseleave="removeboxone"
+          ref="boxone">
           <span>资源盘点</span>
           <div class="cover-one"></div>
         </div>
       </router-link>
-      <router-link :to="{name:'asset'}">
-        <div class="box-two" @mouseenter="boxtwoActive" @mouseleave="removeboxtwo" ref="boxtwo">
+<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+      <router-link :to="{name:'asset'}"  @click="fourGetTwo">
+        <div 
+        class="box-two" 
+        @mouseenter="boxtwoActive" @mouseleave="removeboxtwo"
+         ref="boxtwo">
           <span>数栈计算引擎</span>
           <div class="cover-two"></div>
         </div>
       </router-link>
+<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->      
       <router-link :to="{name:'asset'}">
         <div
           class="box-three"
@@ -25,6 +34,7 @@
           <div class="cover-three"></div>
         </div>
       </router-link>
+
       <router-link :to="{name:'asset'}">
         <div class="box-four" @mouseenter="boxfourActive" @mouseleave="removeboxfour" ref="boxfour">
           <span>指标标签管理</span>
@@ -50,20 +60,30 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
-  components: {},
+  components: {
+  },
   data() {
     return {
-      tag: false,
+       oneName: "资源盘点：" ,
+       oneData: 8000,
+       twoName:'数栈计算引擎:',
+       twoData:6666,
+     
     }
   },
   methods: {
-    onAsset() {
-      this.$emit('getShow', this.tag)
+  //---------------获取自己组件数据G传给父组件-----------------------------
+    fourGetOne(){
+      this.$emit("getOneData",this.oneName,this.oneData)
     },
-    //--------------------------
+    fourGetTwo(){
+      this.$emit("getTwoData",this.twoName,this.twoData)
+    },
+//--------------------------------------------
+
+//--------------------------
     circleSpeed() {
       let outersideThree = this.$refs.outersideThree.style
       outersideThree.animationDuration = '10s'

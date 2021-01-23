@@ -15,7 +15,7 @@
     <div class="buttonCut" @click="unname"></div>
     <div class="parcel-all" ref="allTier">
       <div class="first-tier">
-        <FirstPic class="one" />
+        <FirstPic class="one"  />
       </div>
       <div class="secend-tier">
         <SecondPic class="two" />
@@ -24,13 +24,21 @@
         <ThirdPic class="three" />
       </div>
       <div class="fourth-tier" @click="againSend">
-        <FourthPic v-on:getShow="show" class="four" />
+ <!-- 父获取子数据 @getnamedata="showData"   -->       
+        <FourthPic  
+        class="four"  
+          v-on:getShow="show" 
+        @getOneData="getOneDatas"
+        @getTwoData="getTwoDatas"
+         />
+<!--  -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
 import FourthPic from './fourthTierPic/index.vue'
 import ThirdPic from './thirdTierPic/index.vue'
 import SecondPic from './secondTierPic/index.vue'
@@ -47,9 +55,27 @@ export default {
       toCenterModule: true,
       isFlying: false,
       isShowParticle: true,
+       oneName:'空',
+       oneData:'空',
     }
-  },
+  }, 
+
   methods: {
+//--------------------------------------------
+    //父index.vue 获取子 ThirdPic 数据
+    getOneDatas(oneName,oneData){
+      // console.log(oneName,oneData) //子组件数据
+      this.oneName = oneName//获取子组件数据,赋值给自己
+      this.oneData = oneData
+      this.$emit("getOneDatass",this.oneName,this.oneData) //组件index.vue 传父组件 home.vue
+  },
+   getTwoDatas(twoName,twoData){
+      this.oneName = twoName//获取子组件数据,赋值给自己
+      this.oneData = twoData
+      this.$emit("getTwoDatass",this.oneName,this.oneData) //组件index.vue 传父组件 home.vue
+
+    },
+//--------------------------------------------
     show(data) {
       this.toCenterModule = data
     },
@@ -69,7 +95,7 @@ export default {
   },
   computed: {},
   watch: {},
-  created() {},
+   created() {},
   mounted() {},
 }
 </script>
