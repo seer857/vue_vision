@@ -9,42 +9,42 @@
          @click="fourGetOne"
          @mouseenter="boxoneActive" @mouseleave="removeboxone"
           ref="boxone">
-          <span>资源盘点</span>
+          <span>资产盘点</span>
           <div class="cover-one"></div>
         </div>
       </router-link>
 <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-      <router-link :to="{name:'asset'}" >
+      <router-link :to="{name:'research'}" >
         <div  class="box-two" 
          @click="fourGetTwo"
         @mouseenter="boxtwoActive" @mouseleave="removeboxtwo"
          ref="boxtwo">
-          <span>数栈计算引擎</span>
+          <span>研发明细</span>
           <div class="cover-two"></div>
         </div>
       </router-link>
 <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->      
-      <router-link :to="{name:'asset'}">
+      <router-link :to="{name:'buyer'}">
         <div
           class="box-three"
           @mouseenter="boxthreeActive"
           @mouseleave="removeboxthree"
           ref="boxthree"
         >
-          <span>应用规划</span>
+          <span>采购计划</span>
           <div class="cover-three"></div>
         </div>
       </router-link>
 
-      <router-link :to="{name:'asset'}">
+      <router-link :to="{name:'market'}">
         <div class="box-four" @mouseenter="boxfourActive" @mouseleave="removeboxfour" ref="boxfour">
-          <span>指标标签管理</span>
+          <span>营销分析</span>
           <div class="cover-four"></div>
         </div>
       </router-link>
-      <router-link :to="{name:'asset'}">
+      <router-link :to="{name:'brand'}">
         <div class="box-five" @mouseenter="boxfivActive" @mouseleave="removeboxfiv" ref="boxfiv">
-          <span>数据应用运营</span>
+          <span>品质运营</span>
           <div class="cover-five"></div>
         </div>
       </router-link>

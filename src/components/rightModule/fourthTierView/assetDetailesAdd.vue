@@ -1,4 +1,4 @@
-<!-- 右 -->
+<!-- 资产详细附加页 -->
 <template>
   <div>
 
@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import AssetOne from './assets/assetOne.vue';
-import AssetTwo from './assets/assetTwo.vue';
+import AssetOne from './assetCharts/assetOne.vue';
+import AssetTwo from './assetCharts/assetTwo.vue';
 export default {
   components: {
         AssetOne,

@@ -1,13 +1,18 @@
 <template>
   <dv-full-screen-container class="home-container" v-cloak>
-    <video src="../assets/videos/backdrop.mp4" autoplay="autoplay" loop="loop" muted="muted"></video>
+    <video v-if="allShow" src="../assets/videos/backdrop.mp4" autoplay="autoplay" loop="loop" muted="muted"></video>
+   
+    <div class="bg" v-if="!allShow">
+      <Index />
+    </div>
     <!--   <transition name="dynamicOff">
       <Loading class="load" v-if="!find" />
     </transition>-->
     <transition name="dynamicOn">
       <div class="warp" v-if="find" @click="routerBack">
         <div class="top">
-          <img src="../assets/images/top_nav.png" alt="">
+          <img v-if="allShow" src="../assets/images/top_nav.png" alt="">
+          <img class="second" v-if="!allShow" src="../assets/images/top_nav2.png" alt="">
           <dv-decoration-10 class="top-line" :color="['#b634da','#00c2ff']" />
           <h1>
             <span>爱玛集团公司数据中台架构大屏</span>
@@ -19,15 +24,16 @@
         <transition name="dynamicOnCenter">
           <div class="content-box">
             <section class="main">
-              <div class="left" v-if="isShow">
+              <div class="left" v-if="isShow && allShow">
                 <LeftModule />
               </div>
-              <div class="left" v-if="!isShow">
+              <div class="left" v-if="!isShow && allShow">
                 <DefaultLeft />
               </div>
               <div class="center-default">
 <!-- ------------------------------------------ -->
                 <DefaultCenter 
+                v-if="allShow"
                  :getHomeData= "arrHomeData"
                  />
 <!-- ------------------------------------------ -->
@@ -36,16 +42,17 @@
  <!-- ------------------------------------------ -->
                 <CenterModule
                     v-on:againSend="getContentShow"
+                    v-on:againSendTag="getContentShowTag"
                     v-if="findCenter" 
                     @getOneDatass="getOneHome"
                     @getTwoDatass="getTwoHome"
                />
  <!-- ------------------------------------------ -->
               </div>
-              <div class="right" v-if="isShow">
+              <div class="right" v-if="isShow && allShow">
                 <RightModule />
               </div>
-              <div class="right" v-if="!isShow">
+              <div class="right" v-if="!isShow && allShow ">
                 <DefaultRight />
               </div>
             </section>
@@ -65,6 +72,7 @@ import DefaultLeft from '../components/leftModule/default.vue'
 import DefaultRight from '../components/rightModule/default.vue'
 import DefaultCenter from '../components/centerModule/default.vue'
 import Clock from '../components/OtherModule/clock.vue'
+import Index from './Index.vue'
 export default {
   name: 'Home',
   components: {
@@ -75,11 +83,13 @@ export default {
     DefaultLeft,
     DefaultRight,
     DefaultCenter,
-    Clock
+    Clock,
+    Index
   },
   data() {
     return {
       isShow: false,
+      allShow: true,
       find: true,
       findCenter: true,
       arrHomeData:{
@@ -115,6 +125,9 @@ export default {
     getContentShow(data) {
       this.isShow = data
     },
+    getContentShowTag(data){
+      this.allShow = data
+    },
     routerBack() {},
   },
 }
@@ -130,6 +143,12 @@ $absolute: absolute;
   overflow-y: hidden;
   // background: url(../assets/images/bj.jpg) no-repeat;
   // background-size: 100%;
+  .bg{
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    z-index: -1;
+  }
   video {
     width: 100%;
     height: 100%;
@@ -160,6 +179,7 @@ $absolute: absolute;
     border: none;
     overflow: hidden;
     img{
+      width: 100%;
       position: absolute;
     }
     .clock{

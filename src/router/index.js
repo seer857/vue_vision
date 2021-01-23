@@ -34,7 +34,39 @@ const routes = [
           left: () => import(/* webpackChunkName: "group-foo" */ '../components/leftModule/fourthTierView/assetDetailes.vue'),
           right: () => import(/* webpackChunkName: "group-foo" */ '../components/rightModule/fourthTierView/assetDetailesAdd.vue')
         }
-      }
+      },
+      {
+        path: 'research',
+        name: 'research',
+        components: {
+          left: () => import(/* webpackChunkName: "group-foo" */ '../components/leftModule/fourthTierView/researchDetailes.vue'),
+          right: () => import(/* webpackChunkName: "group-foo" */ '../components/rightModule/fourthTierView/researchDetailesAdd.vue')
+        }
+      },
+      {
+        path: 'buyer',
+        name: 'buyer',
+        components: {
+          left: () => import(/* webpackChunkName: "group-foo" */ '../components/leftModule/fourthTierView/buyerDetailes.vue'),
+          right: () => import(/* webpackChunkName: "group-foo" */ '../components/rightModule/fourthTierView/buyerDetailesAdd.vue')
+        }
+      },
+      {
+        path: 'market',
+        name: 'market',
+        components: {
+          left: () => import(/* webpackChunkName: "group-foo" */ '../components/leftModule/fourthTierView/marketDetailes.vue'),
+          right: () => import(/* webpackChunkName: "group-foo" */ '../components/rightModule/fourthTierView/marketDetailesAdd.vue')
+        }
+      },
+      {
+        path: 'brand',
+        name: 'brand',
+        components: {
+          left: () => import(/* webpackChunkName: "group-foo" */ '../components/leftModule/fourthTierView/brandDetailes.vue'),
+          right: () => import(/* webpackChunkName: "group-foo" */ '../components/rightModule/fourthTierView/brandDetailesAdd.vue')
+        }
+      },
     ]
   }
 ]

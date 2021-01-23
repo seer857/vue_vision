@@ -6,12 +6,12 @@
         <video src="@/assets/videos/feidie.webm" loop muted autoplay></video>
       </div>
     </transition>
-    <div class="flow" v-if="isFlying">
+<!--     <div class="flow" v-if="isFlying">
       <video src="@/assets/videos/flow.webm" loop muted autoplay></video>
     </div>
     <div class="particle" v-if="isShowParticle">
       <video src="@/assets/videos/particle.webm" loop muted autoplay></video>
-    </div>
+    </div> -->
     <div class="buttonCut" @click="unname"></div>
     <div class="parcel-all" ref="allTier">
       <div class="first-tier">
@@ -52,7 +52,8 @@ export default {
   },
   data() {
     return {
-      toCenterModule: true,
+      toHome: true,
+      toCenterModuleTag:false,
       isFlying: false,
       isShowParticle: true,
        oneName:'空',
@@ -78,16 +79,18 @@ export default {
 //--------------------------------------------
     show(data) {
       this.toCenterModule = data
+      console.log(data)
     },
     againSend() {
-      this.$emit('againSend', this.toCenterModule)
+      this.$emit('againSend', this.toHome)
+     
     },
     unname() {
       if (this.isFlying == false) {
         let allTier = this.$refs.allTier.style
         allTier.animationPlayState = 'running'
-        this.isShowParticle = !this.isShowParticle
         this.isFlying = !this.isFlying
+        this.$emit('againSendTag', this.toCenterModuleTag)
       } else {
         location.reload()
       }
