@@ -76,7 +76,7 @@ import Index from './Index.vue'
 export default {
   name: 'Home',
   components: {
-    CenterModule,
+    CenterModule,//
     LeftModule,
     RightModule,
     Loading,
