@@ -122,13 +122,13 @@ export default {
     position: absolute;
     width: 150px;
     height: 150px;
-    margin-top: 32%;
+    margin-top: 33%;
   }
   .right{
      margin-left: 80%;
   }
   .left{
-     margin-left: 14%;
+     margin-left: 15%;
   }
   .parcel-all {
     position: absolute;

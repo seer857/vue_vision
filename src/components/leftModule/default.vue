@@ -1,12 +1,27 @@
 <template>
   <div class="default-left">
     <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content one">
+      <div class="title">
+        <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
+        <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
+        <span>财经指标体系-历年来研发费用统计图</span>
+      </div>
       <div id="leftDefaOne"></div>
     </dv-border-box-10>
     <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content two">
+      <div class="title">
+        <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
+        <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
+        <span>财经指标体系-历年来销售费用统计图</span>
+      </div>
       <div id="leftDefaTwo"></div>
     </dv-border-box-10>
     <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content three">
+      <div class="title">
+        <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
+        <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
+        <span>财经指标体系-历年来管理费用统计图</span>
+      </div>
       <div id="leftDefaThree"></div>
     </dv-border-box-10>
   </div>
@@ -20,9 +35,9 @@ export default {
     this.defaultEcharts()
   },
   methods: {
-    moveAll() {
-      this.$router.push({ name: 'asset' })
-    },
+    // moveAll() {
+    //   this.$router.push({ name: 'asset' })
+    // },
     defaultEcharts() {
       let myChart1 = echarts.init(document.getElementById('leftDefaOne'))
       let myChart2 = echarts.init(document.getElementById('leftDefaTwo'))
@@ -197,9 +212,37 @@ $color: #fff;
   .content {
     width: 119%;
     height: 300px;
+    .title {
+      position: absolute;
+      width: 100%;
+      height: 40px;
+
+      img {
+        width: 25px;
+      }
+      .float {
+        margin-top: 10px;
+        margin-left: 12px;
+        animation: myMove2 2s infinite linear;
+      }
+      .tImg {
+        position: absolute;
+        width: 100%;
+        margin-top: 7px;
+        margin-left: 5px;
+      }
+      span {
+        position: absolute;
+        color: #fff;
+        margin-top: 11px;
+        margin-left: 24px;
+      }
+    }
   }
+
   .one {
     margin-top: 15px;
+
     #leftDefaOne {
       width: 100%;
       height: 100%;
