@@ -18,6 +18,7 @@
       <div class="warp" v-if="find" @click="routerBack">
         <div class="top">
           <img v-if="allShow" src="../assets/images/top_nav.png" alt />
+          <dv-decoration-1  v-if="allShow" class="decorate"  />
           <img class="second" v-if="!allShow" src="../assets/images/top_nav2.png" alt />
           <dv-decoration-10 class="top-line" :color="['#b634da','#00c2ff']" />
           <h1>
@@ -97,8 +98,8 @@ export default {
       find: true,
       findCenter: true,
       arrHomeData: {
-        homeName: '营业额（万元）：',
-        homeData: 100088,
+        homeName: '年度销量（台）:',
+        homeData: 458704071,
       },
     }
   },
@@ -183,6 +184,12 @@ $absolute: absolute;
     //background: url(../assets/images/top_nav.png) no-repeat;
     border: none;
     overflow: hidden;
+    .decorate{
+      position: absolute;
+      margin:10px;
+      width:200px;
+      height:50px;
+    }
     img {
       width: 100%;
       position: absolute;

@@ -80,8 +80,93 @@ export default {
         // Declare several bar series, each will be mapped
         // to a column of dataset.source by default.
         //设置图每个颜色块的颜色
-        color: ['#A94CAF', '#ffb6b9', '#E7475E'],
-        series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }],
+        
+        series: [
+          {
+            type: 'bar',
+            itemStyle: {
+              //渐变颜色
+              normal: {
+                color: new echarts.graphic.LinearGradient(
+                  0,
+                  0,
+                  0,
+                  1,
+                  [
+                    {
+                      offset: 0,
+                      color: '#CCFBFF', // 0% 处的颜色
+                    },
+                    {
+                      offset: 1,
+                      color: '#EF96C5', // 100% 处的颜色
+                    },
+                  ],
+                  false
+                ),
+                barBorderRadius: [10, 10, 0, 0],
+                shadowColor: 'rgba(0,160,221,1)',
+                shadowBlur: 1,
+              },
+            },
+          },
+          {
+            type: 'bar',
+            itemStyle: {
+              //渐变颜色
+              normal: {
+                color: new echarts.graphic.LinearGradient(
+                  0,
+                  0,
+                  0,
+                  1,
+                  [
+                    {
+                      offset: 0,
+                      color: '#A0F1EA', // 0% 处的颜色
+                    },
+                    {
+                      offset: 1,
+                      color: '#EAD6EE', // 100% 处的颜色
+                    },
+                  ],
+                  false
+                ),
+                barBorderRadius: [10, 10, 0, 0],
+                shadowColor: 'rgba(0,160,221,1)',
+                shadowBlur: 1,
+              },
+            },
+          },
+          {
+            type: 'bar',
+            itemStyle: {
+              //渐变颜色
+              normal: {
+                color: new echarts.graphic.LinearGradient(
+                  0,
+                  0,
+                  0,
+                  1,
+                  [
+                    {
+                      offset: 0,
+                      color: '#A5F9F9', // 0% 处的颜色
+                    },
+                    {
+                      offset: 1,
+                      color: '#F298E7', // 100% 处的颜色
+                    },
+                  ],
+                  false
+                ),
+                barBorderRadius: [10, 10, 0, 0],
+                shadowColor: 'rgba(0,160,221,1)',
+                shadowBlur: 1,
+              },
+            },
+          },
+        ],
       }
       let option2 = {
         legend: {

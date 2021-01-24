@@ -155,6 +155,7 @@ export default {
     z-index: 1;
     video {
       position: absolute;
+      margin-left: 20px;
       width: 100%;
       height: 100%;
       z-index: 20;
