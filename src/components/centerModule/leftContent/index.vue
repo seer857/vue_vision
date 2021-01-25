@@ -23,7 +23,7 @@ export default {}
     .xuehua {
       width: 100%;
       height: 100%;
-      background: url(../../../assets/images/leftContent/xuehua.png) no-repeat;
+      background: url(../../../assets/images/leftContent/xuehua2.png) no-repeat;
       background-size: 100%;
       animation: myMove 2s infinite linear;
     }
