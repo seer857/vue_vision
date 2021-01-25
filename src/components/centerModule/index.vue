@@ -6,22 +6,27 @@
         <video src="@/assets/videos/feidie.webm" loop muted autoplay></video>
       </div>
     </transition>
-<!--     <div class="flow" v-if="isFlying">
+    <!--     <div class="flow" v-if="isFlying">
       <video src="@/assets/videos/flow.webm" loop muted autoplay></video>
     </div>
     <div class="particle" v-if="isShowParticle">
       <video src="@/assets/videos/particle.webm" loop muted autoplay></video>
-    </div> -->
+    </div>-->
     <div class="module left">
-      <LeftContent/>
+      <LeftContent />
     </div>
     <div class="module right">
-      <RightContent/>
+      <RightContent />
     </div>
-    <div class="buttonCut" @click="unname"></div>
+    <a-popover placement="right">
+      <template slot="content">
+        <span>车联网科技大屏</span>
+      </template>
+      <div class="buttonCut" @click="unname"></div>
+    </a-popover>
     <div class="parcel-all" ref="allTier">
       <div class="first-tier">
-        <FirstPic class="one"  />
+        <FirstPic class="one" />
       </div>
       <div class="secend-tier">
         <SecondPic class="two" />
@@ -30,21 +35,20 @@
         <ThirdPic class="three" />
       </div>
       <div class="fourth-tier" @click="againSend">
- <!-- 父获取子数据 @getnamedata="showData"   -->       
-        <FourthPic  
-        class="four"  
-          v-on:getShow="show" 
-        @getOneData="getOneDatas"
-        @getTwoData="getTwoDatas"
-         />
-<!--  -->
+        <!-- 父获取子数据 @getnamedata="showData"   -->
+        <FourthPic
+          class="four"
+          v-on:getShow="show"
+          @getOneData="getOneDatas"
+          @getTwoData="getTwoDatas"
+        />
+        <!--  -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
 import FourthPic from './fourthTierPic/index.vue'
 import ThirdPic from './thirdTierPic/index.vue'
 import SecondPic from './secondTierPic/index.vue'
@@ -58,42 +62,40 @@ export default {
     SecondPic,
     FirstPic,
     LeftContent,
-    RightContent
+    RightContent,
   },
   data() {
     return {
       toHome: true,
-      toCenterModuleTag:false,
+      toCenterModuleTag: false,
       isFlying: false,
       isShowParticle: true,
-       oneName:'空',
-       oneData:'空',
+      oneName: '空',
+      oneData: '空',
     }
-  }, 
+  },
 
   methods: {
-//--------------------------------------------
+    //--------------------------------------------
     //父index.vue 获取子 ThirdPic 数据
-    getOneDatas(oneName,oneData){
+    getOneDatas(oneName, oneData) {
       // console.log(oneName,oneData) //子组件数据
-      this.oneName = oneName//获取子组件数据,赋值给自己
+      this.oneName = oneName //获取子组件数据,赋值给自己
       this.oneData = oneData
-      this.$emit("getOneDatass",this.oneName,this.oneData) //组件index.vue 传父组件 home.vue
-  },
-   getTwoDatas(twoName,twoData){
-      this.oneName = twoName//获取子组件数据,赋值给自己
-      this.oneData = twoData
-      this.$emit("getTwoDatass",this.oneName,this.oneData) //组件index.vue 传父组件 home.vue
-
+      this.$emit('getOneDatass', this.oneName, this.oneData) //组件index.vue 传父组件 home.vue
     },
-//--------------------------------------------
+    getTwoDatas(twoName, twoData) {
+      this.oneName = twoName //获取子组件数据,赋值给自己
+      this.oneData = twoData
+      this.$emit('getTwoDatass', this.oneName, this.oneData) //组件index.vue 传父组件 home.vue
+    },
+    //--------------------------------------------
     show(data) {
       this.toCenterModule = data
       console.log(data)
     },
     againSend() {
       this.$emit('againSend', this.toHome)
-     
     },
     unname() {
       if (this.isFlying == false) {
@@ -108,7 +110,7 @@ export default {
   },
   computed: {},
   watch: {},
-   created() {},
+  created() {},
   mounted() {},
 }
 </script>
@@ -118,17 +120,17 @@ export default {
   height: 100%;
   position: absolute;
   //border: royalblue 1px solid;
-  .module{
+  .module {
     position: absolute;
     width: 150px;
     height: 150px;
     margin-top: 33%;
   }
-  .right{
-     margin-left: 80%;
+  .right {
+    margin-left: 80%;
   }
-  .left{
-     margin-left: 15%;
+  .left {
+    margin-left: 15%;
   }
   .parcel-all {
     position: absolute;
@@ -144,8 +146,8 @@ export default {
     height: 100px;
     background: url(../../assets/images/tag/button.png) no-repeat;
     background-size: 100%;
-    margin-left: 92%;
-    margin-top: -8%;
+    margin-left: 96%;
+    margin-top: -9.5%;
     z-index: 99;
   }
   .science {

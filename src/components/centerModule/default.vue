@@ -1,20 +1,33 @@
 <template>
   <dv-border-box-1 :color="['#1c1b55', '#a255d7']">
     <div class="sales">
-<<<<<<< HEAD
       <canvas id="canvas1"></canvas>
-      <dv-decoration-9 class="proportion" :dur="5" :color="['#a255d7', '#a255d7']">66%</dv-decoration-9>
-=======
-      <canvas id="canvas1">  </canvas>
-      <dv-decoration-9 class="proportion" :dur="5" :color="['#a255d7', '#a255d7']"> 66% </dv-decoration-9>
-      <!-- //>>>>>>>>>> -->
-     <!--翻牌的外框--> 
-     <div class="flip-dowm">
-      <FlipClock/>
-       </div>
+      <dv-decoration-9 class="proportion" :dur="5" :color="['#a255d7', '#a255d7']">
+        <div class="yield">
+          <a-popover placement="bottom">
+            <template slot="title">
+              <span>目标完成情况</span>
+            </template>
+              <template slot="content" class="popover">
+              <p>财经指标</p>
+              <p>运营指标</p>
+              <p>运营指标</p>
+            </template>
+            <a-button type="link" ghost>
+              <div class="number">66%</div>
+              达成率
+            </a-button>
+          </a-popover>
+        </div>
+      </dv-decoration-9>
 
       <!-- //>>>>>>>>>> -->
->>>>>>> a0f86511169f84b107c336d38a9668054786a268
+      <!--翻牌的外框-->
+      <div class="flip-dowm">
+        <FlipClock />
+      </div>
+
+      <!-- //>>>>>>>>>> -->
       <div class="filp dowm">
         <!-- <div class="digital number0">
           <h3>销售费用：</h3>
@@ -27,15 +40,15 @@
         <div class="digital number2">
           <h3>研发费用：</h3>
           <dv-digital-flop :config="config3" class="number" />
-        </div> -->
+        </div>-->
         <!-- <div class="digital number3">
           <h3>净利润 ：</h3>
           <dv-digital-flop :config="config4" class="number" />
-        </div> -->
+        </div>-->
       </div>
     </div>
 
-    <div class="profit"> </div>
+    <div class="profit"></div>
   </dv-border-box-1>
 </template>
 
@@ -77,7 +90,7 @@ const config4 = {
 
 export default {
   props: ['getHomeData'],
-  components: {Clock,FlipClock},
+  components: { Clock, FlipClock },
   data() {
     return {
       // data: 10000,
@@ -290,32 +303,55 @@ export default {
   margin: 20px;
   width: 780px;
   height: 100px;
-  .proportion{
+  .proportion {
     position: absolute;
-    width:150px;
-    height:150px;
+    width: 150px;
+    height: 150px;
     margin-top: 5px;
     margin-left: 74%;
     color: #fff;
-    font-family: myFirstFont; ;
+    font-family: myFirstFont;
     font-size: 24px;
+    .yield {
+      position: absolute;
+      width: 100px;
+      height: 50px;
+      margin-top: 0px;
+      margin-left: 0px;
+      z-index: 999;
+      .popover{
+        span{
+          font-size: 20px;
+        }
+      }
+      .number{
+        font-size: 24px;
+      }
+      button {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        font-size: 12px;
+      }
+    }
   }
   //>>>>>>>>>>>>>>>>>>>
-  .flip-dowm { 
-    display: inline-block; 
+  .flip-dowm {
+    display: inline-block;
     position: relative;
-    width:70%;
-    height:130px;
-    margin-top:66px;
-    line-height: 100px; 
+    width: 70%;
+    height: 130px;
+    margin-top: 66px;
+    line-height: 100px;
     // border: 5px solid1px#857857;
-     border-radius: 10px;//圆角
+    border-radius: 10px; //圆角
     //  background: #fff; //背景
-     font-size: 66px; 
-     color: #fff; 
-     box-shadow: 006pxrgba(0, 0, 0,.5); 
-     text-align: center; font-family: "Helvetica Neue";}
-
+    font-size: 66px;
+    color: #fff;
+    box-shadow: 006pxrgba (0, 0, 0, 0.5);
+    text-align: center;
+    font-family: 'Helvetica Neue';
+  }
 
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   .filp {
@@ -348,11 +384,11 @@ export default {
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      .number{
+      .number {
         position: absolute;
         width: 200px;
         height: 50px;
-        margin-top:4px;
+        margin-top: 4px;
         margin-left: 45px;
       }
     }
@@ -375,11 +411,11 @@ export default {
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      .number{
+      .number {
         position: absolute;
         width: 200px;
         height: 50px;
-        margin-top:4px;
+        margin-top: 4px;
         margin-left: 50px;
       }
     }
@@ -402,11 +438,11 @@ export default {
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      .number{
+      .number {
         position: absolute;
         width: 200px;
         height: 50px;
-        margin-top:4px;
+        margin-top: 4px;
         margin-left: 40px;
       }
     }
@@ -429,11 +465,11 @@ export default {
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      .number{
+      .number {
         position: absolute;
         width: 200px;
         height: 50px;
-        margin-top:4px;
+        margin-top: 4px;
         margin-left: 40px;
       }
     }

@@ -98,7 +98,7 @@ export default {
       find: true,
       findCenter: true,
       arrHomeData: {
-        homeName: '年度销量（台）:',
+        homeName: '净利润（元）:',
         homeData: 458704071,
       },
     }
@@ -197,10 +197,9 @@ $absolute: absolute;
     .clock {
       position: absolute;
       width: 320px;
-      height: 80px;
-      margin-top: 10px;
-      margin-right: 20px;
-      // border: solid 1px springgreen;
+      height: 30px;
+      margin-top: 15px;
+      margin-left: 130px;
       right: 0%;
       z-index: 99;
     }

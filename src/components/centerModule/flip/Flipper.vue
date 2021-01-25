@@ -183,7 +183,7 @@ export default {
 .M-Flipper.up.go .front:after {
   transform-origin: 50% 0;
   animation: frontFlipUp 0.6s ease-in-out both;
-  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 6px rgba(230, 187, 187, 0.3);
   backface-visibility: hidden;
 }
 
@@ -231,15 +231,6 @@ export default {
   }
 }
 
-.M-Flipper .xiao:before,
-.M-Flipper .xiao:after {
-  content: '销';
-}
-
-.M-Flipper .liang:before,
-.M-Flipper .liang:after {
-  content: '量';
-}
 
 .M-Flipper .number0:before,
 .M-Flipper .number0:after {
