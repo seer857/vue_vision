@@ -394,7 +394,7 @@ methods: {
 //---------------[让图表动态显示]---------------------------------
 
  //-------------------------------------------------
-      myChart.setOption(option1);
+     myChart.setOption(option1);
      myChart2.setOption(option2);   
      myChart3.setOption(option3);  
     
