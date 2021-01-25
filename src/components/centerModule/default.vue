@@ -2,7 +2,7 @@
   <dv-border-box-1 :color="['#1c1b55', '#a255d7']">
     <div class="sales">
       <canvas id="canvas1"></canvas>
-      <dv-decoration-9 class="proportion" dur="5" :color="['#a255d7', '#a255d7']">66%</dv-decoration-9>
+      <dv-decoration-9 class="proportion" :dur="5" :color="['#a255d7', '#a255d7']">66%</dv-decoration-9>
       <div class="filp dowm">
         <div class="digital number0">
           <h3>销售费用：</h3>
