@@ -32,12 +32,15 @@ export default {
   data() {
     return {}
   },
+  
   mounted() {
-    //this.onAssets()
-    // this.onTopic()
+    // this.defaultEcharts();
+    // this.onAssets()
+  // this.onTopic()
     //this.getTopic()
     this.rightDefEcharts()
   },
+
   methods: {
     rightDefEcharts() {
       let myChart1 = echarts.init(document.getElementById('rightDefaOne'))
@@ -365,6 +368,7 @@ export default {
       myChart3.setOption(option3)
     },
   },
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
 </script>
 
