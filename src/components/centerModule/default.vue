@@ -1,7 +1,7 @@
 <template>
   <dv-border-box-1 :color="['#1c1b55', '#a255d7']">
     <div class="sales">
-      <canvas id="canvas1"></canvas>
+      <!-- <canvas id="canvas1"></canvas> -->
       <dv-decoration-9 class="proportion" :dur="5" :color="['#a255d7', '#a255d7']">
         <div class="yield">
           <a-popover placement="bottom">
@@ -19,6 +19,7 @@
             </a-button>
           </a-popover>
         </div>
+        <canvas id="canvas1"></canvas>
       </dv-decoration-9>
 
       <!-- //>>>>>>>>>> -->
@@ -125,7 +126,7 @@ export default {
       this.onClick()
       var txt = this.arrData.name + this.arrData.data
 
-      var txtH = 100
+      var txtH = 60
       var font = 'sans-serif'
       var rayColor1 = '#90effb'
       var rayColor2 = '#6b42a6'
@@ -307,8 +308,8 @@ export default {
     position: absolute;
     width: 150px;
     height: 150px;
-    margin-top: 5px;
-    margin-left: 74%;
+    margin-top: 25px;
+    margin-left: 78%;
     color: #fff;
     font-family: myFirstFont;
     font-size: 24px;
@@ -341,7 +342,7 @@ export default {
     position: relative;
     width: 70%;
     height: 130px;
-    margin-top: 66px;
+    margin-top: 16px;
     line-height: 100px;
     // border: 5px solid1px#857857;
     border-radius: 10px; //圆角
@@ -477,15 +478,8 @@ export default {
 
   #canvas1 {
     position: absolute;
-    margin-left: -12%;
-    margin-top: -16%;
-    width: 700px;
-    height: 350px;
-  }
-  #canvas2 {
-    position: absolute;
-    margin-left: -14%;
-    margin-top: -9%;
+    margin-left: -1070px;
+    margin-top: 120px;
     width: 700px;
     height: 350px;
   }

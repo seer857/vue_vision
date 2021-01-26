@@ -3,7 +3,7 @@
  */
 <template>
   <div class="FlipClock">
-      <div class="xaioliang">
+      <div class="xiaoliang">
         <div class="digital front number0"></div>
         <div class="digital back  number1"></div>
       </div>
@@ -53,7 +53,7 @@ export default {
       this.$refs.flipperMinute1.setFront(0)
       setTimeout(()=>{
         this.$refs.flipperMinute1.flipDown(0, this.arrData[3])
-      },800)
+      },700)
       this.$refs.flipperMinute2.setFront(0)
       setTimeout(()=>{
         this.$refs.flipperMinute2.flipDown(0, this.arrData[4])
@@ -61,11 +61,11 @@ export default {
       this.$refs.flipperSecond1.setFront(0)
       setTimeout(()=>{
           this.$refs.flipperSecond1.flipDown(0,this.arrData[5])
-      },1000)
+      },1100)
       this.$refs.flipperSecond2.setFront(0)
       setTimeout(() => {//延时效果
         this.$refs.flipperSecond2.flipDown(0, this.arrData[6])
-      }, 1100)
+      }, 1500)
     },
   },
   mounted() {
@@ -75,7 +75,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .FlipClock {
   margin-left: -3%;
   width: 110%;
@@ -84,7 +84,7 @@ export default {
  
 }
 /* ==========================================*/
- .xaioliang{
+ .xiaoliang{
   display: inline-block;
   position: relative;
   width: 60px;
@@ -98,9 +98,11 @@ export default {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5); 
   text-align: center;
   font-family: 'Helvetica Neue';
+  margin-left: 20px;
+  margin-top:10px;
   }
-.xaioliang .digital:before,
-.xaioliang .digital:after {
+.xiaoliang .digital:before,
+.xiaoliang .digital:after {
   content: '销';
   position: absolute;
   left: 0;
@@ -109,30 +111,30 @@ export default {
   background: rgb(57, 51, 59);
   overflow: hidden;
   box-sizing: border-box;
-   font-size:35px;
+   font-size:25px;
   line-height: 50px;
 }
-.xaioliang .digital:before {
+.xiaoliang .digital:before {
   /* 上半牌 */
   top: 0;
   bottom: 50%;
   border-radius: 10px 10px 0 0;
  border-bottom: solid 1px #666;
 }
-.xaioliang .digital:after {
+.xiaoliang .digital:after {
     /* 下半牌 */
   top: 50%;
   bottom: 0;
   border-radius: 0 0 10px 10px;
   /* line-height: 0; */
 }
- .xaioliang .number0:before,
- .xaioliang .number0:after { content: "销";}
- .xaioliang .number1:before,
- .xaioliang .number1:after { content: "量";}
+ .xiaoliang .number0:before,
+ .xiaoliang .number0:after { content: "销";}
+ .xiaoliang .number1:before,
+ .xiaoliang .number1:after { content: "量";}
 
  /*向下翻*/
- .xaioliang .front:before { z-index: 3;}
+ .xiaoliang .front:before { z-index: 3;}
  /* .xaioliang .back:after { zindex: 2;} */
  /* .xaioliang .front:after, */
  /* .xaioliang .back:before { z-index: 1;} */
