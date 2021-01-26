@@ -24,6 +24,7 @@
       </template>
       <div class="buttonCut" @click="unname"></div>
     </a-popover>
+    
     <div class="parcel-all" ref="allTier">
       <div class="first-tier">
         <FirstPic class="one" />

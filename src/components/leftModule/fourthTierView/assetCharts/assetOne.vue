@@ -16,9 +16,7 @@
                  <div id='left-echarts-three'> </div>
             </dv-border-box-10>
             
-        </div>
-         
-        
+        </div>    
 </div>
 </template>
 
@@ -538,7 +536,8 @@ methods: {
 <style lang='scss' scoped>
 .my_box{
       h1{color: antiquewhite;}
-    
+      
+
     .dv_one{
         width: 100%;
         height:300px;
@@ -546,6 +545,7 @@ methods: {
         #left-echarts-one{
         width: 100%;
         height:100%;
+        
         }
 
     }
@@ -574,6 +574,6 @@ methods: {
     //     width: 100%;
     //     height:100%; 
     // }}
-     
 }
+
 </style>

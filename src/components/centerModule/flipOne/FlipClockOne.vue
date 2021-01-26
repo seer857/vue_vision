@@ -2,13 +2,12 @@
  * 翻牌时钟
  */
 <template>
-  <div class="FlipClock">
-      <div class="xiaoliang">
-        <div class="digital front number0"></div>
+  <div class="FlipClockOne">
+      <div class="lirun">
+        <div class="digital front number0"></div> 
         <div class="digital back  number1"></div>
       </div>
       <em>:</em>
-      <!-- <Flipper ref="flipperFirst" /> -->
     <Flipper ref="flipperFirst" />
     <Flipper ref="flipperHour1" />
     <Flipper ref="flipperHour2" />
@@ -16,22 +15,22 @@
     <Flipper ref="flipperMinute2" />
     <Flipper ref="flipperSecond1" />
     <Flipper ref="flipperSecond2" />
-      <div class="tai"> <div class="digital "></div></div>
+      <div class="yuan"> <div class="digital "></div></div>
   </div>
 </template>
 
 <script>
-import Flipper from '../flip/Flipper'
+import Flipper from '../flipOne/FlipperOne'
 
 export default {
-  name: 'FlipClock',
+  name: 'FlipClockOne',
   data() {
     return {
       timer: null,
       // flipObjs: [
       //   {number0: 2,number1: 4,number2: 5,number3: 6,
       // number4: 7, number5: 8, number6: 9,} ],
-      arrData:['2','4','5','6','7','8','9'],
+      arrDataOne:['5','5','5','1','8','8','8'],
     }
   },
   components: {
@@ -41,32 +40,32 @@ export default {
     getNumber() {
       this.$refs.flipperFirst.setFront(0)//翻牌器前数字
       setTimeout(()=>{
-          this.$refs.flipperFirst.flipDown(0, this.arrData[0])//翻牌后数字
+          this.$refs.flipperFirst.flipDown(0, this.arrDataOne[0])//翻牌后数字
       },500)
       this.$refs.flipperHour1.setFront(0)
       setTimeout(() => {
-          this.$refs.flipperHour1.flipDown(0, this.arrData[1])
+          this.$refs.flipperHour1.flipDown(0, this.arrDataOne[1])
       }, 600);
       this.$refs.flipperHour2.setFront(0)
       setTimeout(()=>{
-        this.$refs.flipperHour2.flipDown(0, this.arrData[2])
+        this.$refs.flipperHour2.flipDown(0, this.arrDataOne[2])
       },700)
       this.$refs.flipperMinute1.setFront(0)
       setTimeout(()=>{
-        this.$refs.flipperMinute1.flipDown(0, this.arrData[3])
-      },700)
+        this.$refs.flipperMinute1.flipDown(0, this.arrDataOne[3])
+      },800)
       this.$refs.flipperMinute2.setFront(0)
       setTimeout(()=>{
-        this.$refs.flipperMinute2.flipDown(0, this.arrData[4])
+        this.$refs.flipperMinute2.flipDown(0, this.arrDataOne[4])
       },900)
       this.$refs.flipperSecond1.setFront(0)
       setTimeout(()=>{
-          this.$refs.flipperSecond1.flipDown(0,this.arrData[5])
-      },1100)
+          this.$refs.flipperSecond1.flipDown(0,this.arrDataOne[5])
+      },1000)
       this.$refs.flipperSecond2.setFront(0)
       setTimeout(() => {//延时效果
-        this.$refs.flipperSecond2.flipDown(0, this.arrData[6])
-      }, 1500)
+        this.$refs.flipperSecond2.flipDown(0, this.arrDataOne[6])
+      }, 1100)
     },
   },
   mounted() {
@@ -76,16 +75,17 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.FlipClock {
+<style>
+.FlipClockOne {
   margin-left: -3%;
   width: 110%;
   text-align: center;
+  margin-top: -3%;
   /* border: rgb(11, 43, 224) 5px solid; */
  
 }
 /* ==========================================*/
- .xiaoliang{
+ .lirun{
   display: inline-block;
   position: relative;
   width: 60px;
@@ -99,11 +99,9 @@ export default {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5); 
   text-align: center;
   font-family: 'Helvetica Neue';
-  margin-left: 20px;
-  margin-top:10px;
   }
-.xiaoliang .digital:before,
-.xiaoliang .digital:after {
+.lirun .digital:before,
+.lirun .digital:after {
   content: '销';
   position: absolute;
   left: 0;
@@ -112,34 +110,34 @@ export default {
   background: rgb(57, 51, 59);
   overflow: hidden;
   box-sizing: border-box;
-   font-size:25px;
+   font-size:35px;
   line-height: 50px;
 }
-.xiaoliang .digital:before {
+.lirun .digital:before {
   /* 上半牌 */
   top: 0;
   bottom: 50%;
   border-radius: 10px 10px 0 0;
  border-bottom: solid 1px #666;
 }
-.xiaoliang .digital:after {
+.lirun .digital:after {
     /* 下半牌 */
   top: 50%;
   bottom: 0;
   border-radius: 0 0 10px 10px;
   /* line-height: 0; */
 }
- .xiaoliang .number0:before,
- .xiaoliang .number0:after { content: "销";}
- .xiaoliang .number1:before,
- .xiaoliang .number1:after { content: "量";}
+ .lirun .number0:before,
+ .lirun .number0:after { content: "利";}
+ .lirun .number1:before,
+ .lirun .number1:after { content: "润";}
 
  /*向下翻*/
- .xiaoliang .front:before { z-index: 3;}
+ .lirun .front:before { z-index: 3;}
  /* .xaioliang .back:after { zindex: 2;} */
  /* .xaioliang .front:after, */
  /* .xaioliang .back:before { z-index: 1;} */
- .tai{
+ .yuan{
    display: inline-block;
   position: relative;
   width: 60px;
@@ -154,9 +152,9 @@ export default {
   text-align: center;
   font-family: 'Helvetica Neue';
  }
- .tai .digital:before,
-.tai .digital:after {
-  content: '台';
+ .yuan .digital:before,
+.yuan .digital:after {
+  content: '元';
   position: absolute;
   left: 0;
   right: 0;
@@ -167,7 +165,7 @@ export default {
    font-size:25px;
   line-height: 50px;
 }
-.tai .digital:before {
+.yuan .digital:before {
   /* 上半牌 */
   top: 0;
   bottom: 50%;
@@ -175,7 +173,7 @@ export default {
  border-bottom: solid 1px #666;
  line-height: 6;
 }
-.tai .digital:after {
+.yuan .digital:after {
     /* 下半牌 */
   top: 50%;
   bottom: 0;
@@ -186,7 +184,7 @@ export default {
 /* .M-Flipper {
   margin: 0 3px; 
 } */
-.FlipClock em {
+.FlipClockOne em {
   display: inline-block;
   line-height: 102px;
   font-size: 66px;

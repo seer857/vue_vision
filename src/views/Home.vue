@@ -7,19 +7,23 @@
       loop="loop"
       muted="muted"
     ></video>
-
+    
     <div class="bg" v-if="!allShow">
       <Index />
     </div>
-    <!--     <transition name="dynamicOff">
+   
+
+    <!--   <transition name="dynamicOff">
       <Loading class="load" v-if="!find" />
     </transition> -->
     <transition name="dynamicOn">
       <div class="warp" v-if="find" @click="routerBack">
         <div class="top">
           <img v-if="allShow" src="../assets/images/top_nav.png" alt />
-          <dv-decoration-1 v-if="allShow" class="decorate" />
+          <dv-decoration-1  v-if="allShow" class="decorate"  />
+            <transition name="tranTitle">
           <img class="second" v-if="!allShow" src="../assets/images/top_nav2.png" alt />
+           </transition>
           <dv-decoration-10 class="top-line" :color="['#b634da','#00c2ff']" />
           <h1>
             <span>
@@ -36,7 +40,8 @@
               <div class="left" v-if="isShow && allShow">
                 <LeftModule />
               </div>
-              <div class="left" v-if="!isShow && allShow">
+              <!-- 首页左组件 -->
+              <div class="left" v-if="!isShow && allShow" >
                 <DefaultLeft />
               </div>
               <div class="center-default">
@@ -58,7 +63,8 @@
               <div class="right" v-if="isShow && allShow">
                 <RightModule />
               </div>
-              <div class="right" v-if="!isShow && allShow ">
+              <!-- 首页右组件 -->
+              <div class="right" v-if="!isShow && allShow " ref="DefaultRight">
                 <DefaultRight />
               </div>
             </section>
@@ -106,8 +112,10 @@ export default {
   },
   mounted() {
     //this.loading()
+    // this.defaultLeft()
   },
   methods: {
+  
     //--------------------------------------------
     getOneHome(oneName, oneData) {
       //获取子组件数据
@@ -185,7 +193,13 @@ $absolute: absolute;
     //background: url(../assets/images/top_nav.png) no-repeat;
     border: none;
     overflow: hidden;
-    .decorate {
+       .tranTitle-enter-active{
+       transition: opacity 1s;
+     }
+     .tranTitle-enter{
+         opacity: 0;
+     }
+    .decorate{
       position: absolute;
       margin: 10px;
       width: 200px;
@@ -239,13 +253,18 @@ $absolute: absolute;
       margin-top: 100px;
       width: 100%;
       height: 978px;
+      
     }
     .left {
       position: relative;
       width: 450px;
       height: 978px;
-      //border: 1px springgreen solid;
-      float: left;
+      // border: 1px springgreen solid;
+       float: left;
+       
+      animation: leftanimation 1s;
+      // animation-play-state:paused;
+
     }
     .center-default {
       position: absolute;
@@ -259,7 +278,8 @@ $absolute: absolute;
       margin-left: 460px;
       width: 920px;
       height: 978px;
-      // animation: domCenterMove 20s infinite linear alternate;
+     // animation: domCenterMove 20s infinite linear alternate;
+  
       .dynamicOnCenter-enter-active {
         transition: opacity 1s;
       }
@@ -280,15 +300,41 @@ $absolute: absolute;
       //border: 1px red solid;
       float: right;
       margin-right: 4px;
+      animation: rightanimation 1s;
     }
+    
   }
 }
+//>>>>>>>>>>>渐变动画>>>>>>>>>>>>>>>>
 
+@keyframes fadeIn {//从上到下
+ from {margin-top:  -2500px ;}
+    to {margin-top: 0px; }
+}
+
+@keyframes leftanimation {//从左往右
+  from {
+    left: -2000px;
+  }
+  to {
+    left: 0px;
+  }
+}
+@keyframes rightanimation {
+  from {
+    left: 2000px;
+  }
+  to {
+    left: 0px;
+  }
+}
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 @keyframes domCenterMove1 {
   0% {
     transform: scaleX(1, 1);
   }
 }
+
 @keyframes domCenterMove {
   0% {
     margin-left: 460px;
@@ -303,5 +349,6 @@ $absolute: absolute;
     margin-left: 370px;
     width: 1164px;
   }
+  
 }
 </style>
