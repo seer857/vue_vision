@@ -1,7 +1,8 @@
 <template>
   <dv-border-box-1 :color="['#1c1b55', '#a255d7']">
     <div class="sales">
-      <canvas id="canvas1"></canvas>
+    
+     
       <dv-decoration-9 class="proportion" :dur="5" :color="['#a255d7', '#a255d7']">
         <div class="yield">
           <a-popover placement="bottom">
@@ -20,90 +21,38 @@
           </a-popover>
         </div>
       </dv-decoration-9>
-
       <!-- //>>>>>>>>>> -->
       <!--翻牌的外框-->
       <div class="flip-dowm">
         <FlipClock />
+        <!-- <FlipClockOne/> -->
       </div>
-
+        <dv-border-box-12 id="canvass">
+           <canvas id="canvas1"></canvas>
+        </dv-border-box-12>
       <!-- //>>>>>>>>>> -->
-      <div class="filp dowm">
-        <!-- <div class="digital number0">
-          <h3>销售费用：</h3>
-          <dv-digital-flop :config="config1" class="number" />
-        </div>
-        <div class="digital number1">
-          <h3>管理费用：</h3>
-          <dv-digital-flop :config="config2" class="number" />
-        </div>
-        <div class="digital number2">
-          <h3>研发费用：</h3>
-          <dv-digital-flop :config="config3" class="number" />
-        </div>-->
-        <!-- <div class="digital number3">
-          <h3>净利润 ：</h3>
-          <dv-digital-flop :config="config4" class="number" />
-        </div>-->
-      </div>
+      <!-- <div class="filp dowm"> </div> -->
     </div>
 
-    <div class="profit"></div>
+    <!-- <div class="profit"></div> -->
   </dv-border-box-1>
 </template>
 
 <script>
 import Clock from '../OtherModule/clock.vue'
 import FlipClock from '../centerModule/flip/FlipClock'
-const config1 = {
-  number: [10510],
-  content: '{nt}',
-  style: {
-    fontSize: 20,
-    fill: '#A5F9F9',
-  },
-}
-const config2 = {
-  number: [105210],
-  content: '{nt}',
-  style: {
-    fontSize: 20,
-    fill: '#A5F9F9',
-  },
-}
-const config3 = {
-  number: [98510],
-  content: '{nt}',
-  style: {
-    fontSize: 20,
-    fill: '#A5F9F9',
-  },
-}
-const config4 = {
-  number: [31010],
-  content: '{nt}',
-  style: {
-    fontSize: 20,
-    fill: '#A5F9F9',
-  },
-}
+import FlipClockOne from '../centerModule/flipOne/FlipClockOne'
 
 export default {
   props: ['getHomeData'],
-  components: { Clock, FlipClock },
+  components: { Clock, FlipClock ,FlipClockOne},
   data() {
     return {
-      // data: 10000,
-      // name: '营业额（万元）：',
-
       arrData: {
         name: '',
         data: '',
       },
-      config1,
-      config2,
-      config3,
-      config4,
+
     }
   },
 
@@ -120,8 +69,6 @@ export default {
     },
     //---------------------------------------------
     fontShow() {
-      var txt = this.name + this.data
-
       this.onClick()
       var txt = this.arrData.name + this.arrData.data
 
@@ -296,7 +243,6 @@ export default {
   },
 }
 </script>
-
 <style lang="scss" scoped>
 .sales {
   position: absolute;
@@ -341,7 +287,7 @@ export default {
     position: relative;
     width: 70%;
     height: 130px;
-    margin-top: 66px;
+    margin-top: 20px;
     line-height: 100px;
     // border: 5px solid1px#857857;
     border-radius: 10px; //圆角
@@ -351,151 +297,25 @@ export default {
     box-shadow: 006pxrgba (0, 0, 0, 0.5);
     text-align: center;
     font-family: 'Helvetica Neue';
+    
   }
 
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  .filp {
-    display: inline-block;
-    position: absolute;
-    margin-top: 100px;
-    width: 100%;
-    height: 100px;
-    .digital {
-      margin-top: 55px;
-      position: absolute;
-      width: 195px;
-      height: 60px;
-    }
-    .number0 {
-      h3 {
-        font-family: myFirstFont;
-        color: #fff;
-        position: absolute;
-        margin-top: 15px;
-        margin-left: 5px;
-        font-size: 21px;
-        background-image: -webkit-gradient(
-          linear,
-          0 0,
-          0 bottom,
-          from(#8ef7fa),
-          to(#ccfbff)
-        );
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .number {
-        position: absolute;
-        width: 200px;
-        height: 50px;
-        margin-top: 4px;
-        margin-left: 45px;
-      }
-    }
-    .number1 {
-      margin-left: 25%;
-      h3 {
-        font-family: myFirstFont;
-        color: #fff;
-        position: absolute;
-        margin-top: 15px;
-        margin-left: 5px;
-        font-size: 21px;
-        background-image: -webkit-gradient(
-          linear,
-          0 0,
-          0 bottom,
-          from(#8ef7fa),
-          to(#ccfbff)
-        );
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .number {
-        position: absolute;
-        width: 200px;
-        height: 50px;
-        margin-top: 4px;
-        margin-left: 50px;
-      }
-    }
-    .number2 {
-      margin-left: 51%;
-      h3 {
-        font-family: myFirstFont;
-        color: #fff;
-        position: absolute;
-        margin-top: 15px;
-        margin-left: 5px;
-        font-size: 21px;
-        background-image: -webkit-gradient(
-          linear,
-          0 0,
-          0 bottom,
-          from(#8ef7fa),
-          to(#ccfbff)
-        );
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .number {
-        position: absolute;
-        width: 200px;
-        height: 50px;
-        margin-top: 4px;
-        margin-left: 40px;
-      }
-    }
-    .number3 {
-      margin-left: 76%;
-      h3 {
-        font-family: myFirstFont;
-        color: #fff;
-        position: absolute;
-        margin-top: 15px;
-        margin-left: 5px;
-        font-size: 21px;
-        background-image: -webkit-gradient(
-          linear,
-          0 0,
-          0 bottom,
-          from(#8ef7fa),
-          to(#ccfbff)
-        );
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .number {
-        position: absolute;
-        width: 200px;
-        height: 50px;
-        margin-top: 4px;
-        margin-left: 40px;
-      }
-    }
+  #canvass{
+   
+    float: left;
+    margin-top: -3%;
+    width: 73%;
+    height:70px;
   }
-
   #canvas1 {
     position: absolute;
     margin-left: -12%;
-    margin-top: -16%;
+    margin-top: -23%;
     width: 700px;
     height: 350px;
+    // border: yellow 1px solid;
   }
-  #canvas2 {
-    position: absolute;
-    margin-left: -14%;
-    margin-top: -9%;
-    width: 700px;
-    height: 350px;
-  }
-  .profit {
-    position: absolute;
-    width: 780px;
-    height: 100px;
-    margin-left: 20px;
-    margin-top: 120px;
-    border: yellow 1px solid;
-  }
+
 }
 </style>

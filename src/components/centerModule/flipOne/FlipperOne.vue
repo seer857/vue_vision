@@ -17,7 +17,7 @@
 
 export default {
  //props: ["msg"], //props接收
-  name: 'FlipClock',
+  name: 'FlipClockOne',
   data() {
     return {
       isFlipping: false,
@@ -77,12 +77,12 @@ export default {
     },
     //设置前牌文字
     setFront(text) {
-        // console.log(text)
+        console.log(text)
         this.frontTextFromData = text
     },
     // 设置后牌文字
     setBack(text) {
-      // console.log(text);
+      console.log(text);
         this.backTextFromData = text
     }
   },
