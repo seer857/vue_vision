@@ -282,7 +282,7 @@ export default {
       myChart2.setOption(option2)
       myChart3.setOption(option3)
       //>>>>>>>>>>>>>>>>>
-      //  echarts.connect([myChart, myChart2,myChart3]);
+       echarts.connect([myChart1, myChart2,myChart3]);
     },
   },
 }

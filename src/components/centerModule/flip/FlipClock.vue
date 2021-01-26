@@ -3,15 +3,17 @@
  */
 <template>
   <div class="FlipClock">
-    <Flipper  :msg="msg"/>
-    <Flipper ref="flipperHour1" />
+  
+     <!-- <Flipper ref="aaa" />
+     <Flipper ref="bbb" />
+     <Flipper ref="ccc" /> -->
+       <!--  -->
+    <!-- <Flipper ref="flipperHour1" />
     <Flipper ref="flipperHour2" />
-    <!-- <em>:</em> -->
     <Flipper ref="flipperMinute1" />
     <Flipper ref="flipperMinute2" />
-    <!-- <em>:</em> -->
     <Flipper ref="flipperSecond1" />
-    <Flipper ref="flipperSecond2" />
+    <Flipper ref="flipperSecond2" /> -->
 
   </div>
 </template>
@@ -25,15 +27,18 @@ export default {
     return {
       timer: null,
       flipObjs: [],
+      // myflipObjs:['a','b','c'],
+      // meflipObjs:[
+      //    {frontText:'8',backText:'9',duration:'600',flipType:'down'},
+      //     {frontText:'5',backText:'6',duration:'600'},
+      // ]
+      
     }
   },
   components: {
     Flipper
   },
   methods: {
-  //>>>>>>>>>>>>>>>>>
-
-  //>>>>>>>>>>>>>>>>>
     // 初始化数字
     init() {
       let now = new Date()
@@ -105,6 +110,13 @@ export default {
   },
   mounted() {
   //>>>>>>>>>>>>>>>>>
+  // this.meflipObjs=[
+  //   this.$refs.aaa=this.meflipObjs[0]
+  //   // this.$refs.bbb,
+  //   // this.$refs.ccc,
+  // ]
+  //   console.log(this.meflipObjs)
+  //   console.log( this.$refs.aaa)
 
   //>>>>>>>>>>>>>>>>>
     this.flipObjs = [
@@ -115,6 +127,8 @@ export default {
       this.$refs.flipperSecond1,
       this.$refs.flipperSecond2
     ]
+    //  console.log(  this.flipObjs)
+    //  console.log(this.$refs.flipperHour1)
     this.init()
     this.run()
   }

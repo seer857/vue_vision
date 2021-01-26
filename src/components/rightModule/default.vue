@@ -20,7 +20,7 @@
       <div class="title">
         <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
         <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-        <span>财经指标体系-销量与收入趋势</span>
+        <span>净利润</span>
       </div>
       <div id="rightDefaThree"></div>
     </dv-border-box-10>
@@ -47,7 +47,8 @@ export default {
       let myChart2 = echarts.init(document.getElementById('rightDefaTwo'))
       let myChart3 = echarts.init(document.getElementById('rightDefaThree'))
       // >>>>>>>>>>>>>>>>>>>>
-      let option1 = {
+      
+	  let option1 = {
         title: {
           left: 'center',
         },
@@ -97,7 +98,7 @@ export default {
 
         legend: {
           top: '90%',
-          data: ['蒸发量', '降水量', '平均温度'],
+          data: ['销售费用率', '销售人力成本率', '销售费用（不含人力成本/广宣费）率'],
           textStyle: {
             color: '#fff',
           },
@@ -156,7 +157,7 @@ export default {
         ],
         series: [
           {
-            name: '蒸发量',
+            name: '销售费用率',
             type: 'bar',
             data: [
               2.0,
@@ -175,7 +176,7 @@ export default {
             
           },
           {
-            name: '降水量',
+            name: '销售人力成本率',
             type: 'bar',
             data: [
               2.6,
@@ -193,7 +194,7 @@ export default {
             ],
           },
           {
-            name: '平均温度',
+            name: '销售费用（不含人力成本/广宣费）率',
             type: 'line',
             yAxisIndex: 1,
             data: [
@@ -333,7 +334,7 @@ export default {
                 borderWidth: 10,
               },
             },
-            data: [220, 182, 191, 134, 150, 120, 110, 125],
+            data: [120, 182, 191, 134, 150, 190, 200, 300],
             markLine: {
               symbol: ['none', 'none'], //去掉箭头
               itemStyle: {
@@ -352,7 +353,7 @@ export default {
                   label: {
                     normal: {
                       formatter: '(平均里程数) 120',
-                      padding: [-13, -20, 15, -100],
+                      padding: [-13, 20, 15, 100],
                       position: 'end',
                     },
                   },
@@ -362,13 +363,14 @@ export default {
           },
         ],
       }
-      // >>>>>>>>>>>>>>>>>>>>>
+	  
       myChart1.setOption(option1)
       myChart2.setOption(option2)
       myChart3.setOption(option3)
-    },
-  },
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	  
+	  echarts.connect([myChart1, myChart2,myChart3]);
+    }
+  }
 }
 </script>
 
