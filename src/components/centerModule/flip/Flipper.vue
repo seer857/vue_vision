@@ -16,7 +16,7 @@
 <script>
 
 export default {
-// props: ["msg"], //props接收
+ //props: ["msg"], //props接收
   name: 'FlipClock',
   data() {
     return {
@@ -67,7 +67,7 @@ export default {
         this.frontTextFromData = back
       }, this.duration)
     },
-    // 下翻牌
+    //下翻牌
     flipDown(front, back) {
       this._flip('down', front, back)
     },
@@ -75,16 +75,19 @@ export default {
     flipUp(front, back) {
       this._flip('up', front, back)
     },
-    // 设置前牌文字
+    //设置前牌文字
     setFront(text) {
+        console.log(text)
         this.frontTextFromData = text
     },
     // 设置后牌文字
     setBack(text) {
+      console.log(text);
         this.backTextFromData = text
     }
   },
   created() {
+    
       this.frontTextFromData = this.frontText
       this.backTextFromData = this.backText
   }
