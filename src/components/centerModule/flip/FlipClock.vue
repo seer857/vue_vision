@@ -3,18 +3,19 @@
  */
 <template>
   <div class="FlipClock">
-  
-     <!-- <Flipper ref="aaa" />
-     <Flipper ref="bbb" />
-     <Flipper ref="ccc" /> -->
-       <!--  -->
-    <!-- <Flipper ref="flipperHour1" />
+      <div class="xaioliang">
+        <div class="digital front number0"></div>
+        <div class="digital back  number1"></div>
+      </div>
+      <em>:</em>
+    <Flipper ref="flipperFirst" />
+    <Flipper ref="flipperHour1" />
     <Flipper ref="flipperHour2" />
     <Flipper ref="flipperMinute1" />
     <Flipper ref="flipperMinute2" />
     <Flipper ref="flipperSecond1" />
-    <Flipper ref="flipperSecond2" /> -->
-
+    <Flipper ref="flipperSecond2" />
+      <div class="tai"> <div class="digital "></div></div>
   </div>
 </template>
 
@@ -26,136 +27,167 @@ export default {
   data() {
     return {
       timer: null,
-      flipObjs: [],
-      // myflipObjs:['a','b','c'],
-      // meflipObjs:[
-      //    {frontText:'8',backText:'9',duration:'600',flipType:'down'},
-      //     {frontText:'5',backText:'6',duration:'600'},
-      // ]
-      
+      // flipObjs: [
+      //   {number0: 2,number1: 4,number2: 5,number3: 6,
+      // number4: 7, number5: 8, number6: 9,} ],
+      arrData:['2','4','5','6','7','8','9'],
     }
   },
   components: {
-    Flipper
+    Flipper,
   },
   methods: {
-    // 初始化数字
-    init() {
-      let now = new Date()
-      let nowTimeStr = this.formatDate(new Date(now.getTime()), 'hhiiss')
-       for (let i = 0; i < this.flipObjs.length; i++) {
-         this.flipObjs[i].setFront(nowTimeStr[i])
-       }
+    getNumber() {
+      this.$refs.flipperFirst.setFront(0)//翻牌器前数字
+      setTimeout(()=>{
+          this.$refs.flipperFirst.flipDown(0, this.arrData[0])//翻牌后数字
+      },500)
+      this.$refs.flipperHour1.setFront(0)
+      setTimeout(() => {
+          this.$refs.flipperHour1.flipDown(0, this.arrData[1])
+      }, 600);
+      this.$refs.flipperHour2.setFront(0)
+      setTimeout(()=>{
+        this.$refs.flipperHour2.flipDown(0, this.arrData[2])
+      },700)
+      this.$refs.flipperMinute1.setFront(0)
+      setTimeout(()=>{
+        this.$refs.flipperMinute1.flipDown(0, this.arrData[3])
+      },800)
+      this.$refs.flipperMinute2.setFront(0)
+      setTimeout(()=>{
+        this.$refs.flipperMinute2.flipDown(0, this.arrData[4])
+      },900)
+      this.$refs.flipperSecond1.setFront(0)
+      setTimeout(()=>{
+          this.$refs.flipperSecond1.flipDown(0,this.arrData[5])
+      },1000)
+      this.$refs.flipperSecond2.setFront(0)
+      setTimeout(() => {//延时效果
+        this.$refs.flipperSecond2.flipDown(0, this.arrData[6])
+      }, 1100)
     },
-    // 开始计时
-    run() {
-      this.timer = setInterval(() => {
-        // 获取当前时间
-        let now = new Date()
-        let nowTimeStr = this.formatDate(new Date(now.getTime() - 1000), 'hhiiss')
-        let nextTimeStr = this.formatDate(now, 'hhiiss')
-        for (let i = 0; i < this.flipObjs.length; i++) {
-          if (nowTimeStr[i] === nextTimeStr[i]) {
-            continue
-          }
-          this.flipObjs[i].flipDown(
-            nowTimeStr[i],
-            nextTimeStr[i]
-          )
-        }
-      }, 1000)
-    },
-    // 正则格式化日期
-    formatDate(date, dateFormat) {
-      /* 单独格式化年份，根据y的字符数量输出年份
-     * 例如：yyyy => 2019
-            yy => 19
-            y => 9
-     */
-      if (/(y+)/.test(dateFormat)) {
-        dateFormat = dateFormat.replace(
-          RegExp.$1,
-          (date.getFullYear() + '').substr(4 - RegExp.$1.length)
-        )
-      }
-      // 格式化月、日、时、分、秒
-      let o = {
-        'm+': date.getMonth() + 1,
-        'd+': date.getDate(),
-        'h+': date.getHours(),
-        'i+': date.getMinutes(),
-        's+': date.getSeconds()
-      }
-      for (let k in o) {
-        if (new RegExp(`(${k})`).test(dateFormat)) {
-          // 取出对应的值
-          let str = o[k] + ''
-          /* 根据设置的格式，输出对应的字符
-           * 例如: 早上8时，hh => 08，h => 8
-           * 但是，当数字>=10时，无论格式为一位还是多位，不做截取，这是与年份格式化不一致的地方
-           * 例如: 下午15时，hh => 15, h => 15
-           */
-          dateFormat = dateFormat.replace(
-            RegExp.$1,
-            RegExp.$1.length === 1 ? str : this.padLeftZero(str)
-          )
-        }
-      }
-      return dateFormat
-    },
-    // 日期时间补零
-    padLeftZero(str) {
-      return ('00' + str).substr(str.length)
-    }
   },
   mounted() {
-  //>>>>>>>>>>>>>>>>>
-  // this.meflipObjs=[
-  //   this.$refs.aaa=this.meflipObjs[0]
-  //   // this.$refs.bbb,
-  //   // this.$refs.ccc,
-  // ]
-  //   console.log(this.meflipObjs)
-  //   console.log( this.$refs.aaa)
-
-  //>>>>>>>>>>>>>>>>>
-    this.flipObjs = [
-      this.$refs.flipperHour1,
-      this.$refs.flipperHour2,
-      this.$refs.flipperMinute1,
-      this.$refs.flipperMinute2,
-      this.$refs.flipperSecond1,
-      this.$refs.flipperSecond2
-    ]
-    //  console.log(  this.flipObjs)
-    //  console.log(this.$refs.flipperHour1)
-    this.init()
-    this.run()
-  }
+    this.getNumber()
+      // console.log(this.number0);
+  },
 }
 </script>
 
 <style>
 .FlipClock {
-    text-align: center;
-    
+  margin-left: -3%;
+  width: 110%;
+  text-align: center;
+  /* border: rgb(11, 43, 224) 5px solid; */
+ 
 }
-.xaioliang{
-      width: 50px;
-      height: 100px;
-      /* div 左浮动 */
-      float:left; 
-     font-size:22px;
-      /* background-color: aqua; */
-    }
- .M-Flipper {
-    margin: 0 3px;
+/* ==========================================*/
+ .xaioliang{
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 100px;
+  line-height: 100px;
+  border: solid 1px #000;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 66px;
+  color: #fff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5); 
+  text-align: center;
+  font-family: 'Helvetica Neue';
+  }
+.xaioliang .digital:before,
+.xaioliang .digital:after {
+  content: '销';
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* 背景颜色 */
+  background: rgb(57, 51, 59);
+  overflow: hidden;
+  box-sizing: border-box;
+   font-size:35px;
+  line-height: 50px;
 }
+.xaioliang .digital:before {
+  /* 上半牌 */
+  top: 0;
+  bottom: 50%;
+  border-radius: 10px 10px 0 0;
+ border-bottom: solid 1px #666;
+}
+.xaioliang .digital:after {
+    /* 下半牌 */
+  top: 50%;
+  bottom: 0;
+  border-radius: 0 0 10px 10px;
+  /* line-height: 0; */
+}
+ .xaioliang .number0:before,
+ .xaioliang .number0:after { content: "销";}
+ .xaioliang .number1:before,
+ .xaioliang .number1:after { content: "量";}
+
+ /*向下翻*/
+ .xaioliang .front:before { z-index: 3;}
+ /* .xaioliang .back:after { zindex: 2;} */
+ /* .xaioliang .front:after, */
+ /* .xaioliang .back:before { z-index: 1;} */
+ .tai{
+   display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 100px;
+  line-height: 100px;
+  border: solid 1px #000;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 66px;
+  color: #fff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5); 
+  text-align: center;
+  font-family: 'Helvetica Neue';
+ }
+ .tai .digital:before,
+.tai .digital:after {
+  content: '台';
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* 背景颜色 */
+  background: rgb(57, 51, 59);
+  overflow: hidden;
+  box-sizing: border-box;
+   font-size:25px;
+  line-height: 50px;
+}
+.tai .digital:before {
+  /* 上半牌 */
+  top: 0;
+  bottom: 50%;
+  border-radius: 10px 10px 0 0;
+ border-bottom: solid 1px #666;
+ line-height: 6;
+}
+.tai .digital:after {
+    /* 下半牌 */
+  top: 50%;
+  bottom: 0;
+  border-radius: 0 0 10px 10px;
+  /* line-height: 100px; */
+}
+/* ============================== ============*/
+/* .M-Flipper {
+  margin: 0 3px; 
+} */
 .FlipClock em {
-    display: inline-block;
-    line-height: 102px;
-    font-size: 66px;
-    font-style: normal;
-    vertical-align: top;
+  display: inline-block;
+  line-height: 102px;
+  font-size: 66px;
+  font-style: normal;
+  vertical-align: top; 
 }
 </style>

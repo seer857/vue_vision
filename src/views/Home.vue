@@ -22,7 +22,7 @@
           <img class="second" v-if="!allShow" src="../assets/images/top_nav2.png" alt />
           <dv-decoration-10 class="top-line" :color="['#b634da','#00c2ff']" />
           <h1>
-            <span>爱玛集团公司数据中台架构大屏</span>
+            <span><a href="/">爱玛集团公司数据中台架构大屏</a> </span>
           </h1>
           <div class="clock">
             <Clock />
