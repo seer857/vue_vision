@@ -11,18 +11,20 @@
     <div class="bg" v-if="!allShow">
       <Index />
     </div>
-    <!--   <transition name="dynamicOff">
+    <!--     <transition name="dynamicOff">
       <Loading class="load" v-if="!find" />
-    </transition>-->
+    </transition> -->
     <transition name="dynamicOn">
       <div class="warp" v-if="find" @click="routerBack">
         <div class="top">
           <img v-if="allShow" src="../assets/images/top_nav.png" alt />
-          <dv-decoration-1  v-if="allShow" class="decorate"  />
+          <dv-decoration-1 v-if="allShow" class="decorate" />
           <img class="second" v-if="!allShow" src="../assets/images/top_nav2.png" alt />
           <dv-decoration-10 class="top-line" :color="['#b634da','#00c2ff']" />
           <h1>
-            <span><a href="/">爱玛集团公司数据中台架构大屏</a> </span>
+            <span>
+              <a href="/">爱玛集团公司数据中台架构大屏</a>
+            </span>
           </h1>
           <div class="clock">
             <Clock />
@@ -78,7 +80,6 @@ import DefaultCenter from '../components/centerModule/default.vue'
 import Clock from '../components/OtherModule/clock.vue'
 import Index from './Index.vue'
 export default {
-  
   name: 'Home',
   components: {
     CenterModule, //
@@ -184,11 +185,11 @@ $absolute: absolute;
     //background: url(../assets/images/top_nav.png) no-repeat;
     border: none;
     overflow: hidden;
-    .decorate{
+    .decorate {
       position: absolute;
-      margin:10px;
-      width:200px;
-      height:50px;
+      margin: 10px;
+      width: 200px;
+      height: 50px;
     }
     img {
       width: 100%;
@@ -258,7 +259,7 @@ $absolute: absolute;
       margin-left: 460px;
       width: 920px;
       height: 978px;
-     // animation: domCenterMove 20s infinite linear alternate;
+      // animation: domCenterMove 20s infinite linear alternate;
       .dynamicOnCenter-enter-active {
         transition: opacity 1s;
       }
