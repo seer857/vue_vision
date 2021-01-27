@@ -71,16 +71,21 @@ export default {
        oneData: 8000,
        twoName:'数栈计算引擎:',
        twoData:6666,
-     
+       arrForthOneValue:["1","9","9","9","9","9","9"],
+       arrForthTwoValue:["8","6","9","9","9","9","9"]
     }
   },
   methods: {
   //---------------获取自己组件数据G传给父组件-----------------------------
     fourGetOne(){
       this.$emit("getOneData",this.oneName,this.oneData)
+      this.$store.commit("updataForthOneValue",{two:this.arrForthOneValue})
+      console.log(this.$store.state)
     },
     fourGetTwo(){
       this.$emit("getTwoData",this.twoName,this.twoData)
+      this.$store.commit("updataForthOneValue",{two:this.arrForthTwoValue})
+      console.log(this.$store.state)
     },
 //--------------------------------------------
 

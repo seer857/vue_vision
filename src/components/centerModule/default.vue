@@ -8,14 +8,13 @@
             <template slot="title">
               <span>目标完成情况</span>
             </template>
-              <template slot="content" class="popover">
+            <template slot="content" class="popover">
               <p>财经指标</p>
               <p>运营指标</p>
               <p>运营指标</p>
             </template>
             <a-button type="link" ghost>
-              <div class="number">66%</div>
-              达成率
+              <div class="number">66%</div>达成率
             </a-button>
           </a-popover>
         </div>
@@ -28,8 +27,6 @@
         <!-- <FlipClockOne/> -->
       </div>
 
-           <canvas id="canvas1"></canvas>
-
       <!-- //>>>>>>>>>> -->
       <!-- <div class="filp dowm"> </div> -->
     </div>
@@ -41,18 +38,17 @@
 <script>
 import Clock from '../OtherModule/clock.vue'
 import FlipClock from '../centerModule/flip/FlipClock'
-import FlipClockOne from '../centerModule/flipOne/FlipClockOne'
+
 
 export default {
   props: ['getHomeData'],
-  components: { Clock, FlipClock ,FlipClockOne},
+  components: { Clock, FlipClock },
   data() {
     return {
       arrData: {
         name: '',
         data: '',
       },
-
     }
   },
 
@@ -265,12 +261,12 @@ export default {
       margin-top: 0px;
       margin-left: 0px;
       z-index: 999;
-      .popover{
-        span{
+      .popover {
+        span {
           font-size: 20px;
         }
       }
-      .number{
+      .number {
         font-size: 24px;
       }
       button {
@@ -297,19 +293,17 @@ export default {
     box-shadow: 006pxrgba (0, 0, 0, 0.5);
     text-align: center;
     font-family: 'Helvetica Neue';
-    
   }
 
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   #canvas1 {
-    position: absolute;
-    margin-left: -1070px;
+    position: relative;
     margin-top: 120px;
+    margin-left: -1070px;
     width: 700px;
     height: 350px;
     // border: yellow 1px solid;
   }
-
 }
 </style>

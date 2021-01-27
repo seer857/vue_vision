@@ -75,7 +75,6 @@ export default {
       oneData: '空',
     }
   },
-
   methods: {
     //--------------------------------------------
     //父index.vue 获取子 ThirdPic 数据
