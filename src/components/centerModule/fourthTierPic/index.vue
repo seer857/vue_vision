@@ -67,25 +67,32 @@ export default {
   },
   data() {
     return {
-       oneName: "资源盘点：" ,
-       oneData: 8000,
-       twoName:'数栈计算引擎:',
-       twoData:6666,
-       arrForthOneValue:["1","9","9","9","9","9","9"],
-       arrForthTwoValue:["8","6","9","9","9","9","9"]
+      //  oneName: "资源盘点：" ,
+      //  oneData: 8000,
+      //  twoName:'数栈计算引擎:',
+      //  twoData:6666,
+        arrFilipOne:{//资产盘点数据
+            one:['1','7','8','5','5','6','3'],
+            two:['"资"','"源"','"元"'],
+            three:["资源盘点："],
+            four:[8333333]
+        },
+      arrFilipTwo:{//研发明细
+            one:['6','5','6','3','2','1','2'],
+            two:['"研"','"发"','"元"'],
+            three:["研发明细"],
+            four:[99932222]
+        },
     }
   },
   methods: {
   //---------------获取自己组件数据G传给父组件-----------------------------
     fourGetOne(){
-      this.$emit("getOneData",this.oneName,this.oneData)
-      this.$store.commit("updataForthOneValue",{two:this.arrForthOneValue})
-      console.log(this.$store.state)
+      this.$store.commit("updataForthOneValue",{forthValues:this.arrFilipOne})
     },
     fourGetTwo(){
-      this.$emit("getTwoData",this.twoName,this.twoData)
-      this.$store.commit("updataForthOneValue",{two:this.arrForthTwoValue})
-      console.log(this.$store.state)
+     this.$store.commit("updataForthOneValue",{forthValues:this.arrFilipTwo})
+      // console.log(this.$store.state)
     },
 //--------------------------------------------
 

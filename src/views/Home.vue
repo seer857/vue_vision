@@ -11,11 +11,6 @@
     <div class="bg" v-if="!allShow">
       <Index />
     </div>
-   
-
-    <!--   <transition name="dynamicOff">
-      <Loading class="load" v-if="!find" />
-    </transition> -->
     <transition name="dynamicOn">
       <div class="warp" v-if="find" @click="routerBack">
         <div class="top">
@@ -46,7 +41,7 @@
               </div>
               <div class="center-default">
                 <!-- ------------------------------------------ -->
-                <DefaultCenter v-if="allShow" :getHomeData="arrHomeData" />
+                <DefaultCenter v-if="allShow" />
                 <!-- ------------------------------------------ -->
               </div>
               <div class="center" ref="ModuleCenter">
@@ -55,8 +50,7 @@
                   v-on:againSend="getContentShow"
                   v-on:againSendTag="getContentShowTag"
                   v-if="findCenter"
-                  @getOneDatass="getOneHome"
-                  @getTwoDatass="getTwoHome"
+                  
                 />
                 <!-- ------------------------------------------ -->
               </div>
@@ -104,31 +98,15 @@ export default {
       allShow: true,
       find: true,
       findCenter: true,
-      arrHomeData: {
-        homeName: '净利润（元）:',
-        homeData: 458704071,
-      },
+
     }
   },
   mounted() {
-    //this.loading()
-    // this.defaultLeft()
+
   },
   methods: {
   
-    //--------------------------------------------
-    getOneHome(oneName, oneData) {
-      //获取子组件数据
-      // console.log(oneName,oneData)
-      this.arrHomeData.homeName = oneName //获取子组件数据,赋值给自己
-      this.arrHomeData.homeData = oneData
-      //  console.log(this.getData.homeOneName,this.getData.homeOneData)
-    },
-    getTwoHome(oneName, oneData) {
-      this.arrHomeData.homeName = oneName //获取子组件数据,赋值给自己
-      this.arrHomeData.homeData = oneData
-    },
-    //--------------------------------------------
+
     loading() {
       setTimeout(() => {
         this.find = !this.find

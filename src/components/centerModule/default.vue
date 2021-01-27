@@ -41,7 +41,7 @@ import FlipClock from '../centerModule/flip/FlipClock'
 
 
 export default {
-  props: ['getHomeData'],
+  // props: ['getHomeData'],
   components: { Clock, FlipClock },
   data() {
     return {
@@ -54,20 +54,10 @@ export default {
 
   mounted() {
     this.fontShow()
-    this.onClick()
   },
   methods: {
-    //---------------------------------------------
-    onClick() {
-      this.arrData.name = this.getHomeData.homeName
-      this.arrData.data = this.getHomeData.homeData
-      // console.log(this.arrData)
-    },
-    //---------------------------------------------
     fontShow() {
-      this.onClick()
-      var txt = this.arrData.name + this.arrData.data
-
+      var txt =  this.$store.state.forthValues.dataname+ this.$store.state.forthValues.datasu
       var txtH = 60
       var font = 'sans-serif'
       var rayColor1 = '#90effb'
