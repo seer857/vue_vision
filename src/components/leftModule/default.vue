@@ -301,7 +301,7 @@ for (var i = 0; i < lineargroup.length; i++) {
                     },
                     {
                       offset: 0,
-                      color: '#FF82A9', // 100% 处的颜色
+                      color: '#7A57D1', // 100% 处的颜色
                     },
                   ],
                   false
@@ -456,11 +456,11 @@ for (var i = 0; i < lineargroup.length; i++) {
                   [
                     {
                       offset: 0,
-                      color: '#02D6EA',
+                      color: '#7A57D1',
                     },
                     {
                       offset: 1,
-                      color: '#02D6EA',
+                      color: '#7A57D1',
                     },
                   ],
                   false
@@ -494,11 +494,11 @@ for (var i = 0; i < lineargroup.length; i++) {
                     {
                       //第一节下面
                       offset: 0,
-                      color: '#057DFE',
+                      color: '#ffb6b9',
                     },
                     {
                       offset: 1,
-                      color: '#02D7EA',
+                      color: '#7A57D1',
                     },
                   ],
                 },
@@ -526,11 +526,11 @@ for (var i = 0; i < lineargroup.length; i++) {
                   [
                     {
                       offset: 0,
-                      color: '#50A7FF',
+                      color: '#7A57D1',
                     },
                     {
                       offset: 1,
-                      color: '#02D6EA',
+                      color: '#ffb6b9',
                     },
                   ],
                   false

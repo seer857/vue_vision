@@ -87,7 +87,8 @@ export default {
         observeParents: true, //修改swiper的父元素时，自动初始化swiper
         loop: true,
         autoplay: {
-          delay: 5000,
+          disableOnInteraction:true,
+          delay: 7000,
         },
         slidesPerView: 1,
         spaceBetween: 0,
@@ -137,17 +138,14 @@ export default {
 
         legend: {
           top: '90%',
-          data: [
-            '销量',
-            '收入',
-            '趋势',
-          ],
+          data: ['销量', '收入', '趋势'],
           textStyle: {
             color: '#fff',
           },
         },
-        color: ['#A94CAF', '#ffb6b9', '#E7475E'],
-        axisLabel: {//左y轴
+        color: ['#f9bcdd', '#fff1ac', '#E7475E'],
+        axisLabel: {
+          //左y轴
           margin: 10,
           color: '#e2e9ff',
           textStyle: {
@@ -178,7 +176,6 @@ export default {
         ],
         yAxis: [
           {
-            
             type: 'value',
             name: '销量',
             min: 0,
@@ -191,9 +188,9 @@ export default {
               //网格线
               show: false,
             },
-            splitLine:{
-              show:false
-            }
+            splitLine: {
+              show: false,
+            },
           },
           {
             type: 'value',
@@ -208,9 +205,9 @@ export default {
               //网格线
               show: false,
             },
-            splitLine:{
-              show:false
-            }
+            splitLine: {
+              show: false,
+            },
           },
         ],
         series: [
@@ -274,68 +271,79 @@ export default {
       // >>>>>>>>>>>>>>>>>>>>>>..
       let option3 = {
         tooltip: {
-         trigger: 'item',
-     },
-     legend: {
-       top: '90%',
-        //  right: 30,
-         textStyle: {
-             color: '#fff',
-         },
-     },
-     xAxis: [{
-         type: 'category',
-         axisLine: {
-             lineStyle: {
-                 color: '#fff'
-             }
-         },
-         axisLabel: {
-             fontSize:12
-         },
-         data: ['2016', '2017', '2018', '2019', '2020', '2021'],
-     }],
-     yAxis: [{
-         type: 'value',
-         min: 0,
-         splitLine: {
-            show: false,
-             lineStyle: {
-                 color: '#fff'
-             }
-         },
-         splitNumber: 5,
-         axisLine: {
-             show: false
-         },
-         axisTick: {
-             show: false
-         },
-         axisLabel: {
-             fontSize: 14,
-             color: '#fff'
-         },
+          trigger: 'axis',
+          axisPointer: {
+            type: 'cross',
+            crossStyle: {
+              color: '#fff',
+            },
+          },
+        },
 
-            data: ['01', '02', '03', '04', '05', '06', '07', '08'],
+        legend: {
+          top: '90%',
+          data: ['销量', '利润', '利润率'],
+          textStyle: {
+            color: '#fff',
+          },
+        },
+        color: ['#50C1E9', '#7A57D1', '#E7475E'],
+        axisLabel: {
+          //左y轴
+          margin: 10,
+          color: '#e2e9ff',
+          textStyle: {
+            fontSize: 12,
+          },
+        },
+        xAxis: [
+          {
+            type: 'category',
+            data: [
+              '系列1',
+              '系列2',
+              '系列3',
+              '系列4',
+              '系列5',
+              '系列6',
+              '系列7',
+
+            ],
+            axisPointer: {
+              type: 'shadow',
+            },
           },
         ],
         yAxis: [
           {
             type: 'value',
-            axisTick: {
+            name: '销量',
+            min: 0,
+            max: 88,
+            interval: 10,
+            axisLabel: {
+              formatter: '{value} 万台',
+            },
+            splitLine: {
+              //网格线
               show: false,
             },
-            axisLine: {
-              lineStyle: {
-                color: '#2867a8',
-              },
+            splitLine: {
+              show: false,
             },
+          },
+          {
+            type: 'value',
+            name: '库存',
+            min: 0,
+            max: 8888,
+            interval: 1000,
             axisLabel: {
-              margin: 10,
-              textStyle: {
-                fontSize: 12,
-                color: '#fff',
-              },
+              formatter: '{value} 万辆',
+            },
+            splitLine: {
+              //网格线
+              show: false,
             },
             splitLine: {
               show: false,
@@ -344,94 +352,65 @@ export default {
         ],
         series: [
           {
-            name: '净利润',
+            name: '销量',
+            type: 'bar',
+            data: [
+              2.6,
+              4.9,
+              7.0,
+              23.2,
+              25.6,
+              76.7,
+              60.6,
+              70.2,
+              32.6,
+              20.0,
+              6.4,
+              3.3,
+            ],
+          },
+          {
+            name: '利润',
+            type: 'bar',
+            data: [
+              6.2,
+              5.9,
+              9.0,
+              26.4,
+              28.7,
+              70.7,
+              80.6,
+              60.2,
+              48.7,
+              18.8,
+              6.0,
+              2.3,
+            ],
+          },
+          {
+            name: '利润率',
             type: 'line',
-            smooth: true,
-            symbol: 'circle',
-            symbolSize: 5,
-            showSymbol: false,
-            lineStyle: {
-              normal: {
-                width: 3,
-              },
-            },
-            areaStyle: {
-              normal: {
-                color: new echarts.graphic.LinearGradient(
-                  0,
-                  0,
-                  1,
-                  0,
-                  [
-                    {
-                      offset: 0,
-                      color: 'rgba(16,97,204, 0.3)',
-                    },
-                    {
-                      offset: 0.8,
-                      color: 'rgba(17,235,210, 0)',
-                    },
-                  ],
-                  false
-                ),
-                shadowColor: 'rgba(0, 0, 0, 0.1)',
-                shadowBlur: 10,
-              },
-            },
-            itemStyle: {
-              normal: {
-                color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-                  {
-                    offset: 0,
-                    color: 'rgba(16,97,204,1)',
-                  },
-                  {
-                    offset: 1,
-                    color: 'rgba(17,235,210,1)',
-                  },
-                ]),
-              },
-              emphasis: {
-                color: 'rgb(0,196,132)',
-                borderColor: 'rgba(0,196,132,0.2)',
-                extraCssText: 'box-shadow: 8px 8px 8px rgba(0, 0, 0, 1);',
-                borderWidth: 10,
-              },
-            },
-            data: [120, 182, 191, 134, 150, 190, 200, 300],
-            markLine: {
-              symbol: ['none', 'none'], //去掉箭头
-              itemStyle: {
-                normal: {
-                  lineStyle: {
-                    type: 'dashed',
-                    color: '#0599de',
-                    width: 1,
-                  },
-                },
-              },
-              data: [
-                {
-                  name: 'Y 轴值为 80 的水平线',
-                  yAxis: 120,
-                  label: {
-                    normal: {
-                      formatter: '(平均里程数) 120',
-                      padding: [-13, 20, 15, 100],
-                      position: 'end',
-                    },
-                  },
-                },
-              ],
-            },
+            yAxisIndex: 1,
+            data: [
+              363.6,
+              455.2,
+              555.3,
+              2844.5,
+              545.3,
+              3366.2,
+              869.3,
+              4544.4,
+              787.0,
+              320.5,
+              880.0,
+              453.2,
+            ],
           },
         ],
       }
 
       myChart2.setOption(option2)
       myChart3.setOption(option3)
-
-      echarts.connect([myChart2, myChart3])
     },
   },
 }
@@ -515,9 +494,9 @@ export default {
     }
     #rightDefaThree {
       position: absolute;
-      margin-top: 50px;
+      margin-top: 10px;
       width: 100%;
-      height: 80%;
+      height: 100%;
     }
   }
 }
