@@ -13,8 +13,20 @@
           <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
           <span>首页-2021年期间费用占比</span>
         </div>
-        <div id="rightDefaOne"></div>
       </a-popover>
+      <swiper :options="SwiperOption" ref="swiperOne">
+        <swiper-slide>
+          <ChartsOne />
+        </swiper-slide>
+        <swiper-slide>
+          <ChartsTwo />
+        </swiper-slide>
+        <swiper-slide>
+          <ChartsThree />
+        </swiper-slide>
+      </swiper>
+      <div class="swiper-button-prev" @click="prev"></div>
+      <div class="swiper-button-next" @click="next"></div>
     </dv-border-box-10>
     <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content two">
       <a-popover placement="leftTop">
@@ -29,9 +41,8 @@
           <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
           <span>首页-销量与收入趋势</span>
         </div>
-         <div id="rightDefaTwo"></div>
+        <div id="rightDefaTwo"></div>
       </a-popover>
-      
     </dv-border-box-10>
     <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content three">
       <a-popover placement="leftBottom">
@@ -53,9 +64,40 @@
 </template>
 
 <script>
+// import "swiper/dist/css/swiper.css";
+import 'swiper/swiper-bundle.css'
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import Swiper2, {Autoplay} from 'swiper';
+Swiper2.use([Autoplay]);
+import ChartsOne from './defaultCharts/ChartsOne.vue'
+import ChartsTwo from './defaultCharts/ChartsTwo.vue'
+import ChartsThree from './defaultCharts/ChartsThree.vue'
 export default {
+  components: {
+    Swiper,
+    SwiperSlide,
+    ChartsOne,
+    ChartsTwo,
+    ChartsThree,
+  },
   data() {
-    return {}
+    return {
+      SwiperOption: {
+        observer: true, //修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true, //修改swiper的父元素时，自动初始化swiper
+        loop: true,
+        autoplay: {
+          
+          delay: 5000,
+        },
+        slidesPerView: 1,
+        spaceBetween: 0,
+        navigation: {
+          nextEl: '.swiper-button-prev',
+          prevEl: '.swiper-button-next',
+        },
+      },
+    }
   },
 
   mounted() {
@@ -67,48 +109,21 @@ export default {
   },
 
   methods: {
+    prev() {
+      this.$refs.swiperOne.$swiper.slidePrev()
+    },
+    next() {
+      this.$refs.swiperOne.$swiper.slideNext()
+    },
+    onSwiper(swiper) {
+      console.log(swiper)
+    },
+    onSlideChange() {
+      console.log('slide change')
+    },
     rightDefEcharts() {
-      let myChart1 = echarts.init(document.getElementById('rightDefaOne'))
       let myChart2 = echarts.init(document.getElementById('rightDefaTwo'))
       let myChart3 = echarts.init(document.getElementById('rightDefaThree'))
-      // >>>>>>>>>>>>>>>>>>>>
-
-      let option1 = {
-        title: {
-          left: 'center',
-        },
-        tooltip: {
-          trigger: 'item',
-        },
-        legend: {
-          orient: 'vertical',
-          top: '5%',
-          right: '8%',
-          textStyle: {
-            color: ['#5BE7C4', '#50C1E9', '#7A57D1'],
-          },
-        },
-        color: ['#5BE7C4', '#50C1E9', '#7A57D1'],
-        series: [
-          {
-            name: '访问来源',
-            type: 'pie',
-            radius: '50%',
-            data: [
-              { value: 1048, name: '研发费用' },
-              { value: 735, name: '销售费用' },
-              { value: 580, name: '管理费用' },
-            ],
-            emphasis: {
-              itemStyle: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(10, 0, 0, 5)',
-              },
-            },
-          },
-        ],
-      }
       // >>>>>>>>>>>>>>>>>>>>
       let option2 = {
         tooltip: {
@@ -392,17 +407,42 @@ export default {
         ],
       }
 
-      myChart1.setOption(option1)
       myChart2.setOption(option2)
       myChart3.setOption(option3)
 
-      echarts.connect([myChart1, myChart2, myChart3])
+      echarts.connect([myChart2, myChart3])
     },
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.swiper-container {
+  position: absolute;
+  margin-top: 40px;
+  width: 535px;
+  height: 260px;
+}
+.swiper-button-prev {
+  position: absolute;
+  margin-top: 30px;
+  width: 40px;
+  height: 100px;
+  color: #a255d7;
+}
+.swiper-button-next {
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 493px;
+  width: 40px;
+  height: 100px;
+  color: #a255d7;
+
+}
+.swiper-button-prev,
+.swiper-button-next {
+  top: 90px;
+}
 .default-right {
   width: 119%;
   height: 100%;

@@ -4,7 +4,7 @@
       <div class="title">
         <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
         <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-        <span>财经指标体系-历年来研发费用统计图</span>
+        <span>库存仓库</span>
       </div>
       <div id="leftDefaOne"></div>
     </dv-border-box-10>
@@ -27,7 +27,13 @@
   </div>
 </template>
 <script>
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+
 export default {
+     components: {
+      Swiper,
+      SwiperSlide,
+    },
   data() {
     return {}
   },
@@ -486,6 +492,7 @@ let option3 = {
 </script>
 
 <style lang="scss" scoped>
+
 $color: #fff;
 .default-left {
   width: 100%;
