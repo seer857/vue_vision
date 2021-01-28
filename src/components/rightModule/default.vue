@@ -46,9 +46,50 @@ export default {
       let myChart1 = echarts.init(document.getElementById('rightDefaOne'))
       let myChart2 = echarts.init(document.getElementById('rightDefaTwo'))
       let myChart3 = echarts.init(document.getElementById('rightDefaThree'))
-      // >>>>>>>>>>>>>>>>>>>>
+      let colors3 = [{
+     type: 'linear',
+     x: 0,
+     x2: 0,
+     y: 0,
+     y2: 1,
+     colorStops: [{
+         offset: 0,
+         color: '#28f0f5'
+     }, {
+         offset: 0.5,
+         color: '#16abaf'
+     }, {
+         offset: 0.5,
+         color: '#16abaf'
+     }, {
+         offset: 1,
+         color: '#077175'
+     }]
+ }, {
+     type: 'linear',
+     x: 0,
+     x2: 0,
+     y: 0,
+     y2: 1,
+     colorStops: [{
+         offset: 0,
+         color: '#0172e2'
+     }, {
+         offset: 0.5,
+         color: '#0656c6'
+     }, {
+         offset: 0.5,
+         color: '#0656c6'
+     }, {
+         offset: 1,
+         color: '#0f299a'
+     }]
+ }];
+let barWidth = 25;
+//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>
+   
       
-	  let option1 = {
+let option1 = {
         title: {
           left: 'center',
         },
@@ -83,9 +124,9 @@ export default {
             },
           },
         ],
-      }
-      // >>>>>>>>>>>>>>>>>>>>
-      let option2 = {
+}
+// >>>>>>>>>>>>>>>>>>>>
+ let option2 = {
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -108,7 +149,7 @@ export default {
           margin: 10,
           color: '#e2e9ff',
           textStyle: {
-            fontSize: 14,
+            fontSize: 12,
           },
         },
         xAxis: [
@@ -136,22 +177,22 @@ export default {
         yAxis: [
           {
             type: 'value',
-            name: '水量',
+            name: '销量',
             min: 0,
-            max: 250,
-            interval: 50,
+            max: 88,
+            interval: 10,
             axisLabel: {
-              formatter: '{value} ml',
+              formatter: '{value} 万元',
             },
           },
           {
             type: 'value',
-            name: '温度',
+            name: '库存',
             min: 0,
-            max: 25,
-            interval: 5,
+            max: 8888,
+            interval: 1000,
             axisLabel: {
-              formatter: '{value} °C',
+              formatter: '{value} 万台',
             },
           },
         ],
@@ -160,14 +201,14 @@ export default {
             name: '销售费用率',
             type: 'bar',
             data: [
-              2.0,
+             2.6,
               4.9,
               7.0,
               23.2,
               25.6,
               76.7,
-              135.6,
-              162.2,
+              60.6,
+              70.2,
               32.6,
               20.0,
               6.4,
@@ -179,14 +220,14 @@ export default {
             name: '销售人力成本率',
             type: 'bar',
             data: [
-              2.6,
+            6.2,
               5.9,
               9.0,
               26.4,
               28.7,
               70.7,
-              175.6,
-              182.2,
+              80.6,
+              60.2,
               48.7,
               18.8,
               6.0,
@@ -198,171 +239,154 @@ export default {
             type: 'line',
             yAxisIndex: 1,
             data: [
-              2.0,
-              2.2,
-              3.3,
-              4.5,
-              6.3,
-              10.2,
-              20.3,
-              23.4,
-              23.0,
-              16.5,
-              12.0,
-              6.2,
+              363.6,
+              455.2,
+              555.3,
+              2844.5,
+              545.3,
+              3366.2,
+              869.3,
+              4544.4,
+              787.0,
+              320.5,
+              880.0,
+              453.2,
             ],
           },
         ],
-      }
-      // >>>>>>>>>>>>>>>>>>>>>>..
-      let option3 = {
-        title: {
-          left: 'center',
-          textStyle: {
-            fontSize: 20,
-            color: 'rgba(249, 249, 249, 1)',
-          },
-        },
+}
+// >>>>>>>>>>>>>>>>>>>>>>..
+ let option3 = {
         tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'none',
-          },
-        },
-        grid: {
-          left: '10',
-          right: '15',
-          bottom: '5',
-          top: '10',
-          containLabel: true,
-        },
-        xAxis: [
-          {
-            type: 'category',
-            boundaryGap: false,
-            axisLine: {
-              lineStyle: {
-                color: '#2867a8',
-              },
-            },
-            axisLabel: {
-              textStyle: {
-                fontSize: 12,
-                color: '#fff',
-              },
-            },
+         trigger: 'item',
+     },
+     legend: {
+       top: '90%',
+        //  right: 30,
+         textStyle: {
+             color: '#fff',
+         },
+     },
+     xAxis: [{
+         type: 'category',
+         axisLine: {
+             lineStyle: {
+                 color: '#fff'
+             }
+         },
+         axisLabel: {
+             fontSize: 14
+         },
+         data: ['2016', '2017', '2018', '2019', '2020', '2021'],
+     }],
+     yAxis: [{
+         type: 'value',
+         min: 0,
+         splitLine: {
+             lineStyle: {
+                 color: '#fff'
+             }
+         },
+         splitNumber: 5,
+         axisLine: {
+             show: false
+         },
+         axisTick: {
+             show: false
+         },
+         axisLabel: {
+             fontSize: 14,
+             color: '#fff'
+         },
 
-            data: ['01', '02', '03', '04', '05', '06', '07', '08'],
-          },
-        ],
-        yAxis: [
-          {
-            type: 'value',
-            axisTick: {
-              show: false,
-            },
-            axisLine: {
-              lineStyle: {
-                color: '#2867a8',
-              },
-            },
-            axisLabel: {
-              margin: 10,
-              textStyle: {
-                fontSize: 12,
-                color: '#fff',
-              },
-            },
-            splitLine: {
-              show: false,
-            },
-          },
-        ],
-        series: [
-          {
-            name: '示例',
-            type: 'line',
-            smooth: true,
-            symbol: 'circle',
-            symbolSize: 5,
-            showSymbol: false,
-            lineStyle: {
-              normal: {
-                width: 3,
-              },
-            },
-            areaStyle: {
-              normal: {
-                color: new echarts.graphic.LinearGradient(
-                  0,
-                  0,
-                  1,
-                  0,
-                  [
-                    {
-                      offset: 0,
-                      color: 'rgba(16,97,204, 0.3)',
-                    },
-                    {
-                      offset: 0.8,
-                      color: 'rgba(17,235,210, 0)',
-                    },
-                  ],
-                  false
-                ),
-                shadowColor: 'rgba(0, 0, 0, 0.1)',
-                shadowBlur: 10,
-              },
-            },
-            itemStyle: {
-              normal: {
-                color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-                  {
-                    offset: 0,
-                    color: 'rgba(16,97,204,1)',
-                  },
-                  {
-                    offset: 1,
-                    color: 'rgba(17,235,210,1)',
-                  },
-                ]),
-              },
-              emphasis: {
-                color: 'rgb(0,196,132)',
-                borderColor: 'rgba(0,196,132,0.2)',
-                extraCssText: 'box-shadow: 8px 8px 8px rgba(0, 0, 0, 1);',
-                borderWidth: 10,
-              },
-            },
-            data: [120, 182, 191, 134, 150, 190, 200, 300],
-            markLine: {
-              symbol: ['none', 'none'], //去掉箭头
-              itemStyle: {
-                normal: {
-                  lineStyle: {
-                    type: 'dashed',
-                    color: '#0599de',
-                    width: 1,
-                  },
-                },
-              },
-              data: [
-                {
-                  name: 'Y 轴值为 80 的水平线',
-                  yAxis: 120,
-                  label: {
-                    normal: {
-                      formatter: '(平均里程数) 120',
-                      padding: [-13, 20, 15, 100],
-                      position: 'end',
-                    },
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      }
+     }, {
+         type: 'value',
+         splitLine: {
+             show: false
+         },
+         axisLine: {
+             show: false
+         },
+         axisTick: {
+             show: false
+         },
+         axisLabel: {
+             fontSize: 14,
+             color: '#fff'
+         }
+     }],
+     series: [{
+             z: 1,
+             name: '销量',
+             type: 'bar',
+             barWidth: barWidth,
+             data: [20, 9, 37, 23, 25, 67],
+             itemStyle: {
+                 normal: {
+                     color: colors3[0]
+                 },
+             }
+         }, {
+             z: 3,
+             type: 'pictorialBar',
+             symbolPosition: 'end',
+             data: [20, 9, 37, 23, 25, 67],
+             symbol: 'diamond',
+             symbolOffset: [-12.5, '-50%'],
+             symbolSize: [barWidth - 4, (10 * (barWidth - 4)) / barWidth],
+             itemStyle: {
+                 normal: {
+                     borderColor: '#12bac1',
+                     borderWidth: 2,
+                     color: '#12bac1'
+                 }
+             },
+         },
+         {
+             z: 1,
+             name: '利润',
+             type: 'bar',
+             barGap: 0,
+             barWidth: barWidth,
+             data: [16, 59, 40, 24, 27, 77],
+             itemStyle: {
+                 normal: {
+                     color: colors3[1]
+                 }
+             }
+         },
+         {
+             z: 3,
+             type: 'pictorialBar',
+             symbolPosition: 'end',
+             data: [16, 59, 40, 24, 27, 77],
+             symbol: 'diamond',
+             symbolOffset: [12.5, '-50%'],
+             symbolSize: [barWidth - 4, (10 * (barWidth - 4)) / barWidth],
+             itemStyle: {
+                 normal: {
+                     borderColor: '#319cf1',
+                     borderWidth: 2,
+                     color: '#319cf1'
+                 }
+             },
+         },
+         {
+             name: '平均利润率',
+             type: 'line',
+             yAxisIndex: 1,
+             symbol: 'circle',
+             itemStyle: {
+                 color: '#a45cc9',
+             },
+             lineStyle: {
+                 color: '#a45cc9',
+                 width: 3,
+             },
+             data: [30, 42, 63, 75, 63, 120]
+         }
+     ]
+}
 	  
       myChart1.setOption(option1)
       myChart2.setOption(option2)

@@ -26,6 +26,7 @@
 <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->      
       <router-link :to="{name:'buyer'}">
         <div
+          @click="fourGetThree"
           class="box-three"
           @mouseenter="boxthreeActive"
           @mouseleave="removeboxthree"
@@ -37,13 +38,17 @@
       </router-link>
 
       <router-link :to="{name:'market'}">
-        <div class="box-four" @mouseenter="boxfourActive" @mouseleave="removeboxfour" ref="boxfour">
+        <div class="box-four" 
+          @click="fourGetFour"
+        @mouseenter="boxfourActive" @mouseleave="removeboxfour" ref="boxfour">
           <span>营销分析</span>
           <div class="cover-four"></div>
         </div>
       </router-link>
       <router-link :to="{name:'brand'}">
-        <div class="box-five" @mouseenter="boxfivActive" @mouseleave="removeboxfiv" ref="boxfiv">
+        <div class="box-five" 
+          @click="fourGetFive"
+        @mouseenter="boxfivActive" @mouseleave="removeboxfiv" ref="boxfiv">
           <span>品质运营</span>
           <div class="cover-five"></div>
         </div>
@@ -83,6 +88,24 @@ export default {
             three:["研发明细"],
             four:[99932222]
         },
+         arrFilipThree:{//采购计划
+            one:['8','9','6','5','2','5','2'],
+            two:['"采"','"购"','"件"'],
+            three:["采购计划"],
+            four:[56565878]
+        },
+        arrFilipFour:{//营销分析
+            one:['7','2','4','5','2','1','2'],
+            two:['"营"','"销"','"元"'],
+            three:["营销分析"],
+            four:[3536889]
+        },
+        arrFilipFive:{//品质运营
+            one:['8','8','7','3','2','1','2'],
+            two:['"运"','"营"','"元"'],
+            three:["品质运营"],
+            four:[5866869]
+        },
     }
   },
   methods: {
@@ -92,6 +115,18 @@ export default {
     },
     fourGetTwo(){
      this.$store.commit("updataForthOneValue",{forthValues:this.arrFilipTwo})
+      // console.log(this.$store.state)
+    },
+     fourGetThree(){
+     this.$store.commit("updataForthOneValue",{forthValues:this.arrFilipThree})
+      // console.log(this.$store.state)
+    },
+     fourGetFour(){
+     this.$store.commit("updataForthOneValue",{forthValues:this.arrFilipFour})
+      // console.log(this.$store.state)
+    },
+     fourGetFive(){
+     this.$store.commit("updataForthOneValue",{forthValues:this.arrFilipFive})
       // console.log(this.$store.state)
     },
 //--------------------------------------------

@@ -4,7 +4,7 @@
       <div class="title">
         <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
         <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-        <span>财经指标体系-历年来研发费用统计图</span>
+        <span>仓库</span>
       </div>
       <div id="leftDefaOne"></div>
     </dv-border-box-10>
@@ -12,7 +12,7 @@
       <div class="title">
         <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
         <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-        <span>财经指标体系-历年来销售费用统计图</span>
+        <span>销量</span>
       </div>
       <div id="leftDefaTwo"></div>
     </dv-border-box-10>
@@ -20,7 +20,7 @@
       <div class="title">
         <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
         <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-        <span>财经指标体系-历年来管理费用统计图</span>
+        <span>储存</span>
       </div>
       <div id="leftDefaThree"></div>
     </dv-border-box-10>
@@ -44,37 +44,37 @@ export default {
   var colors = ['#8134af', '#A94CAF', '#FF82A9', '#4695d6', '#7BDFF2', '##BDFF2'];
   var lineargroup = [{
         value: 100,
-        name: '目标',
-        oriname: "意向",
+        name: '仓库1',
+        oriname: "库存11",
         number: 98756,
         //color: ["rgba(29,211,137,0.8)", "rgba(29,211,137,0)"]
     },
     {
-        value: 80,
-        name: '方案率',
-        oriname: "方案",
+        value: 60,
+        name: '仓库2',
+        oriname: "仓库22",
         number: 88756,
        // color: ["rgba(102,142,255,0.7)", "rgba(102,142,255,0)"]
     },
     {
         value: 60,
-        name: '商務率',
-        oriname: "商務",
+        name: '仓库3',
+        oriname: "仓库33",
         number: 78756,
        // color: ["rgba(255,198,82,0.6)", "rgba(255,198,82,0)"]
     },
     {
-        value: 40,
-        name: '成交率',
-        oriname: "即將成交",
+        value: 60,
+        name: '仓库4',
+        oriname: "仓库44",
         number: 68756,
        // color: ["rgba(255,110,115,0.5)", "rgba(255,110,115,0)"]
     },
     {
-        value: 20,
-        name: '贏單率',
-        oriname: "贏單",
-        number: 58756,
+        value: 60,
+        name: '仓库5',
+        oriname: "仓库55",
+        number: 88756,
       //  color: ["rgba(134,131,230,0.4)", "rgba(134,131,230,0)"]
     }
 ];
@@ -112,46 +112,7 @@ for (var i = 0; i < lineargroup.length; i++) {
       let myChart2 = echarts.init(document.getElementById('leftDefaTwo'))
 //>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>
       let myChart3 = echarts.init(document.getElementById('leftDefaThree'));
-      let colors3 = [{
-     type: 'linear',
-     x: 0,
-     x2: 0,
-     y: 0,
-     y2: 1,
-     colorStops: [{
-         offset: 0,
-         color: '#28f0f5'
-     }, {
-         offset: 0.5,
-         color: '#16abaf'
-     }, {
-         offset: 0.5,
-         color: '#16abaf'
-     }, {
-         offset: 1,
-         color: '#077175'
-     }]
- }, {
-     type: 'linear',
-     x: 0,
-     x2: 0,
-     y: 0,
-     y2: 1,
-     colorStops: [{
-         offset: 0,
-         color: '#0172e2'
-     }, {
-         offset: 0.5,
-         color: '#0656c6'
-     }, {
-         offset: 0.5,
-         color: '#0656c6'
-     }, {
-         offset: 1,
-         color: '#0f299a'
-     }]
- }];
-let barWidth = 25;
+      
 //>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>
  let option1 = {
     color: colors,
@@ -187,8 +148,7 @@ let barWidth = 25;
              top:"49",
             gap: -1,
             minSize: 150,
-            
-             left: '16%',
+            left: '16%',
             width: '60%',
             z: 2,
             label: {
@@ -209,7 +169,7 @@ let barWidth = 25;
                         bb: {
                             align: 'center',
                             color: '#FFF',
-                            fontSize: '15'
+                            fontSize: '20'
                         }
                     }
                 }
@@ -250,7 +210,7 @@ let option2 = {
         textStyle: {
             color: '#fff',
         },
-        data: ['可用余额', '不可用余额', '收入', '支出']
+        data: ['库存', '销量', '利润', '净利润']
     },
     grid: {
         left: '3%',
@@ -266,7 +226,7 @@ let option2 = {
                 width: 2
             }
         },
-        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月',"8月",'9月','10月','11月','12月'],
     },
     yAxis: {
         axisLine: {
@@ -282,11 +242,11 @@ let option2 = {
         },
     },
     series: [{
-            name: '可用余额',
+            name: '库存',
             type: 'bar',
             stack: '余额',
             barMaxWidth: 30,
-            data: [120, 132, 101, 134, 90, 230, 210],
+            data: [120, 132, 101, 134, 90, 230, 210,300,400,500,550,300],
             itemStyle: {
                 normal: {
                     color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
@@ -302,11 +262,11 @@ let option2 = {
             },
         },
         {
-            name: '不可用余额',
+            name: '销量',
             type: 'bar',
             stack: '余额',
             barMaxWidth: 30,
-            data: [220, 182, 191, 234, 290, 330, 310],
+            data: [220, 182, 191, 234, 290, 330, 310,200,300,250,500,300],
             itemStyle: {
                 normal: {
                     color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
@@ -322,8 +282,8 @@ let option2 = {
             },
         },
         {
-            name: '收入',
-            data: [220, 453, 301, 354, 290, 330, 320],
+            name: '利润',
+            data: [220, 453, 301, 354, 290, 330, 320,300,200,160,600,500],
             type: 'line',
             itemStyle: {
                 normal: {
@@ -332,8 +292,8 @@ let option2 = {
             },
         },
         {
-            name: '支出',
-            data: [213, 356, 123, 225, 78, 123, 354],
+            name: '净利润',
+            data: [150, 413, 250, 290, 150, 150, 250,150,150,100,500,400],
             type: 'line',
             itemStyle: {
                 normal: {
@@ -344,135 +304,163 @@ let option2 = {
     ]}
 
 let option3 = {
-      tooltip: {
-         trigger: 'item',
-     },
-     legend: {
-       top: '90%',
-        //  right: 30,
-         textStyle: {
-             color: '#fff',
-         },
-     },
-     xAxis: [{
-         type: 'category',
-         axisLine: {
-             lineStyle: {
-                 color: '#fff'
-             }
-         },
-         axisLabel: {
-             fontSize: 14
-         },
-         data: ['项目1', '项目2', '项目3', '项目4', '项目5', '项目6'],
-     }],
-     yAxis: [{
-         type: 'value',
-         min: 0,
-         splitLine: {
-             lineStyle: {
-                 color: '#fff'
-             }
-         },
-         splitNumber: 5,
-         axisLine: {
-             show: false
-         },
-         axisTick: {
-             show: false
-         },
-         axisLabel: {
-             fontSize: 14,
-             color: '#65C6E7'
-         },
+                //  backgroundColor: '#fff',
+   tooltip: {
+        trigger: 'item',
+        },
+    grid: {
+        // left: '5%',
+        // top: '10%',
+        // right: '5%',
+        bottom: '20%',
+    },
+    legend: {
+        show: true,
+        icon: 'circle',
+        orient: 'horizontal',
+        top: '90.5%',
+        right: 'center',
+        itemWidth: 16.5,
+        itemHeight: 6,
+        // itemGap: 30,
+        textStyle: {
+            // color: '#FFFFFF'
+            color: '#C9C8CD',
+            fontSize: 14
+        }
+    },
+    xAxis: [{
+        data: ["天津仓库", "大连仓库", "北京仓库", "海南仓库","山东仓库"],
+        axisLabel: {
+            textStyle: {
+                color: '#fff',
+                fontSize:12
+            },
+            margin: 20, //刻度标签与轴线之间的距离。
+        },
 
-     }, {
-         type: 'value',
-         splitLine: {
-             show: false
-         },
-         axisLine: {
-             show: false
-         },
-         axisTick: {
-             show: false
-         },
-         axisLabel: {
-             fontSize: 14,
-             color: '#65C6E7'
-         }
-     }],
-     series: [{
-             z: 1,
-             name: '实验频次',
-             type: 'bar',
-             barWidth: barWidth,
-             data: [20, 9, 37, 23, 25, 67],
-             itemStyle: {
-                 normal: {
-                     color: colors3[0]
-                 },
-             }
-         }, {
-             z: 3,
-             type: 'pictorialBar',
-             symbolPosition: 'end',
-             data: [20, 9, 37, 23, 25, 67],
-             symbol: 'diamond',
-             symbolOffset: [-12.5, '-50%'],
-             symbolSize: [barWidth - 4, (10 * (barWidth - 4)) / barWidth],
-             itemStyle: {
-                 normal: {
-                     borderColor: '#12bac1',
-                     borderWidth: 2,
-                     color: '#12bac1'
-                 }
-             },
-         },
-         {
-             z: 1,
-             name: '动物数',
-             type: 'bar',
-             barGap: 0,
-             barWidth: barWidth,
-             data: [16, 59, 40, 24, 27, 77],
-             itemStyle: {
-                 normal: {
-                     color: colors3[1]
-                 }
-             }
-         },
-         {
-             z: 3,
-             type: 'pictorialBar',
-             symbolPosition: 'end',
-             data: [16, 59, 40, 24, 27, 77],
-             symbol: 'diamond',
-             symbolOffset: [12.5, '-50%'],
-             symbolSize: [barWidth - 4, (10 * (barWidth - 4)) / barWidth],
-             itemStyle: {
-                 normal: {
-                     borderColor: '#319cf1',
-                     borderWidth: 2,
-                     color: '#319cf1'
-                 }
-             },
-         },
-         {
-             name: '总费用',
-             type: 'line',
-             yAxisIndex: 1,
-             symbol: 'circle',
-             itemStyle: {
-                 color: '#a45cc9',
-             },
-             lineStyle: {
-                 color: '#a45cc9',
-                 width: 3,
-             },
-             data: [30, 42, 63, 75, 63, 120]
-         }
-     ]
+        axisLine: {
+            show: true, //不显示x轴
+            lineStyle: {
+                color: '#E2E8EC'
+            }
+        },
+        axisTick: {
+            show: false //不显示刻度
+        },
+        boundaryGap: true,
+        splitLine: {
+            show: false,
+            width: 0.08,
+            lineStyle: {
+                type: "solid",
+                color: "#03202E"
+            }
+        }
+    }],
+    yAxis: [{
+        splitLine: {
+            show: true,
+            lineStyle: {
+                color: '#fff',
+                type: 'dashed'
+            }
+        },
+        axisTick: {
+            show: false
+        },
+        axisLine: {
+            show: true,
+            lineStyle: {
+                color: "#fff"
+            }
+        },
+        axisLabel: {
+            textStyle: {
+                color: '#fff',
+                fontSize: 12
+            },
+        }
+    }],
+    series: [
+        {//柱底圆片
+            name: "",
+            type: "pictorialBar",
+            symbolSize: [50, 20],//调整截面形状
+            symbolOffset: [0, 10],
+            z: 12,
+            itemStyle: {
+                    "normal": {
+                      color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: "#02D6EA"
+                            },
+                            {
+                                offset: 1,
+                                color: "#02D6EA"
+                            }
+                        ],false)
+                    }
+                },
+            data: ["50", "75", "105","130","200"]
+        }, 
+        
+        //柱体
+        {
+            name: '',
+            type: 'bar',
+            barWidth: 50,
+            barGap: '0%',
+            itemStyle: {
+                    "normal": {
+                        "color": {
+                            "x": 0,
+                            "y": 0,
+                            "x2": 0,
+                            "y2": 1,
+                            "type": "linear",
+                            "global": false,
+                            "colorStops": [{//第一节下面
+                                "offset": 0,
+                                "color": "#057DFE"
+                            }, {
+                                "offset": 1,
+                                "color": "#02D7EA"
+                            }]
+                        }
+                    }
+                },
+           
+            data: ["50", "75", "105","130","200"]
+        }, 
+        
+        //柱顶圆片
+        {
+            name: "",
+            type: "pictorialBar",
+            symbolSize: [50, 20],//调整截面形状
+            symbolOffset: [0, -10],
+            z: 12,
+            symbolPosition: "end",
+                "itemStyle": {
+                    "normal": {
+                         color: new echarts.graphic.LinearGradient(0,0,0,1,
+                            [{
+                                    offset: 0,
+                                    color: "#50A7FF"
+                                },
+                                {
+                                    offset: 1,
+                                    color: "#02D6EA"
+                                }
+                            ],
+                            false
+                        ),
+                    }
+                },
+            data: ["50", "75", "105","130","200"]
+        }
+    ]
       }
 //>>>>>>>>>>>>>>>>>
       myChart1.setOption(option1)
