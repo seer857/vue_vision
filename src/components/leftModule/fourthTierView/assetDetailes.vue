@@ -41,7 +41,7 @@ export default {
       width: 100%;
       height: 100%;
       //  float: left;
-        animation: leftanimation 1s;
+        animation: opacityx 3s;
       //  border: 5px springgreen solid;
 }
 //>>>>>>>>>>>渐变动画>>>>>>>>>>>>>>>>
@@ -65,6 +65,14 @@ export default {
   }
   to {
     left: 0px;
+  }
+}
+@keyframes opacityx {
+  from{
+    opacity: 0;
+  }
+  to{
+ opacity: 1;
   }
 }
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

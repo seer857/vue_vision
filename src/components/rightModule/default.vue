@@ -1,28 +1,53 @@
 <template>
   <div class="default-right">
     <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content one">
-      <div class="title">
-        <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
-        <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-        <span>财经指标体系-2021年期间费用占比</span>
-      </div>
-      <div id="rightDefaOne"></div>
+      <a-popover placement="leftTop">
+        <template slot="title">
+          <span>集团财经指标费用明细页</span>
+        </template>
+        <template slot="content">
+          <router-link :to="{name:'asset'}">http://localhost:9010/#/home/asset</router-link>
+        </template>
+        <div class="title">
+          <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
+          <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
+          <span>首页-2021年期间费用占比</span>
+        </div>
+        <div id="rightDefaOne"></div>
+      </a-popover>
     </dv-border-box-10>
     <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content two">
-      <div class="title">
-        <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
-        <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-        <span>财经指标体系-销量与收入趋势</span>
-      </div>
-      <div id="rightDefaTwo"></div>
+      <a-popover placement="leftTop">
+        <template slot="title">
+          <span>集团销量与收入明细页</span>
+        </template>
+        <template slot="content">
+          <router-link :to="{name:'asset'}">http://localhost:9010/#/home/asset</router-link>
+        </template>
+        <div class="title">
+          <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
+          <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
+          <span>首页-销量与收入趋势</span>
+        </div>
+         <div id="rightDefaTwo"></div>
+      </a-popover>
+      
     </dv-border-box-10>
     <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content three">
-      <div class="title">
-        <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
-        <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-        <span>净利润</span>
-      </div>
-      <div id="rightDefaThree"></div>
+      <a-popover placement="leftBottom">
+        <template slot="title">
+          <span>集团利润收入明细页</span>
+        </template>
+        <template slot="content">
+          <router-link :to="{name:'asset'}">http://localhost:9010/#/home/asset</router-link>
+        </template>
+        <div class="title">
+          <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
+          <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
+          <span>首页-净利润</span>
+        </div>
+        <div id="rightDefaThree"></div>
+      </a-popover>
     </dv-border-box-10>
   </div>
 </template>
@@ -32,11 +57,11 @@ export default {
   data() {
     return {}
   },
-  
+
   mounted() {
     // this.defaultEcharts();
     // this.onAssets()
-  // this.onTopic()
+    // this.onTopic()
     //this.getTopic()
     this.rightDefEcharts()
   },
@@ -47,8 +72,8 @@ export default {
       let myChart2 = echarts.init(document.getElementById('rightDefaTwo'))
       let myChart3 = echarts.init(document.getElementById('rightDefaThree'))
       // >>>>>>>>>>>>>>>>>>>>
-      
-	  let option1 = {
+
+      let option1 = {
         title: {
           left: 'center',
         },
@@ -98,7 +123,11 @@ export default {
 
         legend: {
           top: '90%',
-          data: ['销售费用率', '销售人力成本率', '销售费用（不含人力成本/广宣费）率'],
+          data: [
+            '销售费用率',
+            '销售人力成本率',
+            '销售费用（不含人力成本/广宣费）率',
+          ],
           textStyle: {
             color: '#fff',
           },
@@ -173,7 +202,6 @@ export default {
               6.4,
               3.3,
             ],
-            
           },
           {
             name: '销售人力成本率',
@@ -363,14 +391,14 @@ export default {
           },
         ],
       }
-	  
+
       myChart1.setOption(option1)
       myChart2.setOption(option2)
       myChart3.setOption(option3)
-	  
-	  echarts.connect([myChart1, myChart2,myChart3]);
-    }
-  }
+
+      echarts.connect([myChart1, myChart2, myChart3])
+    },
+  },
 }
 </script>
 

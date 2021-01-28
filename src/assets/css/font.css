@@ -7,3 +7,11 @@
   font-family: myFont;
   src: url('../tff/ShangShouJianHeiXianXiTi-2.ttf') format('truetype');
 }
+@font-face{
+  font-family: shangshou;
+  src: url('../tff/ShangShouJingDongTi-2.ttf') format('truetype');
+}
+@font-face{
+  font-family: cheche;
+  src: url('../tff/ShangShouCheCheTi-2.ttf') format('truetype');
+}

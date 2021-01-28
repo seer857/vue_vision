@@ -202,16 +202,17 @@ $absolute: absolute;
       height: 5px;
     }
     h1 {
-      font-family: myFirstFont;
+      // font-family: myFirstFont;
+      font-family: cheche;
       height: 80px;
       position: absolute;
-      line-height: 30px;
-      font-size: 35px;
+      line-height: 50px;
+      font-size: 40px;
       margin-left: 37%;
-      margin-top: 1.3%;
+      margin-top: 13px;
       text-align: center;
       color: #b634da;
-      z-index: 10;
+      z-index: 999;
       background-image: -webkit-gradient(
         linear,
         0 0,
@@ -241,7 +242,7 @@ $absolute: absolute;
       // border: 1px springgreen solid;
        float: left;
        
-      animation: leftanimation 1s;
+      animation: opacityx 3s;
       // animation-play-state:paused;
 
     }
@@ -279,7 +280,7 @@ $absolute: absolute;
       //border: 1px red solid;
       float: right;
       margin-right: 4px;
-      animation: rightanimation 1s;
+      animation: opacityx 3s;
     }
     
   }
@@ -305,6 +306,14 @@ $absolute: absolute;
   }
   to {
     left: 0px;
+  }
+}
+@keyframes opacityx {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
   }
 }
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

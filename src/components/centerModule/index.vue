@@ -24,11 +24,11 @@
       </template>
       <div class="buttonCut" @click="unname"></div>
     </a-popover>
-
-      <div class="back" @click="goback">
-        <a href="/">
-        <img src="@/assets/images/back.png" alt=""></a>
-      </div>
+    <div class="back" @click="goback">
+      <a href="/">
+        <img src="@/assets/images/back.png" alt />
+      </a>
+    </div>
 
     <div class="parcel-all" ref="allTier">
       <div class="first-tier">
@@ -152,7 +152,7 @@ export default {
     margin-left: 800px;
     z-index: 1000;
     cursor: pointer;
-    img{
+    img {
       width: 100%;
       height: 100%;
     }
