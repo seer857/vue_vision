@@ -1,7 +1,15 @@
 <template>
   <div class="left-box">
     <div class="pedestal">
-      <div class="xuehua"></div>
+      <a-popover placement="bottom">
+        <template slot="title">
+         
+        </template>
+        <template slot="content">
+          <p>敬请期待</p>
+        </template>
+        <div class="xuehua"></div>
+      </a-popover>
     </div>
   </div>
 </template>
@@ -16,10 +24,12 @@ export default {}
   height: 100%;
 
   .pedestal {
+    position: absolute;
     width: 100px;
     height: 100px;
     transform: translate3d(0px, 0px, 0px) scaleX(1) scaleY(1) rotateX(65deg)
       rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);
+    z-index: 999;
     .xuehua {
       width: 100%;
       height: 100%;
@@ -27,7 +37,6 @@ export default {}
       background-size: 100%;
       animation: myMove 2s infinite linear;
     }
-    
   }
 }
 @keyframes myMove {

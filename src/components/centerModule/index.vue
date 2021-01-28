@@ -24,7 +24,12 @@
       </template>
       <div class="buttonCut" @click="unname"></div>
     </a-popover>
-    
+
+      <div class="back" @click="goback">
+        <a href="/">
+        <img src="@/assets/images/back.png" alt=""></a>
+      </div>
+
     <div class="parcel-all" ref="allTier">
       <div class="first-tier">
         <FirstPic class="one" />
@@ -68,6 +73,7 @@ export default {
   data() {
     return {
       toHome: true,
+      toShowBack: false,
       toCenterModuleTag: false,
       isFlying: false,
       isShowParticle: true,
@@ -107,7 +113,11 @@ export default {
         location.reload()
       }
     },
+    goback() {
+      //this.$router.replace({path:"/"})
+    },
   },
+
   computed: {},
   watch: {},
   created() {},
@@ -131,6 +141,21 @@ export default {
   }
   .left {
     margin-left: 15%;
+  }
+  .back {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    // background: url(../../assets/images/back.png) no-repeat;
+    // background-size: 100%;
+    margin-top: 34%;
+    margin-left: 800px;
+    z-index: 1000;
+    cursor: pointer;
+    img{
+      width: 100%;
+      height: 100%;
+    }
   }
   .parcel-all {
     position: absolute;

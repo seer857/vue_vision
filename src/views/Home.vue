@@ -49,6 +49,7 @@
                 <CenterModule
                   v-on:againSend="getContentShow"
                   v-on:againSendTag="getContentShowTag"
+                  
                   v-if="findCenter"
                   
                 />
