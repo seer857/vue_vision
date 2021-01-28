@@ -2,25 +2,21 @@
 <template>
 <div class="my_box">
      <div class="dv_one">
-     <!-- <dv-border-box-13  ><div id="my-echarts"> </div></dv-border-box-13> -->
-     <!-- <dv-border-box-12  ><div id="my-echarts"> </div></dv-border-box-12> -->
-     <!-- <dv-border-box-11  ><div id="my-echarts"> </div></dv-border-box-11> -->
-     <!-- <dv-border-box-10  ><div id="my-echarts"> </div></dv-border-box-10> -->
-     <dv-border-box-9  ><div id="my-echarts"> </div></dv-border-box-9>
-     <!-- <dv-border-box-8  ><div id="my-echarts"> </div></dv-border-box-8> -->
-     <!-- <dv-border-box-7  ><div id="my-echarts"> </div></dv-border-box-7> -->
-     <!-- <dv-border-box-6  ><div id="my-echarts"> </div></dv-border-box-6> -->
-     <!-- <dv-border-box-5  ><div id="my-echarts"> </div></dv-border-box-5> -->
-     <!-- <dv-border-box-4  ><div id="my-echarts"> </div></dv-border-box-4> -->
-     <!-- <dv-border-box-3  ><div id="my-echarts"> </div></dv-border-box-3> -->
-     <!-- <dv-border-box-2  ><div id="my-echarts"> </div></dv-border-box-2> -->
-     <!-- <dv-border-box-1  ><div id="my-echarts"> </div></dv-border-box-1> -->
+       <dv-border-box-10  >  
+           <div id="left-echarts-one"> </div>
+       </dv-border-box-10>
      </div >
         <div class="dv_two">
-            <dv-border-box-11 title="检查站">
-                 <div id='my-echarts02'> </div>
-            </dv-border-box-11>
+            <dv-border-box-10 >
+                 <div id='left-echarts-two'> </div>
+            </dv-border-box-10>
         </div>
+        <div class="dv_three">
+            <dv-border-box-10 >
+                 <div id='left-echarts-three'> </div>
+            </dv-border-box-10>
+            
+        </div>    
 </div>
 </template>
 
@@ -32,85 +28,204 @@ export default {
     return {}
   },
 methods: {
-myEcharts01(){
-               // 绘制图表
-              let myChart1 = echarts.init(document.getElementById('my-echarts'));
-              let myChart2 = echarts.init(document.getElementById('my-echarts02'));
-              let option1 = {
-                      title: {
-                      // text: '南丁格尔玫瑰图',
-                      // subtext: '纯属虚构',
-                      left: 'center'
-                  },
-                  tooltip: {
-                      trigger: 'item',
-                      formatter: '{a} <br/>{b} : {c} ({d}%)'
-                  },
-                  legend: {
-                      left: 'center',
-                      top: 'bottom',
-                      
-                      data: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5', 'rose6', 'rose7', 'rose8']
-                  },
-                  toolbox: {
-                      show: true,
-                      feature: {
-                          mark: {show: true},
-                          dataView: {show: true, readOnly: false},
-                          magicType: {
-                              show: true,
-                              type: ['pie', 'funnel']
-                          },
-                          restore: {show: true},
-                          saveAsImage: {show: true}
-                      }
-                  },
-                  series: [
-                      {
-                          name: '半径模式',
-                          type: 'pie',
-                          radius: [20, 110],
-                          center: ['25%', '50%'],
-                          roseType: 'radius',
-                          label: {
-                              show: false
-                          },
-                          emphasis: {
-                              label: {
-                                  show: true
-                              }
-                          },
-                          data: [
-                              {value: 10, name: 'rose1'},
-                              {value: 5, name: 'rose2'},
-                              {value: 15, name: 'rose3'},
-                              {value: 25, name: 'rose4'},
-                              {value: 20, name: 'rose5'},
-                              {value: 35, name: 'rose6'},
-                              {value: 30, name: 'rose7'},
-                              {value: 40, name: 'rose8'}
-                          ]
-                      },
-                      {
-                          name: '面积模式',
-                          type: 'pie',
-                          radius: [30, 110],
-                          center: ['75%', '50%'],
-                          roseType: 'area',
-                          data: [
-                              {value: 10, name: 'rose1'},
-                              {value: 5, name: 'rose2'},
-                              {value: 15, name: 'rose3'},
-                              {value: 25, name: 'rose4'},
-                              {value: 20, name: 'rose5'},
-                              {value: 35, name: 'rose6'},
-                              {value: 30, name: 'rose7'},
-                              {value: 40, name: 'rose8'}
-                          ] }
-                          ]
-              } 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-              let option2 = {
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  myEcharts01(){
+    let myChart = echarts.init(document.getElementById('left-echarts-one'));
+    let myChart2 = echarts.init(document.getElementById('left-echarts-two'));
+    let myChart3= echarts.init(document.getElementById('left-echarts-three'));
+	//  let myChart4= echarts.init(document.getElementById('my-echarts04'));
+
+      let option = {
+                      
+                       title: {//标题
+                          text: '[折线图与柱图]',
+                          left: 'center',
+                          textStyle: {
+                             fontSize: 20,
+                              color: "rgba(249, 249, 249, 1)"
+                            }, },
+          
+                      
+                      tooltip: {//提示框组件。
+                          trigger: 'axis',
+                          axisPointer: {
+                              type: 'cross',
+                              label: {//横纵坐标提示宽颜色
+                                  backgroundColor: '#283b56'
+                                   
+                              }
+                          }
+                      },
+                      legend: {//图例组件。
+                          data:['最新成交价', '预购队列'],
+                         left: "30%",//右左移
+                         top: "88%",//上下移动
+                          textStyle: {
+                                   color: "rgba(241, 234, 234, 1)"
+                                } },
+                      toolbox: {
+                          // orient: "vertical", //工具栏 icon 的布局朝向。
+                          show: false, //是否显示工具栏组件。
+                         
+                          feature: {
+                              dataView: {readOnly: false},
+                              restore: {},
+                              saveAsImage: {}
+                          }
+                      },
+                      dataZoom: {
+                          show: false,
+                          start: 0,
+                          end: 100,
+                          backgroundColor: "rgba(9, 199, 247, 0.11)"
+                      },
+                      xAxis: [
+                          {
+                              type: 'category',
+                              boundaryGap: true,
+                              
+                              data: (function (){
+                                  var now = new Date();
+                                  var res = [];
+                                  var len = 10;
+                                  while (len--) {
+                                      res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
+                                      now = new Date(now - 2000);
+                                  }
+                                  return res;
+                              })()
+                              //下横左标颜色
+                              ,axisLine: {
+                              lineStyle: {
+                                color: "rgba(255, 255, 255, 1)"
+                              }
+                            }
+                          },
+                          {
+                              type: 'category',
+                              boundaryGap: true,
+                              data: (function (){
+                                  var res = [];
+                                  var len = 10;
+                                  while (len--) {
+                                      res.push(10 - len - 1);
+                                  }
+                                  return res;
+                              })()
+                              //上横坐标颜色
+                               ,axisLine: {
+                              lineStyle: {
+                                color: "rgba(255, 255, 255, 1)"
+                              }
+                            }
+                          },
+                           
+                      ],
+                      yAxis: [
+                          {
+                              type: 'value',
+                              scale: true,
+                              name: '价格',
+                              max: 30,
+                              min: 0,
+                              nameTextStyle: {
+                                              color: "rgba(255, 255, 255, 1)"
+                                            },
+                              boundaryGap: [0.2, 0.2]
+                              //左y坐标颜色
+                              ,axisLabel: {
+                                        color: "rgba(255, 255, 255, 1)"
+                                      },
+                              
+                          },
+                          {
+                              type: 'value',
+                              scale: true,
+                              name: '预购量',
+                              max: 1200,
+                              min: 0,
+                               
+                              boundaryGap: [0.2, 0.2]
+                              //右y坐标颜色
+                              ,axisLabel: {
+                                        color: "rgba(255, 255, 255, 1)"
+                                      },
+                              
+                          }
+                          
+                      ],
+                      series: [
+                          {
+                            
+                              name: '预购队列',
+                              type: 'bar',
+
+                          itemStyle: {//渐变颜色
+                            normal: {
+                              color: new echarts.graphic.LinearGradient(
+                                0,
+                                0,
+                                0,
+                                1,
+                                [
+                                  {
+                                    offset: 0,
+                                    color: "rgba(255,182,185,1)", // 0% 处的颜色 粉
+                                  },
+                                  {
+                                    offset: 1,
+                                    color: "rgba(65,182,230,1)", // 100% 处的颜色 蓝
+                                  },
+                                ],
+                                false
+                              ),
+                              barBorderRadius: [30, 30, 0, 0],
+                              shadowColor: "rgba(0,160,221,1)",
+                              shadowBlur: 1,
+                            },
+
+
+                          },
+                              xAxisIndex: 1,
+                              yAxisIndex: 1,
+                              data: (function (){
+                                  var res = [];
+                                  var len = 10;
+                                  while (len--) {
+                                      res.push(Math.round(Math.random() * 1000));
+                                  }
+                                  return res;
+                              })()
+                          },
+                          {
+                              name: '最新成交价',
+                              type: 'line',
+                               color: "rgba(251, 205, 0, 1)",//线条颜色
+                              data: (function (){
+                                  var res = [];
+                                  var len = 0;
+                                  while (len < 10) {
+                                      res.push((Math.random()*10 + 5).toFixed(1) - 0);
+                                      len++;
+                                  }
+                                  return res;
+                              })()
+                          }
+
+                      ]
+                 }  
+
+      let option2 = {
+                          //标题
+                       title: {
+                          text: '[检查站]',
+                          left: 'center',
+                          textStyle: {
+                             fontSize: 20,
+                              color: "rgba(249, 249, 249, 1)"
+                            }, },
                 tooltip: {
                         trigger: "axis",
                         axisPointer: {
@@ -233,54 +348,232 @@ myEcharts01(){
                         },
                       ],
               }
-
-              // 为echarts对象加载数据
-              myChart1.setOption(option1);   
-              myChart2.setOption(option2);  
-              //联动配置
-              echarts.connect([myChart1, myChart2]);
-              /**
-               * // 分别设置每个实例的 group id
-                    chart1.group = 'group1';
-                    chart2.group = 'group1';
-                    echarts.connect('group1');
-                或者可以直接传入需要联动的实例数组
-                echarts.connect([chart1, chart2]);
-
-               */
-             
+      let option3 ={
+        
+                    title: {
+                          text: '【爱码点用户访问来源】',
+                          left: 'center',
+                          textStyle: {
+                             fontSize: 20,
+                              color: "rgba(249, 249, 249, 1)"
+                            }, },
+                      tooltip: {
+                          trigger: 'item',
+                          formatter: '{a} <br/>{b} : {c} ({d}%)'
+                      },
+                      legend: {
+                          // orient: 'horizontal ',
+                          top:'90%',
+                           //文字颜色
+                         textStyle: {
+                               color: "rgba(255, 255, 255, 1"
+                         },
+                          data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+                      },
+                      //设置饼状图每个颜色块的颜色
+                     color : [ '#50C1E9', '#ffc952', '#ff7473',
+                      '#6a60a9', '#39A0ED' ],
+                      series: [
+                        
+                          {
+                              name: '访问来源',
+                              type: 'pie',
+                              radius: '55%',
+                              center: ['50%', '50%'],
+                              data: [
+                                  {value: 335, name: '直接访问'},
+                                  {value: 310, name: '邮件营销'},
+                                  {value: 234, name: '联盟广告'},
+                                  {value: 135, name: '视频广告'},
+                                  {value: 1548, name: '搜索引擎'}
+                              ],
+                              emphasis: {
+                                  itemStyle: {
+                                      shadowBlur: 10,
+                                      shadowOffsetX: 0,
+                                      shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                  }
+                              }
+                          },
+                          
+                      ]
+       }
+	   let option4 ={
+	                     tooltip: {
+        trigger: 'axis',
+        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
     },
-  },
+    legend: {
+		textStyle: {
+		      color: "rgba(255, 255, 255, 1"
+		},
+        data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'value',
+              axisLine: {
+          lineStyle: {
+            color: "rgba(255, 255, 255, 1)"
+          }
+        },
+    },
+    yAxis: {
+        type: 'category',
+        axisLine: {
+          lineStyle: {
+            color: "rgba(255, 255, 255, 1)"
+          }
+        },
+		
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+    },
+    series: [
+        {
+            name: '直接访问',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                position: 'insideRight'
+            },
+            data: [320, 302, 301, 334, 390, 330, 320]
+        },
+        {
+            name: '邮件营销',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                position: 'insideRight'
+            },
+            data: [120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name: '联盟广告',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                position: 'insideRight'
+            },
+            data: [220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name: '视频广告',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                position: 'insideRight'
+            },
+            data: [150, 212, 201, 154, 190, 330, 410]
+        },
+        {
+            name: '搜索引擎',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                position: 'insideRight'
+            },
+            data: [820, 832, 901, 934, 1290, 1330, 1320]
+        }
+    ]
+	    }
+	   
+//---------------[让图表动态显示]---------------------------------
+      app.count = 2;
+      setInterval(function (){
+          var axisData = (new Date()).toLocaleTimeString().replace(/^\D*/, '');
+          var data0 = option.series[0].data;
+          var data1 = option.series[1].data;
+          data0.shift();
+          data0.push(Math.round(Math.random() * 1000));
+          data1.shift();
+          data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
 
+          option.xAxis[0].data.shift();
+          option.xAxis[0].data.push(axisData);
+          option.xAxis[1].data.shift();
+          option.xAxis[1].data.push(app.count++);
+
+          myChart.setOption(option);
+      }, 2100);
+ //-------------------------------------------------
+    // myChart.setOption(option);
+     myChart2.setOption(option2);   
+     myChart3.setOption(option3);  
+	  // myChart4.setOption(option4);  
+    
+   
+
+    echarts.connect([myChart, myChart2,myChart3]);
+    
+  }   
+
+},
   computed: {},
   watch: {},
   created() {},
-  mounted() {this.myEcharts01()},
+
+  mounted() {
+      this.myEcharts01();
+      // this.fontShow();
+      // this.myEcharts02()
+
+  }
 }
+
 </script>
 <style lang='scss' scoped>
 .my_box{
       h1{color: antiquewhite;}
-    
+      
+
     .dv_one{
         width: 100%;
-        height:400px;
-        #my-echarts{
+        height:300px;
+        margin-top: 10px;
+        #left-echarts-one{
         width: 100%;
-        height:98%;
+        height:100%;
+        
         }
 
     }
     .dv_two{
          width: 100%;
-        height:500px;
-        #my-echarts02{
+        height:300px;
+        margin-top: 20px;
+        #left-echarts-two{
         width: 100%;
         height:100%;
-       
-        
         }
     }
-     
+    .dv_three{
+         width: 100%;
+        height:300px;
+        margin-top: 20px;
+        #left-echarts-three{
+        width: 100%;
+        height:100%;
+        }
+    }
+    // .dv_fouth{
+    //      width: 100%;
+    //     height:220px;
+    //     #my-echarts04{
+    //     width: 100%;
+    //     height:100%; 
+    // }}
 }
+
 </style>

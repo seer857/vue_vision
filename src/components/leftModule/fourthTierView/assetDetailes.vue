@@ -1,4 +1,5 @@
 <!-- 资产详细页 -->
+<!-- 资产盘点 -->
 <template>  
 <div>
         <transition >

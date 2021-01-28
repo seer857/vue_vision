@@ -28,196 +28,148 @@ export default {
     return {}
   },
 methods: {
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   myEcharts01(){
     let myChart = echarts.init(document.getElementById('left-echarts-one'));
     let myChart2 = echarts.init(document.getElementById('left-echarts-two'));
     let myChart3= echarts.init(document.getElementById('left-echarts-three'));
-	//  let myChart4= echarts.init(document.getElementById('my-echarts04'));
-
-      let option = {
+ 	//  let myChart4= echarts.init(document.getElementById('my-echarts04'));
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+let option = {
                       
-                       title: {//标题
-                          text: '[折线图与柱图]',
+                        title: {
+                          text: '【爱码点用户访问来源】',
                           left: 'center',
                           textStyle: {
                              fontSize: 20,
                               color: "rgba(249, 249, 249, 1)"
                             }, },
-          
-                      
-                      tooltip: {//提示框组件。
-                          trigger: 'axis',
-                          axisPointer: {
-                              type: 'cross',
-                              label: {//横纵坐标提示宽颜色
-                                  backgroundColor: '#283b56'
-                                   
-                              }
-                          }
-                      },
-                      legend: {//图例组件。
-                          data:['最新成交价', '预购队列'],
-                         left: "30%",//右左移
-                         top: "88%",//上下移动
-                          textStyle: {
-                                   color: "rgba(241, 234, 234, 1)"
-                                } },
-                      toolbox: {
-                          // orient: "vertical", //工具栏 icon 的布局朝向。
-                          show: false, //是否显示工具栏组件。
-                         
-                          feature: {
-                              dataView: {readOnly: false},
-                              restore: {},
-                              saveAsImage: {}
-                          }
-                      },
-                      dataZoom: {
-                          show: false,
-                          start: 0,
-                          end: 100,
-                          backgroundColor: "rgba(9, 199, 247, 0.11)"
-                      },
-                      xAxis: [
-                          {
-                              type: 'category',
-                              boundaryGap: true,
-                              
-                              data: (function (){
-                                  var now = new Date();
-                                  var res = [];
-                                  var len = 10;
-                                  while (len--) {
-                                      res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
-                                      now = new Date(now - 2000);
-                                  }
-                                  return res;
-                              })()
-                              //下横左标颜色
-                              ,axisLine: {
-                              lineStyle: {
-                                color: "rgba(255, 255, 255, 1)"
-                              }
-                            }
-                          },
-                          {
-                              type: 'category',
-                              boundaryGap: true,
-                              data: (function (){
-                                  var res = [];
-                                  var len = 10;
-                                  while (len--) {
-                                      res.push(10 - len - 1);
-                                  }
-                                  return res;
-                              })()
-                              //上横坐标颜色
-                               ,axisLine: {
-                              lineStyle: {
-                                color: "rgba(255, 255, 255, 1)"
-                              }
-                            }
-                          },
-                           
-                      ],
-                      yAxis: [
-                          {
-                              type: 'value',
-                              scale: true,
-                              name: '价格',
-                              max: 30,
-                              min: 0,
-                              nameTextStyle: {
-                                              color: "rgba(255, 255, 255, 1)"
-                                            },
-                              boundaryGap: [0.2, 0.2]
-                              //左y坐标颜色
-                              ,axisLabel: {
-                                        color: "rgba(255, 255, 255, 1)"
-                                      },
-                              
-                          },
-                          {
-                              type: 'value',
-                              scale: true,
-                              name: '预购量',
-                              max: 1200,
-                              min: 0,
-                               
-                              boundaryGap: [0.2, 0.2]
-                              //右y坐标颜色
-                              ,axisLabel: {
-                                        color: "rgba(255, 255, 255, 1)"
-                                      },
-                              
-                          }
-                          
-                      ],
-                      series: [
-                          {
-                            
-                              name: '预购队列',
-                              type: 'bar',
-
-                          itemStyle: {//渐变颜色
-                            normal: {
-                              color: new echarts.graphic.LinearGradient(
-                                0,
-                                0,
-                                0,
-                                1,
-                                [
-                                  {
-                                    offset: 0,
-                                    color: "rgba(255,182,185,1)", // 0% 处的颜色 粉
-                                  },
-                                  {
-                                    offset: 1,
-                                    color: "rgba(65,182,230,1)", // 100% 处的颜色 蓝
-                                  },
-                                ],
-                                false
-                              ),
-                              barBorderRadius: [30, 30, 0, 0],
-                              shadowColor: "rgba(0,160,221,1)",
-                              shadowBlur: 1,
-                            },
-
-
-                          },
-                              xAxisIndex: 1,
-                              yAxisIndex: 1,
-                              data: (function (){
-                                  var res = [];
-                                  var len = 10;
-                                  while (len--) {
-                                      res.push(Math.round(Math.random() * 1000));
-                                  }
-                                  return res;
-                              })()
-                          },
-                          {
-                              name: '最新成交价',
-                              type: 'line',
-                               color: "rgba(251, 205, 0, 1)",//线条颜色
-                              data: (function (){
-                                  var res = [];
-                                  var len = 0;
-                                  while (len < 10) {
-                                      res.push((Math.random()*10 + 5).toFixed(1) - 0);
-                                      len++;
-                                  }
-                                  return res;
-                              })()
-                          }
-
-                      ]
-                 }  
-
-      let option2 = {
+                  tooltip: {
+        trigger: 'axis',
+        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    legend: {
+       top:'90%',//模块底部
+                         textStyle: {color: "rgba(255, 255, 255, 1"  },  //文字颜色
+        data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎', '百度', '谷歌', '必应', '其他']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '12%',
+        containLabel: true
+    },
+    xAxis: [
+        {
+            type: 'category',
+            axisLabel: { color:"rgba(255, 255, 255, 1)" },//坐标样式
+            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value'
+            ,axisLabel: { color:"rgba(255, 255, 255, 1)" },//坐标样式
+        }
+    ],
+    color : [ '#50C1E9', '#ffc952',  '#ff7473','#6a60a9', '#39A0ED' ], //设置每个颜色块的颜色
+    series: [
+        {
+            name: '直接访问',
+            type: 'bar',
+            emphasis: {
+                focus: 'series'
+            },
+            data: [320, 332, 301, 334, 390, 330, 320]
+        },
+        {
+            name: '邮件营销',
+            type: 'bar',
+            stack: '广告',
+            emphasis: {
+                focus: 'series'
+            },
+            data: [120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name: '联盟广告',
+            type: 'bar',
+            stack: '广告',
+            emphasis: {
+                focus: 'series'
+            },
+            data: [220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name: '视频广告',
+            type: 'bar',
+            stack: '广告',
+            emphasis: {
+                focus: 'series'
+            },
+            data: [150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+            name: '搜索引擎',
+            type: 'bar',
+            data: [862, 1018, 964, 1026, 1679, 1600, 1570],
+            emphasis: {
+                focus: 'series'
+            },
+            markLine: {
+                lineStyle: {
+                    type: 'dashed'
+                },
+                data: [
+                    [{type: 'min'}, {type: 'max'}]
+                ]
+            }
+        },
+        {
+            name: '百度',
+            type: 'bar',
+            barWidth: 5,
+            stack: '搜索引擎',
+            emphasis: {
+                focus: 'series'
+            },
+            data: [620, 732, 701, 734, 1090, 1130, 1120]
+        },
+        {
+            name: '谷歌',
+            type: 'bar',
+            stack: '搜索引擎',
+            emphasis: {
+                focus: 'series'
+            },
+            data: [120, 132, 101, 134, 290, 230, 220]
+        },
+        {
+            name: '必应',
+            type: 'bar',
+            stack: '搜索引擎',
+            emphasis: {
+                focus: 'series'
+            },
+            data: [60, 72, 71, 74, 190, 130, 110]
+        },
+        {
+            name: '其他',
+            type: 'bar',
+            stack: '搜索引擎',
+            emphasis: {
+                focus: 'series'
+            },
+            data: [62, 82, 91, 84, 109, 110, 120]
+        }
+    ]
+ }  
+ //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+let option2 = {
                           //标题
                        title: {
                           text: '[检查站]',
@@ -348,7 +300,8 @@ methods: {
                         },
                       ],
               }
-      let option3 ={
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ let option3 ={
         
                     title: {
                           text: '【爱码点用户访问来源】',
@@ -398,7 +351,8 @@ methods: {
                           
                       ]
        }
-	   let option4 ={
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ let option4 ={
 	                     tooltip: {
         trigger: 'axis',
         axisPointer: {            // 坐标轴指示器，坐标轴触发有效
@@ -487,28 +441,28 @@ methods: {
             data: [820, 832, 901, 934, 1290, 1330, 1320]
         }
     ]
-	    }
-	   
+}
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>	   
 //---------------[让图表动态显示]---------------------------------
-      app.count = 2;
-      setInterval(function (){
-          var axisData = (new Date()).toLocaleTimeString().replace(/^\D*/, '');
-          var data0 = option.series[0].data;
-          var data1 = option.series[1].data;
-          data0.shift();
-          data0.push(Math.round(Math.random() * 1000));
-          data1.shift();
-          data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
+      // app.count = 2;
+      // setInterval(function (){
+      //     var axisData = (new Date()).toLocaleTimeString().replace(/^\D*/, '');
+      //     var data0 = option.series[0].data;
+      //     var data1 = option.series[1].data;
+      //     data0.shift();
+      //     data0.push(Math.round(Math.random() * 1000));
+      //     data1.shift();
+      //     data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
 
-          option.xAxis[0].data.shift();
-          option.xAxis[0].data.push(axisData);
-          option.xAxis[1].data.shift();
-          option.xAxis[1].data.push(app.count++);
+      //     option.xAxis[0].data.shift();
+      //     option.xAxis[0].data.push(axisData);
+      //     option.xAxis[1].data.shift();
+      //     option.xAxis[1].data.push(app.count++);
 
-          myChart.setOption(option);
-      }, 2100);
+      //     myChart.setOption(option);
+      // }, 2100);
  //-------------------------------------------------
-    // myChart.setOption(option);
+    myChart.setOption(option);
      myChart2.setOption(option2);   
      myChart3.setOption(option3);  
 	  // myChart4.setOption(option4);  
