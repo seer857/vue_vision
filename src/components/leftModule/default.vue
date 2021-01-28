@@ -46,7 +46,7 @@ export default {
     // },
     defaultEcharts() {
  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   
-  let myChart1 = echarts.init(document.getElementById('leftDefaOne'))   
+  let myChart2 = echarts.init(document.getElementById('leftDefaOne'))   
   var colors = ['#8134af', '#A94CAF', '#FF82A9', '#4695d6', '#7BDFF2', '##BDFF2'];
   var lineargroup = [{
         value: 100,
@@ -115,9 +115,9 @@ for (var i = 0; i < lineargroup.length; i++) {
 }
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-      let myChart2 = echarts.init(document.getElementById('leftDefaTwo'))
+      let myChart3 = echarts.init(document.getElementById('leftDefaTwo'))
 //>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>
-      let myChart3 = echarts.init(document.getElementById('leftDefaThree'));
+      let myChart1 = echarts.init(document.getElementById('leftDefaThree'));
       
 //>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>
  let option1 = {
@@ -243,7 +243,7 @@ let option2 = {
         },
         splitLine: { //分割线配置
             lineStyle: {
-                color: "#ebfdff",
+                color: "#00",
             }
         },
     },
@@ -346,7 +346,7 @@ let option3 = {
         },
 
         axisLine: {
-            show: true, //不显示x轴
+            show: false, //不显示x轴
             lineStyle: {
                 color: '#E2E8EC'
             }
@@ -355,18 +355,15 @@ let option3 = {
             show: false //不显示刻度
         },
         boundaryGap: true,
-        splitLine: {
-            show: false,
-            width: 0.08,
+        splitLine: { //分割线配置
             lineStyle: {
-                type: "solid",
-                color: "#03202E"
+                color: "#00",
             }
-        }
+        },
     }],
     yAxis: [{
         splitLine: {
-            show: true,
+            show: false,
             lineStyle: {
                 color: '#fff',
                 type: 'dashed'
@@ -473,7 +470,7 @@ let option3 = {
       myChart2.setOption(option2)
       myChart3.setOption(option3)
 //>>>>>>>>>>>>>>>>>
-       echarts.connect([myChart1, myChart2,myChart3]);
+    //    echarts.connect([myChart1, myChart2,myChart3]);
     },
   },
 }

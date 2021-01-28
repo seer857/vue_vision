@@ -131,7 +131,7 @@ export default {
           axisPointer: {
             type: 'cross',
             crossStyle: {
-              color: '#999',
+              color: '#fff',
             },
           },
         },
@@ -148,7 +148,7 @@ export default {
           },
         },
         color: ['#A94CAF', '#ffb6b9', '#E7475E'],
-        axisLabel: {
+        axisLabel: {//左y轴
           margin: 10,
           color: '#e2e9ff',
           textStyle: {
@@ -159,7 +159,7 @@ export default {
           {
             type: 'category',
             data: [
-              '2019',
+              '1月',
               '2月',
               '3月',
               '4月',
@@ -179,6 +179,7 @@ export default {
         ],
         yAxis: [
           {
+            
             type: 'value',
             name: '销量',
             min: 0,
@@ -186,7 +187,11 @@ export default {
             interval: 10,
             axisLabel: {
               formatter: '{value} 万元',
+              
             },
+            splitLine:{
+              show:false
+            }
           },
           {
             type: 'value',
@@ -197,6 +202,9 @@ export default {
             axisLabel: {
               formatter: '{value} 万台',
             },
+            splitLine:{
+              show:false
+            }
           },
         ],
         series: [
@@ -277,7 +285,7 @@ export default {
              }
          },
          axisLabel: {
-             fontSize: 14
+             fontSize:12
          },
          data: ['2016', '2017', '2018', '2019', '2020', '2021'],
      }],
@@ -285,6 +293,7 @@ export default {
          type: 'value',
          min: 0,
          splitLine: {
+            show: false,
              lineStyle: {
                  color: '#fff'
              }
@@ -329,7 +338,7 @@ export default {
         ],
         series: [
           {
-            name: '示例',
+            name: '净利润',
             type: 'line',
             smooth: true,
             symbol: 'circle',
