@@ -1,6 +1,6 @@
 <template>
   <div class="charts">
-    <div id="rightDefaOne"></div>
+    <div id="rightDefaOnes"></div>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     openCharts() {
-      let myChart1 = echarts.init(document.getElementById('rightDefaOne'))
+      let myChart1 = echarts.init(document.getElementById('rightDefaOnes'))
       let option1 = {
         title: {
           left: 'center',
@@ -63,7 +63,7 @@ export default {
 .charts {
   width: 100%;
   height: 100%;
-  #rightDefaOne {
+  #rightDefaOnes {
     position: absolute;
     margin-top: 20px;
     width: 100%;

@@ -130,7 +130,7 @@ export default {
           axisPointer: {
             type: 'cross',
             crossStyle: {
-              color: '#999',
+              color: '#fff',
             },
           },
         },
@@ -147,7 +147,7 @@ export default {
           },
         },
         color: ['#A94CAF', '#ffb6b9', '#E7475E'],
-        axisLabel: {
+        axisLabel: {//左y轴
           margin: 10,
           color: '#e2e9ff',
           textStyle: {
@@ -178,6 +178,7 @@ export default {
         ],
         yAxis: [
           {
+            
             type: 'value',
             name: '销量',
             min: 0,
@@ -190,6 +191,9 @@ export default {
               //网格线
               show: false,
             },
+            splitLine:{
+              show:false
+            }
           },
           {
             type: 'value',
@@ -204,6 +208,9 @@ export default {
               //网格线
               show: false,
             },
+            splitLine:{
+              show:false
+            }
           },
         ],
         series: [
@@ -267,49 +274,47 @@ export default {
       // >>>>>>>>>>>>>>>>>>>>>>..
       let option3 = {
         tooltip: {
-          trigger: 'item',
-        },
-        legend: {
-          top: '90%',
-          //  right: 30,
-          textStyle: {
-            color: '#fff',
-          },
-        },
-        xAxis: [
-          {
-            type: 'category',
-            axisLine: {
-              lineStyle: {
-                color: '#fff',
-              },
-            },
-            axisLabel: {
-              fontSize: 14,
-            },
-            data: ['2016', '2017', '2018', '2019', '2020', '2021'],
-          },
-        ],
-        yAxis: [
-          {
-            type: 'value',
-            min: 0,
-            splitLine: {
-              lineStyle: {
-                color: '#fff',
-              },
-            },
-            splitNumber: 5,
-            axisLine: {
-              show: false,
-            },
-            axisTick: {
-              show: false,
-            },
-            axisLabel: {
-              fontSize: 14,
-              color: '#fff',
-            },
+         trigger: 'item',
+     },
+     legend: {
+       top: '90%',
+        //  right: 30,
+         textStyle: {
+             color: '#fff',
+         },
+     },
+     xAxis: [{
+         type: 'category',
+         axisLine: {
+             lineStyle: {
+                 color: '#fff'
+             }
+         },
+         axisLabel: {
+             fontSize:12
+         },
+         data: ['2016', '2017', '2018', '2019', '2020', '2021'],
+     }],
+     yAxis: [{
+         type: 'value',
+         min: 0,
+         splitLine: {
+            show: false,
+             lineStyle: {
+                 color: '#fff'
+             }
+         },
+         splitNumber: 5,
+         axisLine: {
+             show: false
+         },
+         axisTick: {
+             show: false
+         },
+         axisLabel: {
+             fontSize: 14,
+             color: '#fff'
+         },
 
             data: ['01', '02', '03', '04', '05', '06', '07', '08'],
           },
@@ -339,7 +344,7 @@ export default {
         ],
         series: [
           {
-            name: '示例',
+            name: '净利润',
             type: 'line',
             smooth: true,
             symbol: 'circle',
