@@ -67,8 +67,8 @@
 // import "swiper/dist/css/swiper.css";
 import 'swiper/swiper-bundle.css'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import Swiper2, {Autoplay} from 'swiper';
-Swiper2.use([Autoplay]);
+import Swiper2, { Autoplay } from 'swiper'
+Swiper2.use([Autoplay])
 import ChartsOne from './defaultCharts/ChartsOne.vue'
 import ChartsTwo from './defaultCharts/ChartsTwo.vue'
 import ChartsThree from './defaultCharts/ChartsThree.vue'
@@ -87,7 +87,6 @@ export default {
         observeParents: true, //修改swiper的父元素时，自动初始化swiper
         loop: true,
         autoplay: {
-          
           delay: 5000,
         },
         slidesPerView: 1,
@@ -139,9 +138,9 @@ export default {
         legend: {
           top: '90%',
           data: [
-            '销售费用率',
-            '销售人力成本率',
-            '销售费用（不含人力成本/广宣费）率',
+            '销量',
+            '收入',
+            '趋势',
           ],
           textStyle: {
             color: '#fff',
@@ -159,7 +158,7 @@ export default {
           {
             type: 'category',
             data: [
-              '2019',
+              '1月',
               '2月',
               '3月',
               '4月',
@@ -185,7 +184,11 @@ export default {
             max: 88,
             interval: 10,
             axisLabel: {
-              formatter: '{value} 万元',
+              formatter: '{value} 万台',
+            },
+            splitLine: {
+              //网格线
+              show: false,
             },
           },
           {
@@ -195,16 +198,20 @@ export default {
             max: 8888,
             interval: 1000,
             axisLabel: {
-              formatter: '{value} 万台',
+              formatter: '{value} 万辆',
+            },
+            splitLine: {
+              //网格线
+              show: false,
             },
           },
         ],
         series: [
           {
-            name: '销售费用率',
+            name: '销量',
             type: 'bar',
             data: [
-             2.6,
+              2.6,
               4.9,
               7.0,
               23.2,
@@ -219,10 +226,10 @@ export default {
             ],
           },
           {
-            name: '销售人力成本率',
+            name: '收入',
             type: 'bar',
             data: [
-            6.2,
+              6.2,
               5.9,
               9.0,
               26.4,
@@ -237,7 +244,7 @@ export default {
             ],
           },
           {
-            name: '销售费用（不含人力成本/广宣费）率',
+            name: '趋势',
             type: 'line',
             yAxisIndex: 1,
             data: [
@@ -256,50 +263,53 @@ export default {
             ],
           },
         ],
-}
-// >>>>>>>>>>>>>>>>>>>>>>..
- let option3 = {
+      }
+      // >>>>>>>>>>>>>>>>>>>>>>..
+      let option3 = {
         tooltip: {
-         trigger: 'item',
-     },
-     legend: {
-       top: '90%',
-        //  right: 30,
-         textStyle: {
-             color: '#fff',
-         },
-     },
-     xAxis: [{
-         type: 'category',
-         axisLine: {
-             lineStyle: {
-                 color: '#fff'
-             }
-         },
-         axisLabel: {
-             fontSize: 14
-         },
-         data: ['2016', '2017', '2018', '2019', '2020', '2021'],
-     }],
-     yAxis: [{
-         type: 'value',
-         min: 0,
-         splitLine: {
-             lineStyle: {
-                 color: '#fff'
-             }
-         },
-         splitNumber: 5,
-         axisLine: {
-             show: false
-         },
-         axisTick: {
-             show: false
-         },
-         axisLabel: {
-             fontSize: 14,
-             color: '#fff'
-         },
+          trigger: 'item',
+        },
+        legend: {
+          top: '90%',
+          //  right: 30,
+          textStyle: {
+            color: '#fff',
+          },
+        },
+        xAxis: [
+          {
+            type: 'category',
+            axisLine: {
+              lineStyle: {
+                color: '#fff',
+              },
+            },
+            axisLabel: {
+              fontSize: 14,
+            },
+            data: ['2016', '2017', '2018', '2019', '2020', '2021'],
+          },
+        ],
+        yAxis: [
+          {
+            type: 'value',
+            min: 0,
+            splitLine: {
+              lineStyle: {
+                color: '#fff',
+              },
+            },
+            splitNumber: 5,
+            axisLine: {
+              show: false,
+            },
+            axisTick: {
+              show: false,
+            },
+            axisLabel: {
+              fontSize: 14,
+              color: '#fff',
+            },
 
             data: ['01', '02', '03', '04', '05', '06', '07', '08'],
           },
@@ -443,7 +453,6 @@ export default {
   width: 40px;
   height: 100px;
   color: #a255d7;
-
 }
 .swiper-button-prev,
 .swiper-button-next {
