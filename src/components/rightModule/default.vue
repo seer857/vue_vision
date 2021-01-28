@@ -152,7 +152,7 @@ export default {
           margin: 10,
           color: '#e2e9ff',
           textStyle: {
-            fontSize: 14,
+            fontSize: 12,
           },
         },
         xAxis: [
@@ -180,22 +180,22 @@ export default {
         yAxis: [
           {
             type: 'value',
-            name: '水量',
+            name: '销量',
             min: 0,
-            max: 250,
-            interval: 50,
+            max: 88,
+            interval: 10,
             axisLabel: {
-              formatter: '{value} ml',
+              formatter: '{value} 万元',
             },
           },
           {
             type: 'value',
-            name: '温度',
+            name: '库存',
             min: 0,
-            max: 25,
-            interval: 5,
+            max: 8888,
+            interval: 1000,
             axisLabel: {
-              formatter: '{value} °C',
+              formatter: '{value} 万台',
             },
           },
         ],
@@ -204,14 +204,14 @@ export default {
             name: '销售费用率',
             type: 'bar',
             data: [
-              2.0,
+             2.6,
               4.9,
               7.0,
               23.2,
               25.6,
               76.7,
-              135.6,
-              162.2,
+              60.6,
+              70.2,
               32.6,
               20.0,
               6.4,
@@ -222,14 +222,14 @@ export default {
             name: '销售人力成本率',
             type: 'bar',
             data: [
-              2.6,
+            6.2,
               5.9,
               9.0,
               26.4,
               28.7,
               70.7,
-              175.6,
-              182.2,
+              80.6,
+              60.2,
               48.7,
               18.8,
               6.0,
@@ -241,59 +241,65 @@ export default {
             type: 'line',
             yAxisIndex: 1,
             data: [
-              2.0,
-              2.2,
-              3.3,
-              4.5,
-              6.3,
-              10.2,
-              20.3,
-              23.4,
-              23.0,
-              16.5,
-              12.0,
-              6.2,
+              363.6,
+              455.2,
+              555.3,
+              2844.5,
+              545.3,
+              3366.2,
+              869.3,
+              4544.4,
+              787.0,
+              320.5,
+              880.0,
+              453.2,
             ],
           },
         ],
-      }
-      // >>>>>>>>>>>>>>>>>>>>>>..
-      let option3 = {
-        title: {
-          left: 'center',
-          textStyle: {
-            fontSize: 20,
-            color: 'rgba(249, 249, 249, 1)',
-          },
-        },
+}
+// >>>>>>>>>>>>>>>>>>>>>>..
+ let option3 = {
         tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'none',
-          },
-        },
-        grid: {
-          left: '10',
-          right: '15',
-          bottom: '5',
-          top: '10',
-          containLabel: true,
-        },
-        xAxis: [
-          {
-            type: 'category',
-            boundaryGap: false,
-            axisLine: {
-              lineStyle: {
-                color: '#2867a8',
-              },
-            },
-            axisLabel: {
-              textStyle: {
-                fontSize: 12,
-                color: '#fff',
-              },
-            },
+         trigger: 'item',
+     },
+     legend: {
+       top: '90%',
+        //  right: 30,
+         textStyle: {
+             color: '#fff',
+         },
+     },
+     xAxis: [{
+         type: 'category',
+         axisLine: {
+             lineStyle: {
+                 color: '#fff'
+             }
+         },
+         axisLabel: {
+             fontSize: 14
+         },
+         data: ['2016', '2017', '2018', '2019', '2020', '2021'],
+     }],
+     yAxis: [{
+         type: 'value',
+         min: 0,
+         splitLine: {
+             lineStyle: {
+                 color: '#fff'
+             }
+         },
+         splitNumber: 5,
+         axisLine: {
+             show: false
+         },
+         axisTick: {
+             show: false
+         },
+         axisLabel: {
+             fontSize: 14,
+             color: '#fff'
+         },
 
             data: ['01', '02', '03', '04', '05', '06', '07', '08'],
           },
