@@ -6,7 +6,7 @@
          
         </template>
         <template slot="content">
-          <p>敬请期待</p>
+          <router-link :to="{name:'organization'}">组织架构</router-link>
         </template>
         <div class="xuehua"></div>
       </a-popover>
