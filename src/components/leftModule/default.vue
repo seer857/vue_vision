@@ -4,7 +4,7 @@
       <div class="title">
         <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
         <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-        <span>各工厂仓库余量</span>
+        <span>集团经营状况—余量与销量分析</span>
       </div>
       <div id="leftDefaOne"></div>
     </dv-border-box-10>
@@ -12,7 +12,7 @@
       <div class="title">
         <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
         <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-        <span>各工厂产量数值</span>
+        <span>集团经营状况—各工厂产量数值</span>
       </div>
       <div id="leftDefaTwo"></div>
     </dv-border-box-10>
@@ -20,7 +20,7 @@
       <div class="title">
         <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
         <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-        <span>各工厂仓库余量</span>
+        <span>集团经营状况—各工厂仓库余量</span>
       </div>
       <div id="leftDefaThree"></div>
     </dv-border-box-10>
@@ -460,7 +460,7 @@ for (var i = 0; i < lineargroup.length; i++) {
                     },
                     {
                       offset: 1,
-                      color: '#7A57D1',
+                      color: '#78fee0',
                     },
                   ],
                   false
@@ -595,6 +595,7 @@ $color: #fff;
     #leftDefaOne {
       width: 100%;
       height: 100%;
+
     }
   }
   .two {
@@ -609,9 +610,11 @@ $color: #fff;
     #leftDefaThree {
       width: 100%;
       height: 100%;
+
     }
   }
 }
+
 @keyframes gdMove {
   0% {
     margin-left: 8%;
