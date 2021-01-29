@@ -17,7 +17,7 @@ export default {
       let myChart1 = echarts.init(document.getElementById('rightDefaTwos'))
       let option1 = {
                  title: {
-                          text: '【爱码点用户访问来源】',
+                               text: '【爱玛点用户访问来源】',
                           left: 'center',
                           textStyle: {
                              fontSize: 20,
