@@ -11,7 +11,7 @@
         <div class="title">
           <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
           <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-          <span>首页-2021年期间费用占比</span>
+          <span>2021年期间费用占比</span>
         </div>
       </a-popover>
       <swiper :options="SwiperOption" ref="swiperOne">
@@ -39,7 +39,7 @@
         <div class="title">
           <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
           <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-          <span>首页-销量与收入趋势</span>
+          <span>月度总销量与收入趋势</span>
         </div>
         <div id="rightDefaTwo"></div>
       </a-popover>
@@ -55,7 +55,7 @@
         <div class="title">
           <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
           <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-          <span>首页-净利润</span>
+          <span>各车型销量和净利润分析</span>
         </div>
         <div id="rightDefaThree"></div>
       </a-popover>
@@ -143,7 +143,7 @@ export default {
             color: '#fff',
           },
         },
-        color: ['#f9bcdd', '#fff1ac', '#E7475E'],
+        color: ['#1ee3cf', '#fff1ac', '#E7475E'],
         axisLabel: {
           //左y轴
           margin: 10,
