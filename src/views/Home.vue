@@ -180,7 +180,8 @@ $absolute: absolute;
      }
     .decorate{
       position: absolute;
-      margin: 10px;
+      
+       margin:10px;
       width: 200px;
       height: 50px;
     }

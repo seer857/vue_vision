@@ -13,7 +13,7 @@
       <video src="@/assets/videos/particle.webm" loop muted autoplay></video>
     </div>-->
     <div class="module left">
-      <LeftContent />
+      <LeftContent  />
     </div>
     <div class="module right">
       <RightContent />
@@ -22,6 +22,7 @@
       <template slot="content">
         <span>车联网科技大屏</span>
       </template>
+      
       <div class="buttonCut" @click="unname"></div>
     </a-popover>
     <div class="back" @click="goback">

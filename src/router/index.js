@@ -23,6 +23,11 @@ const routes = [
     redirect: '/home'
   },
   {
+    path:'/organization',
+    name:'organization',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Organization.vue')
+  },
+  {
     path: '/home',
     name: 'Home',
     component: Home,
