@@ -16,6 +16,9 @@ Vue.use(Button)
 Vue.use(Popover)
 Vue.use(Icon)
 
+// 组织架构图组件
+
+
 
 new Vue({
   router,

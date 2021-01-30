@@ -866,6 +866,11 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@balkangraph/orgchart.js@^7.7.16":
+  version "7.7.16"
+  resolved "https://registry.npm.taobao.org/@balkangraph/orgchart.js/download/@balkangraph/orgchart.js-7.7.16.tgz#264f0847b127cf94092968ffc65ca84d1b3cfa13"
+  integrity sha1-Jk8IR7Enz5QJKWj/xlyoTRs8+hM=
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.npm.taobao.org/@hapi/address/download/@hapi/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"

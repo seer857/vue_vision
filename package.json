@@ -7,6 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@balkangraph/orgchart.js": "^7.7.16",
     "@jiaminghi/data-view": "^2.10.0",
     "ant-design-vue": "^1.7.2",
     "core-js": "^3.6.5",
