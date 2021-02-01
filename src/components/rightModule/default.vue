@@ -39,7 +39,7 @@
         <div class="title">
           <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
           <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-          <span>月度总销量与收入趋势</span>
+          <span>20-21年总销量同环比与收入趋势</span>
         </div>
         <div id="rightDefaTwo"></div>
       </a-popover>
@@ -82,12 +82,18 @@ export default {
   },
   data() {
     return {
+      salesArr: [],
+      salesDateArr: [],
+      salesIncome: [],
+      test: [],
+      startValue: 0,
+      endValue: 5,
       SwiperOption: {
         observer: true, //修改swiper自己或子元素时，自动初始化swiper
         observeParents: true, //修改swiper的父元素时，自动初始化swiper
         loop: true,
         autoplay: {
-          disableOnInteraction:true,
+          disableOnInteraction: true,
           delay: 7000,
         },
         slidesPerView: 1,
@@ -99,16 +105,35 @@ export default {
       },
     }
   },
-
+  created() {
+    //this.getSalesAll()
+  },
+  beforeMount() {
+    this.getSalesAll()
+  },
   mounted() {
     // this.defaultEcharts();
     // this.onAssets()
     // this.onTopic()
     //this.getTopic()
-    this.rightDefEcharts()
   },
 
   methods: {
+    getSalesAll() {
+      axios.get('http://10.200.226.98:3000/api/v1/sales').then((res) => {
+        // console.log(res.data.data[0])
+        for (let i = 0; i < res.data.data.length; i++) {
+          this.salesDateArr.push(res.data.data[i].delivery_ym)
+          this.salesArr.push(res.data.data[i].actual_quantity_delivered_bq)
+          this.salesIncome.push(res.data.data[i].Mul_price)
+        }
+        // this.salesDateArr = Object.values(res.data.data)
+        //console.log(this.salesIncome)
+        this.salesIncomeCharts()
+        this.startInterval()
+        this.rightDefEcharts()
+      })
+    },
     prev() {
       this.$refs.swiperOne.$swiper.slidePrev()
     },
@@ -121,24 +146,32 @@ export default {
     onSlideChange() {
       console.log('slide change')
     },
-    rightDefEcharts() {
+    startInterval() {
+      setInterval(() => {
+        this.startValue++
+        this.endValue++
+        if (this.endValue > this.salesDateArr.length - 1) {
+          this.startValue = 0
+          this.endValue = 5
+        }
+        this.salesIncomeCharts()
+      }, 5000)
+    },
+    salesIncomeCharts() {
       let myChart2 = echarts.init(document.getElementById('rightDefaTwo'))
-      let myChart3 = echarts.init(document.getElementById('rightDefaThree'))
-      // >>>>>>>>>>>>>>>>>>>>
       let option2 = {
         tooltip: {
           trigger: 'axis',
-          axisPointer: {
-            type: 'cross',
-            crossStyle: {
-              color: '#fff',
-            },
-          },
+          // axisPointer: {
+          //   type: 'cross',
+          //   crossStyle: {
+          //     color: '#fff',
+          //   },
+          // },
         },
-
         legend: {
           top: '90%',
-          data: ['销量', '收入', '趋势'],
+          data: ['20年销量', '20年收入', '趋势'],
           textStyle: {
             color: '#fff',
           },
@@ -152,37 +185,52 @@ export default {
             fontSize: 12,
           },
         },
+        grid: {
+          top: '20%',
+          bottom: '10%',
+          left: '0%',
+          right: '0%',
+          containLabel: true,
+        },
+        dataZoom: {
+          show: false,
+          startValue: this.startValue,
+          endValue: this.endValue,
+        },
         xAxis: [
           {
             type: 'category',
-            data: [
-              '1月',
-              '2月',
-              '3月',
-              '4月',
-              '5月',
-              '6月',
-              '7月',
-              '8月',
-              '9月',
-              '10月',
-              '11月',
-              '12月',
-            ],
+            data: [...this.salesDateArr],
             axisPointer: {
               type: 'shadow',
             },
           },
         ],
+
         yAxis: [
           {
-            type: 'value',
-            name: '销量',
-            min: 0,
-            max: 88,
-            interval: 10,
+            type: 'log',
+            name: '20年销量',
+            // min: 0,
+            // max: function () {
+            //   return null
+            // },
+            // // interval: 1000,
+            // axisLabel: {
+            //   formatter: function (value, index) {
+            //     let str = value.toString()
+            //     let strs = str.substring(0, 4)
+            //     let values = parseInt(strs)
+            //     return values + `万台`
+            //   },
+            //   margin: 2,
+            // },
+
             axisLabel: {
-              formatter: '{value} 万台',
+              formatter: function (value, index) {
+                return value / 10000 + '万台'
+              },
+              margin: 2,
             },
             splitLine: {
               //网格线
@@ -193,13 +241,18 @@ export default {
             },
           },
           {
-            type: 'value',
-            name: '库存',
-            min: 0,
-            max: 8888,
-            interval: 1000,
+            type: 'log',
+            name: '20年收入',
+            position: 'right',
+            // min: 0,
+            max: function () {
+              return null
+            },
+            //interval: 10,
             axisLabel: {
-              formatter: '{value} 万辆',
+              formatter: function (value, index) {
+                return value / 100000000 + '亿'
+              },
             },
             splitLine: {
               //网格线
@@ -212,62 +265,38 @@ export default {
         ],
         series: [
           {
-            name: '销量',
+            name: '20年销量',
             type: 'bar',
-            data: [
-              2.6,
-              4.9,
-              7.0,
-              23.2,
-              25.6,
-              76.7,
-              60.6,
-              70.2,
-              32.6,
-              20.0,
-              6.4,
-              3.3,
-            ],
+            data: [...this.salesArr],
+            label: {
+              show: true,
+              position: 'top',
+            },
           },
           {
-            name: '收入',
+            name: '20年收入',
             type: 'bar',
-            data: [
-              6.2,
-              5.9,
-              9.0,
-              26.4,
-              28.7,
-              70.7,
-              80.6,
-              60.2,
-              48.7,
-              18.8,
-              6.0,
-              2.3,
-            ],
+            data: [...this.salesIncome],
+            yAxisIndex: 1,
+            label: {
+              show: true,
+              position: 'top',
+            },
           },
           {
             name: '趋势',
             type: 'line',
             yAxisIndex: 1,
-            data: [
-              363.6,
-              455.2,
-              555.3,
-              2844.5,
-              545.3,
-              3366.2,
-              869.3,
-              4544.4,
-              787.0,
-              320.5,
-              880.0,
-              453.2,
-            ],
+            data: [],
           },
         ],
       }
+      myChart2.setOption(option2)
+    },
+    rightDefEcharts() {
+      let myChart3 = echarts.init(document.getElementById('rightDefaThree'))
+      // >>>>>>>>>>>>>>>>>>>>
+
       // >>>>>>>>>>>>>>>>>>>>>>..
       let option3 = {
         tooltip: {
@@ -307,7 +336,6 @@ export default {
               '系列5',
               '系列6',
               '系列7',
-
             ],
             axisPointer: {
               type: 'shadow',
@@ -409,7 +437,6 @@ export default {
         ],
       }
 
-      myChart2.setOption(option2)
       myChart3.setOption(option3)
     },
   },
@@ -489,6 +516,7 @@ export default {
   .three {
     margin-top: 20px;
     #rightDefaTwo {
+      margin-left: 10px;
       width: 100%;
       height: 100%;
     }

@@ -102,14 +102,10 @@ export default {
   },
   mounted() {},
   created() {
-    this.axioss()
+
   },
   methods: {
-    axioss() {
-      axios.get('http://10.200.226.98:3000/api/v1/sales').then((res) => {
-        console.log(res)
-      })
-    },
+  
 
     loading() {
       setTimeout(() => {
