@@ -45,58 +45,66 @@ export default {
     //   this.$router.push({ name: 'asset' })
     // },
     defaultEcharts() {
- //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   
-  let myChart2 = echarts.init(document.getElementById('leftDefaOne'))   
-  var colors = ['#8134af', '#A94CAF', '#FF82A9', '#4695d6', '#7BDFF2', '##BDFF2'];
-  var lineargroup = [{
-        value: 100,
-        name: '仓库1',
-        oriname: "库存11",
-        number: 98756,
-        //color: ["rgba(29,211,137,0.8)", "rgba(29,211,137,0)"]
-    },
-    {
-        value: 60,
-        name: '仓库2',
-        oriname: "仓库22",
-        number: 88756,
-       // color: ["rgba(102,142,255,0.7)", "rgba(102,142,255,0)"]
-    },
-    {
-        value: 60,
-        name: '仓库3',
-        oriname: "仓库33",
-        number: 78756,
-       // color: ["rgba(255,198,82,0.6)", "rgba(255,198,82,0)"]
-    },
-    {
-        value: 60,
-        name: '仓库4',
-        oriname: "仓库44",
-        number: 68756,
-       // color: ["rgba(255,110,115,0.5)", "rgba(255,110,115,0)"]
-    },
-    {
-        value: 60,
-        name: '仓库5',
-        oriname: "仓库55",
-        number: 88756,
-      //  color: ["rgba(134,131,230,0.4)", "rgba(134,131,230,0)"]
-    }
-];
-var data1 = [];
-var data2 = [];
-for (var i = 0; i < lineargroup.length; i++) {
-    var obj1 = {
-        value: lineargroup[i].value,
-        num: lineargroup[i].number,
-        name: lineargroup[i].oriname
-    };
-    var obj2 = {
-        value: lineargroup[i].value,
-        name: lineargroup[i].name,
-        itemStyle: {
-             opacity: 0,
+      //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      let myChart2 = echarts.init(document.getElementById('leftDefaOne'))
+      var colors = [
+        '#8134af',
+        '#A94CAF',
+        '#FF82A9',
+        '#4695d6',
+        '#7BDFF2',
+        '##BDFF2',
+      ]
+      var lineargroup = [
+        {
+          value: 100,
+          name: '仓库1',
+          oriname: '库存11',
+          number: 98756,
+          //color: ["rgba(29,211,137,0.8)", "rgba(29,211,137,0)"]
+        },
+        {
+          value: 60,
+          name: '仓库2',
+          oriname: '仓库22',
+          number: 88756,
+          // color: ["rgba(102,142,255,0.7)", "rgba(102,142,255,0)"]
+        },
+        {
+          value: 60,
+          name: '仓库3',
+          oriname: '仓库33',
+          number: 78756,
+          // color: ["rgba(255,198,82,0.6)", "rgba(255,198,82,0)"]
+        },
+        {
+          value: 60,
+          name: '仓库4',
+          oriname: '仓库44',
+          number: 68756,
+          // color: ["rgba(255,110,115,0.5)", "rgba(255,110,115,0)"]
+        },
+        {
+          value: 60,
+          name: '仓库5',
+          oriname: '仓库55',
+          number: 88756,
+          //  color: ["rgba(134,131,230,0.4)", "rgba(134,131,230,0)"]
+        },
+      ]
+      var data1 = []
+      var data2 = []
+      for (var i = 0; i < lineargroup.length; i++) {
+        var obj1 = {
+          value: lineargroup[i].value,
+          num: lineargroup[i].number,
+          name: lineargroup[i].oriname,
+        }
+        var obj2 = {
+          value: lineargroup[i].value,
+          name: lineargroup[i].name,
+          itemStyle: {
+            opacity: 0,
             /*normal: {
                 color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [{
                     offset: 0,
@@ -114,15 +122,16 @@ for (var i = 0; i < lineargroup.length; i++) {
         data2.push(obj2)
       }
 
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
       let myChart3 = echarts.init(document.getElementById('leftDefaTwo'))
-//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>
-      let myChart1 = echarts.init(document.getElementById('leftDefaThree'));
-      
-//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>
- let option1 = {
-    color: colors,
-    series: [{
+      //>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>
+      let myChart1 = echarts.init(document.getElementById('leftDefaThree'))
+
+      //>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>//>>>>>>>>>>>>>>>
+      let option1 = {
+        color: colors,
+        series: [
+          {
             top: 0,
             type: 'funnel',
             height: '230',
@@ -271,7 +280,7 @@ for (var i = 0; i < lineargroup.length; i++) {
               width: 2,
             },
           },
-          
+
           splitLine: {
             //分割线配置
             lineStyle: {
@@ -397,26 +406,29 @@ for (var i = 0; i < lineargroup.length; i++) {
               margin: 20, //刻度标签与轴线之间的距离。
             },
 
-        axisLine: {
-            show: false, //不显示x轴
-            lineStyle: {
-                color: '#E2E8EC'
-            }
-        },
-        axisTick: {
-            show: false //不显示刻度
-        },
-        boundaryGap: true,
-        splitLine: { //分割线配置
-            lineStyle: {
-                color: "#00",
-            }
-        },
-    }],
-    yAxis: [{
-        splitLine: {
-            show: false,
-            lineStyle: {
+            axisLine: {
+              show: false, //不显示x轴
+              lineStyle: {
+                color: '#E2E8EC',
+              },
+            },
+            axisTick: {
+              show: false, //不显示刻度
+            },
+            boundaryGap: true,
+            splitLine: {
+              //分割线配置
+              lineStyle: {
+                color: '#00',
+              },
+            },
+          },
+        ],
+        yAxis: [
+          {
+            splitLine: {
+              show: false,
+              lineStyle: {
                 color: '#fff',
                 type: 'dashed',
               },
@@ -545,8 +557,8 @@ for (var i = 0; i < lineargroup.length; i++) {
       myChart1.setOption(option1)
       myChart2.setOption(option2)
       myChart3.setOption(option3)
-//>>>>>>>>>>>>>>>>>
-    //    echarts.connect([myChart1, myChart2,myChart3]);
+      //>>>>>>>>>>>>>>>>>
+      //    echarts.connect([myChart1, myChart2,myChart3]);
     },
   },
 }
@@ -595,7 +607,6 @@ $color: #fff;
     #leftDefaOne {
       width: 100%;
       height: 100%;
-
     }
   }
   .two {
@@ -610,7 +621,6 @@ $color: #fff;
     #leftDefaThree {
       width: 100%;
       height: 100%;
-
     }
   }
 }

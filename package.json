@@ -10,6 +10,7 @@
     "@balkangraph/orgchart.js": "^7.7.16",
     "@jiaminghi/data-view": "^2.10.0",
     "ant-design-vue": "^1.7.2",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "echarts": "^5.0.0",
     "swiper": "^6.4.8",
