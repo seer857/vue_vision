@@ -7,7 +7,7 @@
       loop="loop"
       muted="muted"
     ></video>
-    
+
     <div class="bg" v-if="!allShow">
       <Index />
     </div>
@@ -15,10 +15,10 @@
       <div class="warp" v-if="find" @click="routerBack">
         <div class="top">
           <img v-if="allShow" src="../assets/images/top_nav.png" alt />
-          <dv-decoration-1  v-if="allShow" class="decorate"  />
-            <transition name="tranTitle">
-          <img class="second" v-if="!allShow" src="../assets/images/top_nav2.png" alt />
-           </transition>
+          <dv-decoration-1 v-if="allShow" class="decorate" />
+          <transition name="tranTitle">
+            <img class="second" v-if="!allShow" src="../assets/images/top_nav2.png" alt />
+          </transition>
           <dv-decoration-10 class="top-line" :color="['#b634da','#00c2ff']" />
           <h1>
             <span>
@@ -36,7 +36,7 @@
                 <LeftModule />
               </div>
               <!-- 首页左组件 -->
-              <div class="left" v-if="!isShow && allShow" >
+              <div class="left" v-if="!isShow && allShow">
                 <DefaultLeft />
               </div>
               <div class="center-default">
@@ -49,9 +49,7 @@
                 <CenterModule
                   v-on:againSend="getContentShow"
                   v-on:againSendTag="getContentShowTag"
-                  
                   v-if="findCenter"
-                  
                 />
                 <!-- ------------------------------------------ -->
               </div>
@@ -80,6 +78,7 @@ import DefaultRight from '../components/rightModule/default.vue'
 import DefaultCenter from '../components/centerModule/default.vue'
 import Clock from '../components/OtherModule/clock.vue'
 import Index from './Index.vue'
+import axios from 'axios'
 export default {
   name: 'Home',
   components: {
@@ -99,14 +98,18 @@ export default {
       allShow: true,
       find: true,
       findCenter: true,
-
     }
   },
-  mounted() {
-
+  mounted() {},
+  created() {
+    this.axioss()
   },
   methods: {
-  
+    axioss() {
+      axios.get('http://10.200.226.98:3000/api/v1/sales').then((res) => {
+        console.log(res)
+      })
+    },
 
     loading() {
       setTimeout(() => {
@@ -172,16 +175,16 @@ $absolute: absolute;
     //background: url(../assets/images/top_nav.png) no-repeat;
     border: none;
     overflow: hidden;
-       .tranTitle-enter-active{
-       transition: opacity 1s;
-     }
-     .tranTitle-enter{
-         opacity: 0;
-     }
-    .decorate{
+    .tranTitle-enter-active {
+      transition: opacity 1s;
+    }
+    .tranTitle-enter {
+      opacity: 0;
+    }
+    .decorate {
       position: absolute;
-      
-       margin:10px;
+
+      margin: 10px;
       width: 200px;
       height: 50px;
     }
@@ -234,18 +237,16 @@ $absolute: absolute;
       margin-top: 100px;
       width: 100%;
       height: 978px;
-      
     }
     .left {
       position: relative;
       width: 450px;
       height: 978px;
       // border: 1px springgreen solid;
-       float: left;
-       
+      float: left;
+
       animation: opacityx 3s;
       // animation-play-state:paused;
-
     }
     .center-default {
       position: absolute;
@@ -259,8 +260,8 @@ $absolute: absolute;
       margin-left: 460px;
       width: 920px;
       height: 978px;
-     // animation: domCenterMove 20s infinite linear alternate;
-  
+      // animation: domCenterMove 20s infinite linear alternate;
+
       .dynamicOnCenter-enter-active {
         transition: opacity 1s;
       }
@@ -283,17 +284,22 @@ $absolute: absolute;
       margin-right: 4px;
       animation: opacityx 3s;
     }
-    
   }
 }
 //>>>>>>>>>>>渐变动画>>>>>>>>>>>>>>>>
 
-@keyframes fadeIn {//从上到下
- from {margin-top:  -2500px ;}
-    to {margin-top: 0px; }
+@keyframes fadeIn {
+  //从上到下
+  from {
+    margin-top: -2500px;
+  }
+  to {
+    margin-top: 0px;
+  }
 }
 
-@keyframes leftanimation {//从左往右
+@keyframes leftanimation {
+  //从左往右
   from {
     left: -2000px;
   }
@@ -310,10 +316,10 @@ $absolute: absolute;
   }
 }
 @keyframes opacityx {
-  from{
+  from {
     opacity: 0;
   }
-  to{
+  to {
     opacity: 1;
   }
 }
@@ -338,6 +344,5 @@ $absolute: absolute;
     margin-left: 370px;
     width: 1164px;
   }
-  
 }
 </style>

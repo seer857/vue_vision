@@ -10,12 +10,16 @@ import 'swiper/swiper.min.css'
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 import 'ant-design-vue/dist/antd.css';
 import '@/assets/css/font.css';
+
+import axios from 'axios'
+Vue.prototype.axios = axios
+
+
 Vue.use(dataV)
 Vue.config.productionTip = false
 Vue.use(Button)
 Vue.use(Popover)
 Vue.use(Icon)
-
 // 组织架构图组件
 
 
