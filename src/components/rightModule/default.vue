@@ -88,6 +88,7 @@ export default {
       test: [],
       startValue: 0,
       endValue: 5,
+      timeId:null,
       SwiperOption: {
         observer: true, //修改swiper自己或子元素时，自动初始化swiper
         observeParents: true, //修改swiper的父元素时，自动初始化swiper
@@ -116,6 +117,9 @@ export default {
     // this.onAssets()
     // this.onTopic()
     //this.getTopic()
+  },
+  destroyed(){
+    clearInterval(this.timeId)
   },
 
   methods: {
@@ -147,7 +151,11 @@ export default {
       console.log('slide change')
     },
     startInterval() {
-      setInterval(() => {
+      if(this.timeId){
+        clearInterval(this.timeId)
+      }
+      // dom销毁时 关闭定时器 this.timerId
+      this.timeId = setInterval(() => {
         this.startValue++
         this.endValue++
         if (this.endValue > this.salesDateArr.length - 1) {
@@ -155,7 +163,7 @@ export default {
           this.endValue = 5
         }
         this.salesIncomeCharts()
-      }, 5000)
+      }, 500)
     },
     salesIncomeCharts() {
       let myChart2 = echarts.init(document.getElementById('rightDefaTwo'))
@@ -292,6 +300,12 @@ export default {
         ],
       }
       myChart2.setOption(option2)
+      myChart2.on("mouseover",() => {
+        clearInterval(this.timeId)
+      })
+      myChart2.on("mouseout",()=>{
+        this.startInterval()
+      })
     },
     rightDefEcharts() {
       let myChart3 = echarts.init(document.getElementById('rightDefaThree'))
