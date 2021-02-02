@@ -39,9 +39,9 @@
         <div class="title">
           <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
           <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-          <span>20-21年总销量同环比与收入趋势</span>
+          <span>2020年总销量同环比与收入趋势</span>
         </div>
-        <div id="rightDefaTwo"></div>
+        <div id="rightDefaTwo" ref="sales_ref"></div>
       </a-popover>
     </dv-border-box-10>
     <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content three">
@@ -55,9 +55,9 @@
         <div class="title">
           <img class="float icon" src="@/assets/images/leftContent/dian1.png" alt />
           <img class="tImg" src="@/assets/images/rightContent/violet_tag.png" alt />
-          <span>各车型销量和净利润分析</span>
+          <span>车型系列销量与收入分析</span>
         </div>
-        <div id="rightDefaThree"></div>
+        <div id="rightDefaThree" ref="car_ref"></div>
       </a-popover>
     </dv-border-box-10>
   </div>
@@ -82,13 +82,24 @@ export default {
   },
   data() {
     return {
+      //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      salesChartInstance: null,
+      resSalesData: null, // 服务器返回的销量数据
+      currentPage: 1, //当前显示的页数 通过定时器不断改变
+      totalPage: 0, // 一共有多少页 需要计算得到
+      salesTimeId: null,
+      //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      carSalesChartInstance: null,
+      resCarSalesData: null,
+      startValue: 0,
+      endValue: 3,
+      timeId: null,
+      // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
       salesArr: [],
       salesDateArr: [],
       salesIncome: [],
       test: [],
-      startValue: 0,
-      endValue: 5,
-      timeId:null,
+
       SwiperOption: {
         observer: true, //修改swiper自己或子元素时，自动初始化swiper
         observeParents: true, //修改swiper的父元素时，自动初始化swiper
@@ -110,72 +121,36 @@ export default {
     //this.getSalesAll()
   },
   beforeMount() {
-    this.getSalesAll()
+    //this.getSalesAll()
   },
   mounted() {
-    // this.defaultEcharts();
-    // this.onAssets()
-    // this.onTopic()
-    //this.getTopic()
+    this.initSalesChart()
+    this.getSalesData()
+    this.initCarSalesChart()
+    this.getCarSalesChart()
   },
-  destroyed(){
+  destroyed() {
+    clearInterval(this.salesTimeId)
     clearInterval(this.timeId)
   },
 
   methods: {
-    getSalesAll() {
-      axios.get('http://10.200.226.98:3000/api/v1/sales').then((res) => {
-        // console.log(res.data.data[0])
-        for (let i = 0; i < res.data.data.length; i++) {
-          this.salesDateArr.push(res.data.data[i].delivery_ym)
-          this.salesArr.push(res.data.data[i].actual_quantity_delivered_bq)
-          this.salesIncome.push(res.data.data[i].Mul_price)
-        }
-        // this.salesDateArr = Object.values(res.data.data)
-        //console.log(this.salesIncome)
-        this.salesIncomeCharts()
-        this.startInterval()
-        this.rightDefEcharts()
-      })
-    },
-    prev() {
-      this.$refs.swiperOne.$swiper.slidePrev()
-    },
-    next() {
-      this.$refs.swiperOne.$swiper.slideNext()
-    },
-    onSwiper(swiper) {
-      console.log(swiper)
-    },
-    onSlideChange() {
-      console.log('slide change')
-    },
-    startInterval() {
-      if(this.timeId){
-        clearInterval(this.timeId)
-      }
-      // dom销毁时 关闭定时器 this.timerId
-      this.timeId = setInterval(() => {
-        this.startValue++
-        this.endValue++
-        if (this.endValue > this.salesDateArr.length - 1) {
-          this.startValue = 0
-          this.endValue = 5
-        }
-        this.salesIncomeCharts()
-      }, 500)
-    },
-    salesIncomeCharts() {
-      let myChart2 = echarts.init(document.getElementById('rightDefaTwo'))
-      let option2 = {
+    // >>>>>>>>>>>>>>>>>>>>> 销量收入图 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // 初始化 销量收入图表  echartInstance 对象
+    initSalesChart() {
+      this.salesChartInstance = this.$echarts.init(this.$refs.sales_ref)
+      // 对图表初始化配置的控制
+      const initSalesOption = {
         tooltip: {
           trigger: 'axis',
-          // axisPointer: {
-          //   type: 'cross',
-          //   crossStyle: {
-          //     color: '#fff',
-          //   },
-          // },
+          axisPointer: {
+            type: 'line',
+            z: 0,
+            lineStyle: {
+              width: 66,
+              color: '#2D3343',
+            },
+          },
         },
         legend: {
           top: '90%',
@@ -194,46 +169,28 @@ export default {
           },
         },
         grid: {
-          top: '20%',
+          top: '25%',
           bottom: '10%',
-          left: '0%',
-          right: '0%',
+          left: '%',
+          right: '5%',
           containLabel: true,
         },
         dataZoom: {
           show: false,
-          startValue: this.startValue,
-          endValue: this.endValue,
+          startValue: 0,
+          endValue: 5,
         },
         xAxis: [
           {
-            type: 'category',
-            data: [...this.salesDateArr],
+            type: 'category', // 类目轴
             axisPointer: {
               type: 'shadow',
             },
           },
         ],
-
         yAxis: [
           {
-            type: 'log',
-            name: '20年销量',
-            // min: 0,
-            // max: function () {
-            //   return null
-            // },
-            // // interval: 1000,
-            // axisLabel: {
-            //   formatter: function (value, index) {
-            //     let str = value.toString()
-            //     let strs = str.substring(0, 4)
-            //     let values = parseInt(strs)
-            //     return values + `万台`
-            //   },
-            //   margin: 2,
-            // },
-
+            type: 'value',
             axisLabel: {
               formatter: function (value, index) {
                 return value / 10000 + '万台'
@@ -249,8 +206,7 @@ export default {
             },
           },
           {
-            type: 'log',
-            name: '20年收入',
+            type: 'value',
             position: 'right',
             // min: 0,
             max: function () {
@@ -275,60 +231,157 @@ export default {
           {
             name: '20年销量',
             type: 'bar',
-            data: [...this.salesArr],
             label: {
               show: true,
               position: 'top',
+              color: 'rgba(187,222,214,1)',
             },
+            barWidth: 30,
+            itemStyle: {
+              barBorderRadius: [20, 20, 0, 0],
+            },
+            // 指明颜色渐变的方向
+            // 指明不同百分比之下颜色的值
+            color: new this.$echarts.graphic.LinearGradient(1, 1, 0, 0, [
+              {
+                offset: 0,
+                color: 'rgba(255,241,172,1)',
+              },
+              {
+                offset: 1,
+                color: 'rgba(242,244,246,1)',
+              },
+            ]),
           },
           {
             name: '20年收入',
             type: 'bar',
-            data: [...this.salesIncome],
+
             yAxisIndex: 1,
             label: {
               show: true,
               position: 'top',
+              color: 'rgba(187,222,214,1)',
             },
+            barWidth: 30,
+            itemStyle: {
+              barBorderRadius: [20, 20, 0, 0],
+            },
+            color: new this.$echarts.graphic.LinearGradient(1, 1, 0, 0, [
+              {
+                offset: 0,
+                color: 'rgba(30,227,207,1)',
+              },
+              {
+                offset: 1,
+                color: 'rgba(242,244,246,1)',
+              },
+            ]),
           },
           {
             name: '趋势',
             type: 'line',
             yAxisIndex: 1,
-            data: [],
+            color: 'red',
           },
         ],
       }
-      myChart2.setOption(option2)
-      myChart2.on("mouseover",() => {
-        clearInterval(this.timeId)
+      this.salesChartInstance.setOption(initSalesOption)
+      // 对图表对象进行鼠标事件的监听
+      this.salesChartInstance.on('mouseover', () => {
+        clearInterval(this.salesTimeId)
       })
-      myChart2.on("mouseout",()=>{
-        this.startInterval()
+      this.salesChartInstance.on('mouseout', () => {
+        this.startSalesInterval()
       })
     },
-    rightDefEcharts() {
-      let myChart3 = echarts.init(document.getElementById('rightDefaThree'))
-      // >>>>>>>>>>>>>>>>>>>>
-
-      // >>>>>>>>>>>>>>>>>>>>>>..
-      let option3 = {
+    // 获取 服务器销量收入的数据
+    async getSalesData() {
+      const { data: ret } = await this.$http.get('sales')
+      this.resSalesData = ret.data
+      //对数组进行排序
+      // this.resSalesData.sort((a, b) => {
+      //   return a.Mul_price - b.Mul_price //从小到大
+      // })
+      // 每6个元素显示一页
+      this.totalPage =
+        this.resSalesData.length % 5 === 0
+          ? this.resSalesData.length / 5
+          : this.resSalesData.length / 5 + 1
+      //console.log(this.resSalesData)
+      this.updateSalesChart()
+      this.startSalesInterval()
+    },
+    // 更新图表
+    updateSalesChart() {
+      const start = (this.currentPage - 1) * 5
+      const end = this.currentPage * 5
+      const showData = this.resSalesData.slice(start, end)
+      const salesName = showData.map((item) => {
+        return item.delivery_ym
+      })
+      const salesValues = showData.map((item) => {
+        return item.actual_quantity_delivered_bq
+      })
+      const incomeValues = showData.map((item) => {
+        return item.Mul_price
+      })
+      //console.log(incomeValues)
+      const salesOption = {
+        xAxis: [
+          {
+            data: salesName,
+          },
+        ],
+        series: [
+          {
+            data: salesValues,
+          },
+          {
+            data: incomeValues,
+          },
+          {
+            data: incomeValues,
+          },
+        ],
+      }
+      this.salesChartInstance.setOption(salesOption)
+    },
+    startSalesInterval() {
+      if (this.salesTimeId) {
+        clearInterval(this.salesTimeId)
+      }
+      this.salesTimeId = setInterval(() => {
+        this.currentPage++
+        if (this.currentPage > this.totalPage) {
+          this.currentPage = 1
+        }
+        this.updateSalesChart()
+      }, 3000)
+    },
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>各车型系列 销量>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // 1、初始化 各车型系列 销量图表
+    initCarSalesChart() {
+      this.carSalesChartInstance = this.$echarts.init(this.$refs.car_ref)
+      // 对图表进行初始化配置
+      const initCharSalesOption = {
         tooltip: {
           trigger: 'axis',
-          axisPointer: {
-            type: 'cross',
-            crossStyle: {
-              color: '#fff',
-            },
-          },
         },
-
         legend: {
           top: '90%',
-          data: ['销量', '利润', '利润率'],
+          data: ['销量', '流水', '利润率'],
           textStyle: {
             color: '#fff',
           },
+        },
+        grid: {
+          top: '20%',
+          bottom: '10%',
+          left: '0%',
+          right: '0%',
+          containLabel: true,
         },
         color: ['#50C1E9', '#7A57D1', '#E7475E'],
         axisLabel: {
@@ -339,18 +392,14 @@ export default {
             fontSize: 12,
           },
         },
+        dataZoom: {
+          show: false,
+          startValue: this.startValue,
+          endValue: this.endValue,
+        },
         xAxis: [
           {
             type: 'category',
-            data: [
-              '系列1',
-              '系列2',
-              '系列3',
-              '系列4',
-              '系列5',
-              '系列6',
-              '系列7',
-            ],
             axisPointer: {
               type: 'shadow',
             },
@@ -359,12 +408,14 @@ export default {
         yAxis: [
           {
             type: 'value',
-            name: '销量',
-            min: 0,
-            max: 88,
-            interval: 10,
+            max: function () {
+              return null
+            },
+            yAxisIndex: 1,
             axisLabel: {
-              formatter: '{value} 万台',
+              formatter: function (value, index) {
+                return value + '辆'
+              },
             },
             splitLine: {
               //网格线
@@ -376,12 +427,14 @@ export default {
           },
           {
             type: 'value',
-            name: '库存',
-            min: 0,
-            max: 8888,
-            interval: 1000,
+            position: 'right',
+            max: function () {
+              return null
+            },
             axisLabel: {
-              formatter: '{value} 万辆',
+              formatter: function (value, index) {
+                return value / 10000 + '万元'
+              },
             },
             splitLine: {
               //网格线
@@ -396,63 +449,124 @@ export default {
           {
             name: '销量',
             type: 'bar',
-            data: [
-              2.6,
-              4.9,
-              7.0,
-              23.2,
-              25.6,
-              76.7,
-              60.6,
-              70.2,
-              32.6,
-              20.0,
-              6.4,
-              3.3,
-            ],
+            label: {
+              show: true,
+              position: 'top',
+              color: 'rgba(187,222,214,1)',
+            },
+            barWidth: 30,
+            itemStyle: {
+              barBorderRadius: [10, 10, 0, 0],
+            },
           },
           {
-            name: '利润',
+            name: '流水',
             type: 'bar',
-            data: [
-              6.2,
-              5.9,
-              9.0,
-              26.4,
-              28.7,
-              70.7,
-              80.6,
-              60.2,
-              48.7,
-              18.8,
-              6.0,
-              2.3,
-            ],
+            yAxisIndex: 1,
+            label: {
+              show: true,
+              position: 'top',
+              color: 'rgba(187,222,214,1)',
+            },
+            barWidth: 30,
+            itemStyle: {
+              barBorderRadius: [10, 10, 0, 0],
+            },
           },
           {
             name: '利润率',
             type: 'line',
             yAxisIndex: 1,
-            data: [
-              363.6,
-              455.2,
-              555.3,
-              2844.5,
-              545.3,
-              3366.2,
-              869.3,
-              4544.4,
-              787.0,
-              320.5,
-              880.0,
-              453.2,
-            ],
+            data: [],
           },
         ],
       }
-
-      myChart3.setOption(option3)
+      this.carSalesChartInstance.on('mouseover', () => {
+        clearInterval(this.timeId)
+      })
+      this.carSalesChartInstance.on('mouseout', () => {
+        this.startInterval()
+      })
+      this.carSalesChartInstance.setOption(initCharSalesOption)
     },
+    // // 2、获取服务端接口数据
+    async getCarSalesChart() {
+      const { data: ret } = await this.$http.get('carsales')
+      this.resCarSalesData = ret.data
+      // this.resCarSalesData.sort((a, b) => {
+      //   return a.MulPrice - b.MulPrice && a.ActualQuantityDelivered - b.ActualQuantityDelivered//从小到大
+      // })
+      this.updateCarSalesChart()
+      this.startInterval()
+    },
+    // // 3、更新图表
+    updateCarSalesChart() {
+      const CarName = this.resCarSalesData.map((item) => {
+        return item.VehicleSeriesDesc
+      })
+      const CarSales = this.resCarSalesData.map((item) => {
+        return item.ActualQuantityDelivered
+      })
+      const CarPrice = this.resCarSalesData.map((item) => {
+        return item.MulPrice
+      })
+      const carSalesOption = {
+        xAxis: [
+          {
+            data: CarName,
+          },
+        ],
+        dataZoom: {
+          show: false,
+          startValue: this.startValue,
+          endValue: this.endValue,
+        },
+        series: [
+          {
+            data: CarSales,
+          },
+          {
+            data: CarPrice,
+          },
+          {
+            data: [],
+          },
+        ],
+      }
+      this.carSalesChartInstance.setOption(carSalesOption)
+    },
+
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    startInterval() {
+      if (this.timeId) {
+        clearInterval(this.timeId)
+      }
+      // dom销毁时 关闭定时器 this.timerId
+      this.timeId = setInterval(() => {
+        this.startValue++
+        this.endValue++
+        if (this.endValue > this.resCarSalesData.length - 1) {
+          this.startValue = 0
+          this.endValue = 3
+        }
+        this.updateCarSalesChart()
+      }, 1000)
+    },
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // 费用占比 swiper 部分
+    prev() {
+      this.$refs.swiperOne.$swiper.slidePrev()
+    },
+    next() {
+      this.$refs.swiperOne.$swiper.slideNext()
+    },
+    onSwiper(swiper) {
+      console.log(swiper)
+    },
+    onSlideChange() {
+      console.log('slide change')
+    },
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   },
 }
 </script>
@@ -526,6 +640,7 @@ export default {
       height: 100%;
     }
   }
+
   .two,
   .three {
     margin-top: 20px;
@@ -533,6 +648,9 @@ export default {
       margin-left: 10px;
       width: 100%;
       height: 100%;
+      canvas {
+        border-radius: 20px;
+      }
     }
     #rightDefaThree {
       position: absolute;

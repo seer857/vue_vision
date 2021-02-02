@@ -12,8 +12,9 @@ import 'ant-design-vue/dist/antd.css';
 import '@/assets/css/font.css';
 
 import axios from 'axios'
-Vue.prototype.axios = axios
-
+Vue.prototype.$http = axios
+axios.defaults.baseURL = 'http://10.200.226.98:3000/api/v1' 
+Vue.prototype.$echarts = window.echarts
 
 Vue.use(dataV)
 Vue.config.productionTip = false
