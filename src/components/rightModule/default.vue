@@ -25,7 +25,7 @@
           <ChartsThree />
         </swiper-slide>
       </swiper>
-       <div class="swiper-button-prev" @click="prev"></div>
+      <div class="swiper-button-prev" @click="prev"></div>
       <div class="swiper-button-next" @click="next"></div>
     </dv-border-box-10>
     <dv-border-box-10 :color="['#1c1b55', '#e0e3ff']" class="content two">

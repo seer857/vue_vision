@@ -351,7 +351,7 @@ methods: {
       let option3 ={
         
                     title: {
-                             text: '【爱玛点用户访问来源】',
+                          text: '【爱码点用户访问来源】',
                           left: 'center',
                           textStyle: {
                              fontSize: 20,

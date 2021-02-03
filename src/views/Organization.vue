@@ -1,15 +1,7 @@
 <template>
-<<<<<<< HEAD
   <div id="tree" ref="tree"></div>
-=======
-      <div id=''>
-        <h1> 我是组织架构页</h1>
-        <TreeChart :json="treeData" />
-      </div>
->>>>>>> 8728666ce0bb316c155baffc276a1a50b30cee49
 </template>
 <script>
-<<<<<<< HEAD
 import OrgChart from '@balkangraph/orgchart.js'
 export default {
   name: 'tree',
@@ -135,54 +127,6 @@ export default {
           pid: 1001,
           name: '标准法规部',
         },
-=======
-import TreeChart from "vue-tree-chart";
-export default {
-   components:{TreeChart},
-   data() {
-      return {
-treeData: {
-            name: 'root',
-            image_url: "https://static.refined-x.com/avat.jpg",
-            class: ["rootNode"],
-            children: [
-               {
-               name: 'children1',
-               image_url: "https://static.refined-x.com/avat1.jpg"
-               },
-               {
-               name: 'children2',
-               image_url: "https://static.refined-x.com/avat2.jpg",
-               mate: [{
-                  name: 'mate',
-                  image_url: "https://static.refined-x.com/avat3.jpg"
-               }],
-               children: [
-                  {
-                     name: 'grandchild',
-                     image_url: "https://static.refined-x.com/avat.jpg"
-                  },
-                  {
-                     name: 'grandchild2',
-                     image_url: "https://static.refined-x.com/avat1.jpg"
-                  },
-                  {
-                     name: 'grandchild3',
-                     image_url: "https://static.refined-x.com/avat2.jpg"
-                  }
-               ]
-               },
-               {
-               name: 'children3',
-               image_url: "https://static.refined-x.com/avat.jpg"
-               }
-            ]
-         
-      }
-       };
-    },
-   methods: {
->>>>>>> 8728666ce0bb316c155baffc276a1a50b30cee49
 
         {
           id: 1002,

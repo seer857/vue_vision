@@ -16,7 +16,6 @@ export default {
     openCharts() {
       let myChart1 = echarts.init(document.getElementById('rightDefaTwos'))
       let option1 = {
-<<<<<<< HEAD
         title: {
           text: '【爱玛点用户访问来源】',
           left: 'center',
@@ -55,34 +54,6 @@ export default {
         },
         xAxis: [
           {
-=======
-                 title: {
-                               text: '【爱玛点用户访问来源】',
-                          left: 'center',
-                          textStyle: {
-                             fontSize: 20,
-                              color: "rgba(249, 249, 249, 1)"
-                            }, },
-                  tooltip: {
-        trigger: 'axis',
-        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-        }
-    },
-    legend: {
-       top:'90%',//模块底部
-                         textStyle: {color: "rgba(255, 255, 255, 1"  },  //文字颜色
-        data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎', '百度', '谷歌', '必应', '其他']
-    },
-    grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '12%',
-        containLabel: true
-    },
-    xAxis: [
-        {
->>>>>>> 8728666ce0bb316c155baffc276a1a50b30cee49
             type: 'category',
             axisLabel: { color: 'rgba(255, 255, 255, 1)' }, //坐标样式
             data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
