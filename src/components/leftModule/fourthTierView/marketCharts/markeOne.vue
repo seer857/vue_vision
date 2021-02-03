@@ -39,7 +39,7 @@ methods: {
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let option = {
                       title: {
-                          text: '【爱码点用户访问来源】',
+                              text: '【爱玛点用户访问来源】',
                           left: 'center',
                           textStyle: {
                              fontSize: 20,
@@ -152,7 +152,7 @@ let option = {
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let option2 = {
            title: {
-                          text: '【爱码点用户访问来源】',
+                           text: '【爱玛点用户访问来源】',
                           left: 'center',
                           textStyle: {
                              fontSize: 20,
@@ -256,7 +256,7 @@ let option2 = {
 let option3 ={
         
                     title: {
-                          text: '【爱码点用户访问来源】',
+                              text: '【爱玛点用户访问来源】',
                           left: 'center',
                           textStyle: {
                              fontSize: 20,
@@ -303,7 +303,7 @@ let option3 ={
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
 let option4={
                title: {
-                          text: '【爱码点用户访问来源】',
+                              text: '【爱玛点用户访问来源】',
                           left: 'center',
                           textStyle: {
                              fontSize: 20,
