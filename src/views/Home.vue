@@ -105,8 +105,6 @@ export default {
 
   },
   methods: {
-  
-
     loading() {
       setTimeout(() => {
         this.find = !this.find
@@ -121,7 +119,9 @@ export default {
     getContentShowTag(data) {
       this.allShow = data
     },
-    routerBack() {},
+    routerBack() {
+    },
+
   },
 }
 </script>
