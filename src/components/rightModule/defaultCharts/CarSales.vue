@@ -195,7 +195,13 @@ export default {
           },
         ],
       }
+      
       this.carSalesChartInstance.setOption(carSalesOption)
+      //  this.carSalesChartInstance.on("click",function(params){
+      //    console.log(params)
+      //  })
+      // this.carSalesChartInstance.showLoading()
+      // this.carSalesChartInstance.hideLoading();
     },
 
     // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -220,7 +226,7 @@ export default {
 </script>
 <style lang='scss' scoped>
 .car-sales {
-  width:100%;
+  width: 100%;
   height: 100%;
   .main {
     width: 100%;

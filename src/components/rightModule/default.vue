@@ -15,7 +15,7 @@
         </div>
       </a-popover>
       <swiper :options="SwiperOption" ref="swiperOne">
-        <swiper-slide>
+        <swiper-slide >
           <ChartsOne />
         </swiper-slide>
         <swiper-slide>
